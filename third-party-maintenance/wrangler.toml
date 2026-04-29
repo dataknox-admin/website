@@ -1,6 +1,6 @@
 # Static HTML site — served at the edge via Cloudflare Workers static assets.
 # Deployed as a sub-route of the main domain: www.dataknox.io/third-party-maintenance/*
-name = "dataknox-tpm"
+name = "website"
 compatibility_date = "2026-04-23"
 main = "_worker.js"
 
