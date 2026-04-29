@@ -8,5 +8,10 @@
 wrangler.toml
 .assetsignore
 .gitignore
+_worker.js
 
 CLAUDE.md
+
+package.json
+package-lock.json
+node_modules/
