@@ -1,0 +1,15 @@
+# Root-level config — Cloudflare Workers Builds runs from repo root.
+# Assets are served from ./third-party-maintenance/
+# Sub-route: www.dataknox.io/third-party-maintenance/*
+name = "website"
+compatibility_date = "2026-04-29"
+main = "_worker.js"
+
+[[routes]]
+pattern = "www.dataknox.io/third-party-maintenance/*"
+zone_name = "dataknox.io"
+
+[assets]
+directory = "third-party-maintenance"
+not_found_handling = "none"
+binding = "ASSETS"

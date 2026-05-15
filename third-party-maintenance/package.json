@@ -1,0 +1,11 @@
+{
+  "name": "dataknox-tpm",
+  "private": true,
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "node_modules/.bin/wrangler deploy"
+  },
+  "devDependencies": {
+    "wrangler": "^3"
+  }
+}
