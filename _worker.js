@@ -1,20 +1,29 @@
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
-    const stripped = url.pathname.replace(/^\/third-party-maintenance/, '') || '/';
+
+    let stripped = url.pathname;
+    let prefix = '';
+
+    if (url.pathname.startsWith('/third-party-maintenance')) {
+      prefix = '/third-party-maintenance';
+      stripped = url.pathname.replace(/^\/third-party-maintenance/, '') || '/';
+    }
+
+    if (url.pathname.startsWith('/buyers-guide')) {
+      prefix = '/buyers-guide';
+      stripped = '/buyers-guide/index.html';
+    }
 
     const response = await env.ASSETS.fetch(
       new Request(url.origin + stripped + url.search, request)
     );
 
-    // ASSETS issues bare redirects (e.g. /storage-maintenance -> /storage-maintenance/)
-    // when a directory is requested without a trailing slash. Re-add the prefix so
-    // the browser doesn't land on the main site's 404.
     if (response.status >= 300 && response.status < 400) {
       const location = response.headers.get('Location');
-      if (location) {
+      if (location && prefix) {
         const redirected = new URL(location, url.origin);
-        redirected.pathname = '/third-party-maintenance' + redirected.pathname;
+        redirected.pathname = prefix + redirected.pathname;
         return Response.redirect(redirected.toString(), response.status);
       }
     }
