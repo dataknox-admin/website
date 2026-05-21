@@ -153,7 +153,7 @@ body{font-family:'Poppins','Inter',sans-serif;background:var(--navy);color:var(-
 nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(5,15,44,0.95);backdrop-filter:blur(10px);border-bottom:1px solid rgba(0,212,232,0.15);padding:14px 5%;display:flex;justify-content:space-between;align-items:center;}
 .nav-cta{background:transparent;border:1px solid var(--cyan);color:var(--cyan);padding:8px 20px;font-family:'Poppins','Inter',sans-serif;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;cursor:pointer;border-radius:3px;transition:all 0.2s;text-decoration:none;display:inline-block;}
 .nav-cta:hover{background:var(--cyan);color:var(--navy);}
-.hero{min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden;padding:100px 5% 60px;}
+.hero{min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden;padding:120px 5% 60px;}
 .hero-dots{position:absolute;inset:0;background-image:radial-gradient(circle,rgba(0,212,232,0.14) 1px,transparent 1px);background-size:24px 24px;pointer-events:none;}
 .hero-glow{position:absolute;top:-200px;right:-200px;width:700px;height:700px;background:radial-gradient(circle,rgba(0,212,232,0.08) 0%,transparent 70%);pointer-events:none;}
 .hero-inner{max-width:1200px;margin:0 auto;width:100%;display:grid;grid-template-columns:1fr 460px;gap:60px;align-items:start;position:relative;z-index:2;padding-top:20px;}
@@ -235,125 +235,263 @@ footer{background:rgba(0,0,0,0.5);border-top:1px solid rgba(0,212,232,0.1);paddi
 </head>
 <body>
 <nav id="main-nav" role="navigation" aria-label="Main navigation">
-  <div style="max-width:1280px;width:100%;padding:0 20px;margin:0 auto;">
-    <div style="padding:1rem 0;">
-      <div style="display:flex;justify-content:space-between;align-items:center;">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+#main-nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:#ffffff;box-shadow:0 1px 12px rgba(0,0,0,0.08);font-family:'Poppins',sans-serif;}
+.nav-wrap{max-width:1280px;width:100%;padding:0 20px;margin:0 auto;}
+.nav-inner{padding:1rem 0;}
+.nav-flex{display:flex;justify-content:space-between;align-items:center;}
+.nav-logo a{display:flex;align-items:center;text-decoration:none;}
+.nav-right{display:flex;align-items:center;gap:4px;}
+.nav-link{color:#081b5f;font-size:13px;font-weight:500;padding:8px 11px;border-radius:4px;text-decoration:none;background:transparent;border:none;cursor:pointer;font-family:'Poppins',sans-serif;display:flex;align-items:center;gap:4px;white-space:nowrap;transition:background 0.2s,color 0.2s;}
+.nav-link:hover{background:#f0f4ff;color:#081b5f;}
+.nav-link svg path{stroke:#081b5f;}
+.nav-cta-btn{background:#43e8e1;color:#081b5f;font-family:'Poppins',sans-serif;font-size:13px;font-weight:700;padding:10px 22px;border-radius:5px;text-decoration:none;white-space:nowrap;letter-spacing:0.3px;transition:background 0.2s;border:none;cursor:pointer;margin-left:8px;}
+.nav-cta-btn:hover{background:#2ed4ce;}
+/* Dropdowns */
+.nav-dd{position:relative;}
+.nav-dd-menu{display:none;position:absolute;top:calc(100% + 10px);left:0;background:#fff;border:1px solid rgba(8,27,95,0.1);border-radius:10px;padding:8px;min-width:240px;box-shadow:0 12px 40px rgba(0,0,0,0.12);z-index:9999;}
+.nav-dd-menu.mega{min-width:580px;left:auto;right:0;}
+.nav-dd-menu.open{display:block;}
+.nav-dd-menu.mega.open{display:grid;grid-template-columns:1fr 1fr 1fr;gap:0;}
+.dd-item{display:block;padding:7px 10px;color:#2a3a6e;font-size:13px;font-family:'Poppins',sans-serif;text-decoration:none;border-radius:4px;transition:background 0.15s;}
+.dd-item:hover{background:#f0f4ff;color:#081b5f;}
+.dd-label{padding:6px 10px 4px;color:#43e8e1;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;font-family:'Poppins',sans-serif;display:block;}
+.dd-div{height:1px;background:#eef0f8;margin:5px 6px;}
+.dd-col{padding:4px;}
+/* Chevron */
+.chev{width:10px;height:6px;transition:transform 0.2s;flex-shrink:0;}
+.chev.open{transform:rotate(180deg);}
+/* Hamburger */
+.hamburger{display:none;flex-direction:column;gap:5px;background:transparent;border:none;cursor:pointer;padding:6px;}
+.hamburger span{display:block;width:22px;height:2px;background:#081b5f;border-radius:2px;transition:all 0.3s;}
+.hamburger.active span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.hamburger.active span:nth-child(2){opacity:0;}
+.hamburger.active span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+/* Mobile menu */
+.mobile-menu{display:none;position:fixed;top:65px;left:0;right:0;bottom:0;background:#fff;overflow-y:auto;padding:16px 20px 40px;z-index:999;flex-direction:column;gap:4px;}
+.mobile-menu.open{display:flex;}
+.mob-link{color:#081b5f;font-size:14px;font-weight:500;padding:12px 8px;text-decoration:none;border-bottom:1px solid #f0f4ff;font-family:'Poppins',sans-serif;display:block;}
+.mob-section{color:#43e8e1;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:16px 8px 6px;font-family:'Poppins',sans-serif;}
+.mob-cta{background:#43e8e1;color:#081b5f;font-family:'Poppins',sans-serif;font-size:14px;font-weight:700;padding:14px;border-radius:6px;text-decoration:none;text-align:center;margin-top:20px;display:block;}
+@media(max-width:1024px){
+  .nav-right{display:none;}
+  .hamburger{display:flex;}
+}
+@media(max-width:480px){
+  .nav-wrap{padding:0 16px;}
+}
+</style>
 
-        <!-- LEFT: Nav Links -->
-        <div style="display:flex;align-items:center;gap:4px;" id="nav-links">
+<div class="nav-wrap">
+  <div class="nav-inner">
+    <div class="nav-flex">
 
-          <!-- Shop -->
-          <a href="https://www.dataknox.io/shop" style="color:rgba(255,255,255,0.85);font-family:'Poppins',sans-serif;font-size:13px;font-weight:500;padding:8px 12px;border-radius:4px;text-decoration:none;transition:all 0.2s;white-space:nowrap;" onmouseover="this.style.background='rgba(255,255,255,0.08)'" onmouseout="this.style.background='transparent'">Shop</a>
-
-          <!-- Infrastructure Dropdown -->
-          <div class="nav-dropdown" style="position:relative;">
-            <button onclick="toggleDrop('infra')" style="color:rgba(255,255,255,0.85);font-family:'Poppins',sans-serif;font-size:13px;font-weight:500;padding:8px 12px;border-radius:4px;background:transparent;border:none;cursor:pointer;display:flex;align-items:center;gap:5px;white-space:nowrap;" onmouseover="this.style.background='rgba(255,255,255,0.08)'" onmouseout="this.style.background='transparent'">
-              Infrastructure <svg width="10" height="6" viewBox="0 0 10 6" fill="none" style="transition:transform 0.2s" id="arrow-infra"><path d="M1 1L5 5L9 1" stroke="rgba(255,255,255,0.6)" stroke-width="1.5" stroke-linecap="round"/></svg>
-            </button>
-            <div id="drop-infra" style="display:none;position:absolute;top:calc(100% + 8px);left:0;background:#0d1f4e;border:1px solid rgba(0,212,232,0.2);border-radius:8px;padding:8px;min-width:260px;box-shadow:0 20px 60px rgba(0,0,0,0.4);z-index:999;">
-              <div style="padding:6px 10px;color:rgba(0,212,232,0.6);font-family:'Poppins',sans-serif;font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;">Asset Services</div>
-              <a href="https://www.dataknox.io/it-asset-disposition" style="display:block;padding:8px 10px;color:rgba(255,255,255,0.8);font-family:'Poppins',sans-serif;font-size:13px;text-decoration:none;border-radius:4px;" onmouseover="this.style.background='rgba(0,212,232,0.08)'" onmouseout="this.style.background='transparent'">IT Asset Disposition</a>
-              <a href="https://www.dataknox.io/trade-in" style="display:block;padding:8px 10px;color:rgba(255,255,255,0.8);font-family:'Poppins',sans-serif;font-size:13px;text-decoration:none;border-radius:4px;" onmouseover="this.style.background='rgba(0,212,232,0.08)'" onmouseout="this.style.background='transparent'">Dataknox Trade-In Program</a>
-              <a href="https://www.dataknox.io/data-destruction" style="display:block;padding:8px 10px;color:rgba(255,255,255,0.8);font-family:'Poppins',sans-serif;font-size:13px;text-decoration:none;border-radius:4px;" onmouseover="this.style.background='rgba(0,212,232,0.08)'" onmouseout="this.style.background='transparent'">Data Destruction Services</a>
-              <a href="https://www.dataknox.io/custom-servers" style="display:block;padding:8px 10px;color:rgba(255,255,255,0.8);font-family:'Poppins',sans-serif;font-size:13px;text-decoration:none;border-radius:4px;" onmouseover="this.style.background='rgba(0,212,232,0.08)'" onmouseout="this.style.background='transparent'">Custom Servers</a>
-              <div style="height:1px;background:rgba(255,255,255,0.07);margin:6px 0;"></div>
-              <div style="padding:6px 10px;color:rgba(0,212,232,0.6);font-family:'Poppins',sans-serif;font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;">Solutions</div>
-              <a href="https://www.dataknox.io/third-party-maintenance" style="display:block;padding:8px 10px;color:rgba(255,255,255,0.8);font-family:'Poppins',sans-serif;font-size:13px;text-decoration:none;border-radius:4px;" onmouseover="this.style.background='rgba(0,212,232,0.08)'" onmouseout="this.style.background='transparent'">Third Party Maintenance</a>
-              <a href="https://www.dataknox.io/oem-support" style="display:block;padding:8px 10px;color:rgba(255,255,255,0.8);font-family:'Poppins',sans-serif;font-size:13px;text-decoration:none;border-radius:4px;" onmouseover="this.style.background='rgba(0,212,232,0.08)'" onmouseout="this.style.background='transparent'">Support for OEMs</a>
-              <a href="https://www.dataknox.io/basecamp" style="display:block;padding:8px 10px;color:rgba(255,255,255,0.8);font-family:'Poppins',sans-serif;font-size:13px;text-decoration:none;border-radius:4px;" onmouseover="this.style.background='rgba(0,212,232,0.08)'" onmouseout="this.style.background='transparent'">Base Camp Portal</a>
-              <a href="https://www.dataknox.io/cybersecurity" style="display:block;padding:8px 10px;color:rgba(255,255,255,0.8);font-family:'Poppins',sans-serif;font-size:13px;text-decoration:none;border-radius:4px;" onmouseover="this.style.background='rgba(0,212,232,0.08)'" onmouseout="this.style.background='transparent'">Cybersecurity</a>
-            </div>
-          </div>
-
-          <!-- Cloud Services Dropdown -->
-          <div class="nav-dropdown" style="position:relative;">
-            <button onclick="toggleDrop('cloud')" style="color:rgba(255,255,255,0.85);font-family:'Poppins',sans-serif;font-size:13px;font-weight:500;padding:8px 12px;border-radius:4px;background:transparent;border:none;cursor:pointer;display:flex;align-items:center;gap:5px;white-space:nowrap;" onmouseover="this.style.background='rgba(255,255,255,0.08)'" onmouseout="this.style.background='transparent'">
-              Cloud Services <svg width="10" height="6" viewBox="0 0 10 6" fill="none" id="arrow-cloud"><path d="M1 1L5 5L9 1" stroke="rgba(255,255,255,0.6)" stroke-width="1.5" stroke-linecap="round"/></svg>
-            </button>
-            <div id="drop-cloud" style="display:none;position:absolute;top:calc(100% + 8px);left:0;background:#0d1f4e;border:1px solid rgba(0,212,232,0.2);border-radius:8px;padding:8px;min-width:240px;box-shadow:0 20px 60px rgba(0,0,0,0.4);z-index:999;">
-              <a href="https://www.dataknox.io/cloud-migration" style="display:block;padding:8px 10px;color:rgba(255,255,255,0.8);font-family:'Poppins',sans-serif;font-size:13px;text-decoration:none;border-radius:4px;" onmouseover="this.style.background='rgba(0,212,232,0.08)'" onmouseout="this.style.background='transparent'">Migration Cloud Services</a>
-              <a href="https://www.dataknox.io/cloud-backup" style="display:block;padding:8px 10px;color:rgba(255,255,255,0.8);font-family:'Poppins',sans-serif;font-size:13px;text-decoration:none;border-radius:4px;" onmouseover="this.style.background='rgba(0,212,232,0.08)'" onmouseout="this.style.background='transparent'">Migration Cloud Backup</a>
-              <a href="https://www.dataknox.io/duplocloud" style="display:block;padding:8px 10px;color:rgba(255,255,255,0.8);font-family:'Poppins',sans-serif;font-size:13px;text-decoration:none;border-radius:4px;" onmouseover="this.style.background='rgba(0,212,232,0.08)'" onmouseout="this.style.background='transparent'">Duplocloud</a>
-            </div>
-          </div>
-
-          <!-- Insights Dropdown -->
-          <div class="nav-dropdown" style="position:relative;">
-            <button onclick="toggleDrop('insights')" style="color:rgba(255,255,255,0.85);font-family:'Poppins',sans-serif;font-size:13px;font-weight:500;padding:8px 12px;border-radius:4px;background:transparent;border:none;cursor:pointer;display:flex;align-items:center;gap:5px;white-space:nowrap;" onmouseover="this.style.background='rgba(255,255,255,0.08)'" onmouseout="this.style.background='transparent'">
-              Insights <svg width="10" height="6" viewBox="0 0 10 6" fill="none" id="arrow-insights"><path d="M1 1L5 5L9 1" stroke="rgba(255,255,255,0.6)" stroke-width="1.5" stroke-linecap="round"/></svg>
-            </button>
-            <div id="drop-insights" style="display:none;position:absolute;top:calc(100% + 8px);left:0;background:#0d1f4e;border:1px solid rgba(0,212,232,0.2);border-radius:8px;padding:8px;min-width:240px;box-shadow:0 20px 60px rgba(0,0,0,0.4);z-index:999;">
-              <a href="https://www.dataknox.io/server-management" style="display:block;padding:8px 10px;color:rgba(255,255,255,0.8);font-family:'Poppins',sans-serif;font-size:13px;text-decoration:none;border-radius:4px;" onmouseover="this.style.background='rgba(0,212,232,0.08)'" onmouseout="this.style.background='transparent'">Server Management</a>
-              <a href="https://www.dataknox.io/blog" style="display:block;padding:8px 10px;color:rgba(255,255,255,0.8);font-family:'Poppins',sans-serif;font-size:13px;text-decoration:none;border-radius:4px;" onmouseover="this.style.background='rgba(0,212,232,0.08)'" onmouseout="this.style.background='transparent'">Tech Blogs</a>
-              <a href="https://www.dataknox.io/press" style="display:block;padding:8px 10px;color:rgba(255,255,255,0.8);font-family:'Poppins',sans-serif;font-size:13px;text-decoration:none;border-radius:4px;" onmouseover="this.style.background='rgba(0,212,232,0.08)'" onmouseout="this.style.background='transparent'">Press</a>
-              <a href="https://www.dataknox.io/foundation" style="display:block;padding:8px 10px;color:rgba(255,255,255,0.8);font-family:'Poppins',sans-serif;font-size:13px;text-decoration:none;border-radius:4px;" onmouseover="this.style.background='rgba(0,212,232,0.08)'" onmouseout="this.style.background='transparent'">Dataknox Foundation</a>
-              <a href="https://www.dataknox.io/certifications" style="display:block;padding:8px 10px;color:rgba(255,255,255,0.8);font-family:'Poppins',sans-serif;font-size:13px;text-decoration:none;border-radius:4px;" onmouseover="this.style.background='rgba(0,212,232,0.08)'" onmouseout="this.style.background='transparent'">Certifications</a>
-              <a href="https://www.dataknox.io/eol" style="display:block;padding:8px 10px;color:rgba(255,255,255,0.8);font-family:'Poppins',sans-serif;font-size:13px;text-decoration:none;border-radius:4px;" onmouseover="this.style.background='rgba(0,212,232,0.08)'" onmouseout="this.style.background='transparent'">EOL</a>
-              <a href="https://www.dataknox.io/warranty-rma" style="display:block;padding:8px 10px;color:rgba(255,255,255,0.8);font-family:'Poppins',sans-serif;font-size:13px;text-decoration:none;border-radius:4px;" onmouseover="this.style.background='rgba(0,212,232,0.08)'" onmouseout="this.style.background='transparent'">Warranty &amp; RMA's</a>
-              <div style="height:1px;background:rgba(255,255,255,0.07);margin:6px 0;"></div>
-              <a href="https://www.dataknox.io/about" style="display:block;padding:8px 10px;color:rgba(255,255,255,0.8);font-family:'Poppins',sans-serif;font-size:13px;text-decoration:none;border-radius:4px;" onmouseover="this.style.background='rgba(0,212,232,0.08)'" onmouseout="this.style.background='transparent'">About Us</a>
-            </div>
-          </div>
-
-          <!-- AI Dropdown -->
-          <div class="nav-dropdown" style="position:relative;">
-            <button onclick="toggleDrop('ai')" style="color:rgba(255,255,255,0.85);font-family:'Poppins',sans-serif;font-size:13px;font-weight:500;padding:8px 12px;border-radius:4px;background:transparent;border:none;cursor:pointer;display:flex;align-items:center;gap:5px;white-space:nowrap;" onmouseover="this.style.background='rgba(255,255,255,0.08)'" onmouseout="this.style.background='transparent'">
-              Artificial Intelligence <svg width="10" height="6" viewBox="0 0 10 6" fill="none" id="arrow-ai"><path d="M1 1L5 5L9 1" stroke="rgba(255,255,255,0.6)" stroke-width="1.5" stroke-linecap="round"/></svg>
-            </button>
-            <div id="drop-ai" style="display:none;position:absolute;top:calc(100% + 8px);left:-60px;background:#0d1f4e;border:1px solid rgba(0,212,232,0.2);border-radius:8px;padding:12px;min-width:600px;box-shadow:0 20px 60px rgba(0,0,0,0.4);z-index:999;display:none;">
-              <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;">
-                <!-- GPUs -->
-                <div>
-                  <div style="padding:4px 8px 8px;color:rgba(0,212,232,0.7);font-family:'Poppins',sans-serif;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;">Graphics Processing Units</div>
-                  <a href="https://www.dataknox.io/gpus" style="display:block;padding:6px 8px;color:rgba(255,255,255,0.8);font-family:'Poppins',sans-serif;font-size:12px;text-decoration:none;border-radius:4px;" onmouseover="this.style.background='rgba(0,212,232,0.08)'" onmouseout="this.style.background='transparent'">GPU's</a>
-                  <a href="https://www.dataknox.io/try-before-you-buy" style="display:block;padding:6px 8px;color:rgba(255,255,255,0.8);font-family:'Poppins',sans-serif;font-size:12px;text-decoration:none;border-radius:4px;" onmouseover="this.style.background='rgba(0,212,232,0.08)'" onmouseout="this.style.background='transparent'">Try It Before You Buy It</a>
-                  <a href="https://www.dataknox.io/nvidia-gb200" style="display:block;padding:6px 8px;color:rgba(255,255,255,0.8);font-family:'Poppins',sans-serif;font-size:12px;text-decoration:none;border-radius:4px;" onmouseover="this.style.background='rgba(0,212,232,0.08)'" onmouseout="this.style.background='transparent'">Nvidia GB200</a>
-                  <a href="https://www.dataknox.io/nvidia-l40" style="display:block;padding:6px 8px;color:rgba(255,255,255,0.8);font-family:'Poppins',sans-serif;font-size:12px;text-decoration:none;border-radius:4px;" onmouseover="this.style.background='rgba(0,212,232,0.08)'" onmouseout="this.style.background='transparent'">Nvidia L40</a>
-                  <a href="https://www.dataknox.io/nvidia-h100" style="display:block;padding:6px 8px;color:rgba(255,255,255,0.8);font-family:'Poppins',sans-serif;font-size:12px;text-decoration:none;border-radius:4px;" onmouseover="this.style.background='rgba(0,212,232,0.08)'" onmouseout="this.style.background='transparent'">Nvidia H100</a>
-                  <a href="https://www.dataknox.io/nvidia-h200" style="display:block;padding:6px 8px;color:rgba(255,255,255,0.8);font-family:'Poppins',sans-serif;font-size:12px;text-decoration:none;border-radius:4px;" onmouseover="this.style.background='rgba(0,212,232,0.08)'" onmouseout="this.style.background='transparent'">Nvidia H200</a>
-                  <a href="https://www.dataknox.io/intel-gaudi-2" style="display:block;padding:6px 8px;color:rgba(255,255,255,0.8);font-family:'Poppins',sans-serif;font-size:12px;text-decoration:none;border-radius:4px;" onmouseover="this.style.background='rgba(0,212,232,0.08)'" onmouseout="this.style.background='transparent'">Intel Gaudi 2</a>
-                  <a href="https://www.dataknox.io/intel-gaudi-3" style="display:block;padding:6px 8px;color:rgba(255,255,255,0.8);font-family:'Poppins',sans-serif;font-size:12px;text-decoration:none;border-radius:4px;" onmouseover="this.style.background='rgba(0,212,232,0.08)'" onmouseout="this.style.background='transparent'">Intel Gaudi 3</a>
-                  <a href="https://www.dataknox.io/amd-mi300" style="display:block;padding:6px 8px;color:rgba(255,255,255,0.8);font-family:'Poppins',sans-serif;font-size:12px;text-decoration:none;border-radius:4px;" onmouseover="this.style.background='rgba(0,212,232,0.08)'" onmouseout="this.style.background='transparent'">AMD Mi300</a>
-                  <div style="height:1px;background:rgba(255,255,255,0.07);margin:6px 0;"></div>
-                  <a href="https://www.dataknox.io/gpu-brands" style="display:block;padding:6px 8px;color:rgba(255,255,255,0.8);font-family:'Poppins',sans-serif;font-size:12px;text-decoration:none;border-radius:4px;" onmouseover="this.style.background='rgba(0,212,232,0.08)'" onmouseout="this.style.background='transparent'">Shop by GPU Brands</a>
-                  <a href="https://www.dataknox.io/gpu-instances" style="display:block;padding:6px 8px;color:rgba(255,255,255,0.8);font-family:'Poppins',sans-serif;font-size:12px;text-decoration:none;border-radius:4px;" onmouseover="this.style.background='rgba(0,212,232,0.08)'" onmouseout="this.style.background='transparent'">Sign Up for GPU Instances</a>
-                  <a href="https://www.dataknox.io/on-premise-rentals" style="display:block;padding:6px 8px;color:rgba(255,255,255,0.8);font-family:'Poppins',sans-serif;font-size:12px;text-decoration:none;border-radius:4px;" onmouseover="this.style.background='rgba(0,212,232,0.08)'" onmouseout="this.style.background='transparent'">On-Premise Rentals</a>
-                </div>
-                <!-- AI Use Cases -->
-                <div>
-                  <div style="padding:4px 8px 8px;color:rgba(0,212,232,0.7);font-family:'Poppins',sans-serif;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;">AI Use Cases</div>
-                  <a href="https://www.dataknox.io/ai" style="display:block;padding:6px 8px;color:rgba(255,255,255,0.8);font-family:'Poppins',sans-serif;font-size:12px;text-decoration:none;border-radius:4px;" onmouseover="this.style.background='rgba(0,212,232,0.08)'" onmouseout="this.style.background='transparent'">AI</a>
-                  <a href="https://www.dataknox.io/impact-of-ai-servers" style="display:block;padding:6px 8px;color:rgba(255,255,255,0.8);font-family:'Poppins',sans-serif;font-size:12px;text-decoration:none;border-radius:4px;" onmouseover="this.style.background='rgba(0,212,232,0.08)'" onmouseout="this.style.background='transparent'">Impact of AI Servers</a>
-                  <a href="https://www.dataknox.io/computer-vision" style="display:block;padding:6px 8px;color:rgba(255,255,255,0.8);font-family:'Poppins',sans-serif;font-size:12px;text-decoration:none;border-radius:4px;" onmouseover="this.style.background='rgba(0,212,232,0.08)'" onmouseout="this.style.background='transparent'">Computer Vision</a>
-                  <a href="https://www.dataknox.io/nlp" style="display:block;padding:6px 8px;color:rgba(255,255,255,0.8);font-family:'Poppins',sans-serif;font-size:12px;text-decoration:none;border-radius:4px;" onmouseover="this.style.background='rgba(0,212,232,0.08)'" onmouseout="this.style.background='transparent'">NLP</a>
-                  <a href="https://www.dataknox.io/autonomous-driving" style="display:block;padding:6px 8px;color:rgba(255,255,255,0.8);font-family:'Poppins',sans-serif;font-size:12px;text-decoration:none;border-radius:4px;" onmouseover="this.style.background='rgba(0,212,232,0.08)'" onmouseout="this.style.background='transparent'">Autonomous Driving</a>
-                  <a href="https://www.dataknox.io/life-sciences" style="display:block;padding:6px 8px;color:rgba(255,255,255,0.8);font-family:'Poppins',sans-serif;font-size:12px;text-decoration:none;border-radius:4px;" onmouseover="this.style.background='rgba(0,212,232,0.08)'" onmouseout="this.style.background='transparent'">Life Sciences</a>
-                  <a href="https://www.dataknox.io/medical-image-processing" style="display:block;padding:6px 8px;color:rgba(255,255,255,0.8);font-family:'Poppins',sans-serif;font-size:12px;text-decoration:none;border-radius:4px;" onmouseover="this.style.background='rgba(0,212,232,0.08)'" onmouseout="this.style.background='transparent'">Medical Image Processing</a>
-                </div>
-                <!-- Solutions -->
-                <div>
-                  <div style="padding:4px 8px 8px;color:rgba(0,212,232,0.7);font-family:'Poppins',sans-serif;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;">Solutions</div>
-                  <a href="https://www.dataknox.io/ai-servers" style="display:block;padding:6px 8px;color:rgba(255,255,255,0.8);font-family:'Poppins',sans-serif;font-size:12px;text-decoration:none;border-radius:4px;" onmouseover="this.style.background='rgba(0,212,232,0.08)'" onmouseout="this.style.background='transparent'">AI Servers</a>
-                  <a href="https://www.dataknox.io/ai-fullstack" style="display:block;padding:6px 8px;color:rgba(255,255,255,0.8);font-family:'Poppins',sans-serif;font-size:12px;text-decoration:none;border-radius:4px;" onmouseover="this.style.background='rgba(0,212,232,0.08)'" onmouseout="this.style.background='transparent'">AI Full Stack Solutions</a>
-                  <a href="https://www.dataknox.io/ai-networking" style="display:block;padding:6px 8px;color:rgba(255,255,255,0.8);font-family:'Poppins',sans-serif;font-size:12px;text-decoration:none;border-radius:4px;" onmouseover="this.style.background='rgba(0,212,232,0.08)'" onmouseout="this.style.background='transparent'">AI Networking &amp; Optics</a>
-                  <a href="https://www.dataknox.io/pre-orders" style="display:block;padding:6px 8px;color:rgba(255,255,255,0.8);font-family:'Poppins',sans-serif;font-size:12px;text-decoration:none;border-radius:4px;" onmouseover="this.style.background='rgba(0,212,232,0.08)'" onmouseout="this.style.background='transparent'">Pre-Orders</a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- RIGHT: Logo + CTA -->
-        <div style="display:flex;align-items:center;gap:20px;">
-          <a href="https://www.dataknox.io" aria-label="Dataknox Solutions homepage">
-            <svg width="160" height="37" viewBox="0 0 278 64" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Dataknox Solutions logo"><path d="M46.995 23.875C46.995 27.255 44.255 29.985 40.885 29.985C37.505 29.985 34.775 27.245 34.775 23.875C34.775 20.505 37.515 17.765 40.885 17.765C44.255 17.765 46.995 20.505 46.995 23.875ZM24.645 17.765C28.025 17.765 30.755 20.505 30.755 23.875C30.755 27.245 28.015 29.985 24.645 29.985C21.275 29.985 18.535 27.245 18.535 23.875C18.535 20.505 21.265 17.765 24.645 17.765ZM10.965 21.305C12.845 21.305 14.365 22.825 14.365 24.705C14.365 26.585 12.845 28.105 10.965 28.105C9.085 28.105 7.565 26.585 7.565 24.705C7.565 22.825 9.085 21.305 10.965 21.305ZM57.995 24.705C57.995 26.585 56.475 28.105 54.595 28.105C52.715 28.105 51.195 26.585 51.195 24.705C51.195 22.825 52.715 21.305 54.595 21.305C56.475 21.305 57.995 22.825 57.995 24.705ZM2.945 22.745C4.025 22.745 4.905 23.625 4.905 24.705C4.905 25.785 4.025 26.665 2.945 26.665C1.865 26.665 0.985001 25.785 0.985001 24.705C0.985001 23.625 1.865 22.745 2.945 22.745ZM64.575 24.705C64.575 25.785 63.695 26.665 62.615 26.665C61.535 26.665 60.655 25.785 60.655 24.705C60.655 23.625 61.535 22.745 62.615 22.745C63.695 22.745 64.575 23.625 64.575 24.705ZM43.475 10.185C43.475 12.065 41.955 13.585 40.075 13.585C38.195 13.585 36.675 12.065 36.675 10.185C36.675 8.305 38.195 6.785 40.075 6.785C41.955 6.785 43.475 8.305 43.475 10.185ZM40.075 57.215C38.195 57.215 36.675 55.695 36.675 53.815C36.675 51.935 38.195 50.415 40.075 50.415C41.955 50.415 43.475 51.935 43.475 53.815C43.475 55.695 41.955 57.215 40.075 57.215ZM42.035 2.165C42.035 3.245 41.155 4.125 40.075 4.125C38.995 4.125 38.115 3.245 38.115 2.165C38.115 1.085 38.985 0.205002 40.075 0.205002C41.165 0.205002 42.035 1.085 42.035 2.165ZM40.075 63.795C38.995 63.795 38.115 62.915 38.115 61.835C38.115 60.755 38.995 59.875 40.075 59.875C41.155 59.875 42.035 60.755 42.035 61.835C42.035 62.915 41.155 63.795 40.075 63.795ZM40.885 46.235C37.505 46.235 34.775 43.495 34.775 40.125C34.775 36.745 37.515 34.015 40.885 34.015C44.265 34.015 46.995 36.755 46.995 40.125C46.995 43.495 44.255 46.235 40.885 46.235ZM18.525 40.115C18.525 36.735 21.265 34.005 24.635 34.005C28.005 34.005 30.745 36.745 30.745 40.115C30.745 43.495 28.005 46.225 24.635 46.225C21.265 46.225 18.525 43.495 18.525 40.115ZM7.565 39.295C7.565 37.415 9.085 35.895 10.965 35.895C12.845 35.895 14.365 37.415 14.365 39.295C14.365 41.175 12.845 42.695 10.965 42.695C9.085 42.695 7.565 41.175 7.565 39.295ZM54.585 42.695C52.705 42.695 51.185 41.175 51.185 39.295C51.185 37.415 52.705 35.895 54.585 35.895C56.465 35.895 57.985 37.415 57.985 39.295C57.985 41.175 56.465 42.695 54.585 42.695ZM0.985001 39.295C0.985001 38.215 1.865 37.335 2.945 37.335C4.025 37.335 4.905 38.205 4.905 39.295C4.905 40.385 4.025 41.255 2.945 41.255C1.865 41.255 0.985001 40.375 0.985001 39.295ZM62.615 41.255C61.535 41.255 60.655 40.375 60.655 39.295C60.655 38.215 61.535 37.335 62.615 37.335C63.695 37.335 64.575 38.215 64.575 39.295C64.575 40.375 63.695 41.255 62.615 41.255ZM25.485 6.785C27.365 6.785 28.885 8.305 28.885 10.185C28.885 12.065 27.365 13.585 25.485 13.585C23.605 13.585 22.085 12.065 22.085 10.185C22.085 8.305 23.605 6.785 25.485 6.785ZM22.085 53.805C22.085 51.925 23.605 50.405 25.485 50.405C27.365 50.405 28.885 51.925 28.885 53.805C28.885 55.685 27.365 57.205 25.485 57.205C23.605 57.215 22.085 55.685 22.085 53.805ZM25.485 0.205002C26.565 0.205002 27.445 1.085 27.445 2.165C27.445 3.245 26.565 4.125 25.485 4.125C24.405 4.125 23.525 3.245 23.525 2.165C23.525 1.085 24.405 0.205002 25.485 0.205002ZM23.525 61.835C23.525 60.755 24.405 59.875 25.485 59.875C26.565 59.875 27.445 60.755 27.445 61.835C27.445 62.915 26.565 63.795 25.485 63.795C24.405 63.795 23.525 62.912 23.525 61.835ZM57.995 10.185C57.995 12.065 56.475 13.585 54.595 13.585C52.715 13.585 51.195 12.065 51.195 10.185C51.195 8.305 52.715 6.785 54.595 6.785C56.475 6.785 57.995 8.305 57.995 10.185ZM54.585 57.215C52.705 57.215 51.185 55.695 51.185 53.815C51.185 51.935 52.705 50.415 54.585 50.415C56.465 50.415 57.985 51.935 57.985 53.815C57.985 55.695 56.465 57.215 54.585 57.215ZM10.935 6.785C12.815 6.785 14.335 8.305 14.335 10.185C14.335 12.065 12.815 13.585 10.935 13.585C9.055 13.585 7.535 12.065 7.535 10.185C7.535 8.305 9.055 6.785 10.935 6.785ZM7.535 53.805C7.535 51.925 9.055 50.405 10.935 50.405C12.815 50.405 14.335 51.925 14.335 53.805C14.335 55.685 12.815 57.205 10.935 57.205C9.055 57.205 7.535 55.685 7.535 53.805ZM140.885 18.645L134.025 35.275H136.075L137.975 30.535H145.865L147.775 35.275H149.805L142.965 18.645H140.885ZM138.535 29.155L141.675 21.325C141.765 21.115 141.825 20.925 141.915 20.685C142.005 20.925 142.075 21.115 142.165 21.325L145.325 29.155H138.535ZM106.675 18.645L99.815 35.275H101.865C101.885 35.235 102.735 33.115 103.765 30.535H111.625C112.955 33.855 113.525 35.245 113.585 35.275H115.615L108.775 18.645H106.675ZM104.315 29.155C105.815 25.405 107.455 21.325 107.465 21.325C107.555 21.115 107.615 20.925 107.705 20.685C107.795 20.925 107.865 21.115 107.955 21.325C109.245 24.565 110.265 27.135 111.075 29.155H104.315ZM118.345 18.645H131.305V20.545H125.765V35.275H123.875V20.545H118.345V18.645ZM87.755 18.645H82.585V35.275H87.755C93.315 35.275 96.085 31.755 96.085 26.955C96.085 22.155 93.315 18.645 87.755 18.645ZM87.755 33.375H84.475V20.545H87.755C92.005 20.545 94.165 22.965 94.165 26.955C94.165 30.945 92.005 33.375 87.755 33.375ZM238.655 18.645H240.545V35.275H238.655V18.645ZM232.675 34.275C232.675 35.085 232.135 35.485 231.505 35.485C230.875 35.485 230.305 35.085 230.305 34.275C230.305 33.495 230.875 33.085 231.505 33.085C232.135 33.085 232.675 33.495 232.675 34.275ZM254.775 18.355C249.265 18.355 246.545 22.655 246.545 26.955C246.545 31.255 249.265 35.555 254.775 35.555C260.285 35.555 263.015 31.255 263.015 26.955C263.015 22.655 260.285 18.355 254.775 18.355ZM254.775 33.655C250.505 33.655 248.455 30.375 248.455 26.955C248.455 23.535 250.505 20.255 254.775 20.255C259.055 20.255 261.095 23.535 261.095 26.955C261.095 30.375 259.055 33.655 254.775 33.655ZM220.035 26.715L226.105 35.275H223.855L218.905 28.315L213.935 35.275H211.685L217.785 26.715L212.025 18.645H214.275L218.905 25.125L223.515 18.645H225.765L220.035 26.715ZM160.535 26.235L167.605 35.275H165.245L159.255 27.615L156.635 30.435C156.645 33.135 156.645 35.235 156.645 35.275H154.765V18.645H156.645C156.635 18.645 156.635 23.405 156.635 27.835L165.135 18.645H167.565L160.535 26.235ZM184.085 18.645H185.975V35.275H184.225L174.755 21.965V35.275H172.865V18.645H174.625L184.085 31.925V18.645ZM200.215 18.355C194.705 18.355 191.985 22.655 191.985 26.955C191.985 31.255 194.705 35.555 200.215 35.555C205.725 35.555 208.445 31.255 208.445 26.955C208.445 22.655 205.725 18.355 200.215 18.355ZM200.215 33.655C195.945 33.655 193.895 30.375 193.895 26.955C193.895 23.535 195.945 20.255 200.215 20.255C204.485 20.255 206.535 23.535 206.535 26.955C206.535 30.375 204.485 33.655 200.215 33.655Z" fill="white"/><path d="M266.839 16.815V12.6218H268.85C269.062 12.6218 269.267 12.6729 269.464 12.7752C269.665 12.8737 269.829 13.0214 269.958 13.2184C270.091 13.4116 270.157 13.6502 270.157 13.9343C270.157 14.2184 270.089 14.4646 269.952 14.6729C269.82 14.8775 269.649 15.0347 269.441 15.1445C269.237 15.2544 269.024 15.3093 268.805 15.3093H267.248V14.7354H268.612C268.805 14.7354 268.977 14.6672 269.129 14.5309C269.284 14.3907 269.362 14.1919 269.362 13.9343C269.362 13.6691 269.284 13.4797 269.129 13.3661C268.977 13.2525 268.81 13.1956 268.629 13.1956H267.572V16.815H266.839ZM269.282 14.8661L270.327 16.815H269.509L268.492 14.8661H269.282ZM268.379 19.315C267.75 19.315 267.161 19.1975 266.612 18.9627C266.062 18.7278 265.579 18.4021 265.163 17.9854C264.746 17.5688 264.42 17.0858 264.185 16.5366C263.951 15.9873 263.833 15.3983 263.833 14.7695C263.833 14.1407 263.951 13.5517 264.185 13.0025C264.42 12.4532 264.746 11.9703 265.163 11.5536C265.579 11.1369 266.062 10.8112 266.612 10.5763C267.161 10.3415 267.75 10.2241 268.379 10.2241C269.007 10.2241 269.596 10.3415 270.146 10.5763C270.695 10.8112 271.178 11.1369 271.595 11.5536C272.011 11.9703 272.337 12.4532 272.572 13.0025C272.807 13.5517 272.924 14.1407 272.924 14.7695C272.924 15.3983 272.807 15.9873 272.572 16.5366C272.337 17.0858 272.011 17.5688 271.595 17.9854C271.178 18.4021 270.695 18.7278 270.146 18.9627C269.596 19.1975 269.007 19.315 268.379 19.315ZM268.379 18.4684C269.06 18.4684 269.68 18.3017 270.237 17.9684C270.797 17.635 271.244 17.19 271.577 16.6331C271.911 16.0725 272.077 15.4513 272.077 14.7695C272.077 14.0877 271.911 13.4684 271.577 12.9116C271.244 12.3509 270.797 11.904 270.237 11.5706C269.68 11.2373 269.06 11.0706 268.379 11.0706C267.697 11.0706 267.076 11.2373 266.515 11.5706C265.958 11.904 265.513 12.3509 265.18 12.9116C264.846 13.4684 264.68 14.0877 264.68 14.7695C264.68 15.4513 264.846 16.0725 265.18 16.6331C265.513 17.19 265.958 17.635 266.515 17.9684C267.076 18.3017 267.697 18.4684 268.379 18.4684Z" fill="white"/></svg>
-          </a>
-          <a href="https://www.dataknox.io/contact" style="background:#43e8e1;color:#081b5f;font-family:'Poppins',sans-serif;font-size:13px;font-weight:700;padding:10px 22px;border-radius:5px;text-decoration:none;white-space:nowrap;letter-spacing:0.3px;transition:all 0.2s;" onmouseover="this.style.background='#2ed4ce'" onmouseout="this.style.background='#43e8e1'">Contact Sales</a>
-        </div>
-
+      <!-- LEFT: Logo -->
+      <div class="nav-logo">
+        <a href="https://www.dataknox.io" aria-label="Dataknox Solutions homepage"><svg width="160" height="37" viewBox="0 0 278 64" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Dataknox Solutions logo"><path d="M46.995 23.875C46.995 27.255 44.255 29.985 40.885 29.985C37.505 29.985 34.775 27.245 34.775 23.875C34.775 20.505 37.515 17.765 40.885 17.765C44.255 17.765 46.995 20.505 46.995 23.875ZM24.645 17.765C28.025 17.765 30.755 20.505 30.755 23.875C30.755 27.245 28.015 29.985 24.645 29.985C21.275 29.985 18.535 27.245 18.535 23.875C18.535 20.505 21.265 17.765 24.645 17.765ZM10.965 21.305C12.845 21.305 14.365 22.825 14.365 24.705C14.365 26.585 12.845 28.105 10.965 28.105C9.085 28.105 7.565 26.585 7.565 24.705C7.565 22.825 9.085 21.305 10.965 21.305ZM57.995 24.705C57.995 26.585 56.475 28.105 54.595 28.105C52.715 28.105 51.195 26.585 51.195 24.705C51.195 22.825 52.715 21.305 54.595 21.305C56.475 21.305 57.995 22.825 57.995 24.705ZM2.945 22.745C4.025 22.745 4.905 23.625 4.905 24.705C4.905 25.785 4.025 26.665 2.945 26.665C1.865 26.665 0.985001 25.785 0.985001 24.705C0.985001 23.625 1.865 22.745 2.945 22.745ZM64.575 24.705C64.575 25.785 63.695 26.665 62.615 26.665C61.535 26.665 60.655 25.785 60.655 24.705C60.655 23.625 61.535 22.745 62.615 22.745C63.695 22.745 64.575 23.625 64.575 24.705ZM43.475 10.185C43.475 12.065 41.955 13.585 40.075 13.585C38.195 13.585 36.675 12.065 36.675 10.185C36.675 8.305 38.195 6.785 40.075 6.785C41.955 6.785 43.475 8.305 43.475 10.185ZM40.075 57.215C38.195 57.215 36.675 55.695 36.675 53.815C36.675 51.935 38.195 50.415 40.075 50.415C41.955 50.415 43.475 51.935 43.475 53.815C43.475 55.695 41.955 57.215 40.075 57.215ZM42.035 2.165C42.035 3.245 41.155 4.125 40.075 4.125C38.995 4.125 38.115 3.245 38.115 2.165C38.115 1.085 38.985 0.205002 40.075 0.205002C41.165 0.205002 42.035 1.085 42.035 2.165ZM40.075 63.795C38.995 63.795 38.115 62.915 38.115 61.835C38.115 60.755 38.995 59.875 40.075 59.875C41.155 59.875 42.035 60.755 42.035 61.835C42.035 62.915 41.155 63.795 40.075 63.795ZM40.885 46.235C37.505 46.235 34.775 43.495 34.775 40.125C34.775 36.745 37.515 34.015 40.885 34.015C44.265 34.015 46.995 36.755 46.995 40.125C46.995 43.495 44.255 46.235 40.885 46.235ZM18.525 40.115C18.525 36.735 21.265 34.005 24.635 34.005C28.005 34.005 30.745 36.745 30.745 40.115C30.745 43.495 28.005 46.225 24.635 46.225C21.265 46.225 18.525 43.495 18.525 40.115ZM7.565 39.295C7.565 37.415 9.085 35.895 10.965 35.895C12.845 35.895 14.365 37.415 14.365 39.295C14.365 41.175 12.845 42.695 10.965 42.695C9.085 42.695 7.565 41.175 7.565 39.295ZM54.585 42.695C52.705 42.695 51.185 41.175 51.185 39.295C51.185 37.415 52.705 35.895 54.585 35.895C56.465 35.895 57.985 37.415 57.985 39.295C57.985 41.175 56.465 42.695 54.585 42.695ZM0.985001 39.295C0.985001 38.215 1.865 37.335 2.945 37.335C4.025 37.335 4.905 38.205 4.905 39.295C4.905 40.385 4.025 41.255 2.945 41.255C1.865 41.255 0.985001 40.375 0.985001 39.295ZM62.615 41.255C61.535 41.255 60.655 40.375 60.655 39.295C60.655 38.215 61.535 37.335 62.615 37.335C63.695 37.335 64.575 38.215 64.575 39.295C64.575 40.375 63.695 41.255 62.615 41.255ZM25.485 6.785C27.365 6.785 28.885 8.305 28.885 10.185C28.885 12.065 27.365 13.585 25.485 13.585C23.605 13.585 22.085 12.065 22.085 10.185C22.085 8.305 23.605 6.785 25.485 6.785ZM22.085 53.805C22.085 51.925 23.605 50.405 25.485 50.405C27.365 50.405 28.885 51.925 28.885 53.805C28.885 55.685 27.365 57.205 25.485 57.205C23.605 57.215 22.085 55.685 22.085 53.805ZM25.485 0.205002C26.565 0.205002 27.445 1.085 27.445 2.165C27.445 3.245 26.565 4.125 25.485 4.125C24.405 4.125 23.525 3.245 23.525 2.165C23.525 1.085 24.405 0.205002 25.485 0.205002ZM23.525 61.835C23.525 60.755 24.405 59.875 25.485 59.875C26.565 59.875 27.445 60.755 27.445 61.835C27.445 62.915 26.565 63.795 25.485 63.795C24.405 63.795 23.525 62.912 23.525 61.835ZM57.995 10.185C57.995 12.065 56.475 13.585 54.595 13.585C52.715 13.585 51.195 12.065 51.195 10.185C51.195 8.305 52.715 6.785 54.595 6.785C56.475 6.785 57.995 8.305 57.995 10.185ZM54.585 57.215C52.705 57.215 51.185 55.695 51.185 53.815C51.185 51.935 52.705 50.415 54.585 50.415C56.465 50.415 57.985 51.935 57.985 53.815C57.985 55.695 56.465 57.215 54.585 57.215ZM10.935 6.785C12.815 6.785 14.335 8.305 14.335 10.185C14.335 12.065 12.815 13.585 10.935 13.585C9.055 13.585 7.535 12.065 7.535 10.185C7.535 8.305 9.055 6.785 10.935 6.785ZM7.535 53.805C7.535 51.925 9.055 50.405 10.935 50.405C12.815 50.405 14.335 51.925 14.335 53.805C14.335 55.685 12.815 57.205 10.935 57.205C9.055 57.205 7.535 55.685 7.535 53.805ZM140.885 18.645L134.025 35.275H136.075L137.975 30.535H145.865L147.775 35.275H149.805L142.965 18.645H140.885ZM138.535 29.155L141.675 21.325C141.765 21.115 141.825 20.925 141.915 20.685C142.005 20.925 142.075 21.115 142.165 21.325L145.325 29.155H138.535ZM106.675 18.645L99.815 35.275H101.865C101.885 35.235 102.735 33.115 103.765 30.535H111.625C112.955 33.855 113.525 35.245 113.585 35.275H115.615L108.775 18.645H106.675ZM104.315 29.155C105.815 25.405 107.455 21.325 107.465 21.325C107.555 21.115 107.615 20.925 107.705 20.685C107.795 20.925 107.865 21.115 107.955 21.325C109.245 24.565 110.265 27.135 111.075 29.155H104.315ZM118.345 18.645H131.305V20.545H125.765V35.275H123.875V20.545H118.345V18.645ZM87.755 18.645H82.585V35.275H87.755C93.315 35.275 96.085 31.755 96.085 26.955C96.085 22.155 93.315 18.645 87.755 18.645ZM87.755 33.375H84.475V20.545H87.755C92.005 20.545 94.165 22.965 94.165 26.955C94.165 30.945 92.005 33.375 87.755 33.375ZM238.655 18.645H240.545V35.275H238.655V18.645ZM232.675 34.275C232.675 35.085 232.135 35.485 231.505 35.485C230.875 35.485 230.305 35.085 230.305 34.275C230.305 33.495 230.875 33.085 231.505 33.085C232.135 33.085 232.675 33.495 232.675 34.275ZM254.775 18.355C249.265 18.355 246.545 22.655 246.545 26.955C246.545 31.255 249.265 35.555 254.775 35.555C260.285 35.555 263.015 31.255 263.015 26.955C263.015 22.655 260.285 18.355 254.775 18.355ZM254.775 33.655C250.505 33.655 248.455 30.375 248.455 26.955C248.455 23.535 250.505 20.255 254.775 20.255C259.055 20.255 261.095 23.535 261.095 26.955C261.095 30.375 259.055 33.655 254.775 33.655ZM220.035 26.715L226.105 35.275H223.855L218.905 28.315L213.935 35.275H211.685L217.785 26.715L212.025 18.645H214.275L218.905 25.125L223.515 18.645H225.765L220.035 26.715ZM160.535 26.235L167.605 35.275H165.245L159.255 27.615L156.635 30.435C156.645 33.135 156.645 35.235 156.645 35.275H154.765V18.645H156.645C156.635 18.645 156.635 23.405 156.635 27.835L165.135 18.645H167.565L160.535 26.235ZM184.085 18.645H185.975V35.275H184.225L174.755 21.965V35.275H172.865V18.645H174.625L184.085 31.925V18.645ZM200.215 18.355C194.705 18.355 191.985 22.655 191.985 26.955C191.985 31.255 194.705 35.555 200.215 35.555C205.725 35.555 208.445 31.255 208.445 26.955C208.445 22.655 205.725 18.355 200.215 18.355ZM200.215 33.655C195.945 33.655 193.895 30.375 193.895 26.955C193.895 23.535 195.945 20.255 200.215 20.255C204.485 20.255 206.535 23.535 206.535 26.955C206.535 30.375 204.485 33.655 200.215 33.655Z" fill="#081b5f"/><path d="M266.839 16.815V12.6218H268.85C269.062 12.6218 269.267 12.6729 269.464 12.7752C269.665 12.8737 269.829 13.0214 269.958 13.2184C270.091 13.4116 270.157 13.6502 270.157 13.9343C270.157 14.2184 270.089 14.4646 269.952 14.6729C269.82 14.8775 269.649 15.0347 269.441 15.1445C269.237 15.2544 269.024 15.3093 268.805 15.3093H267.248V14.7354H268.612C268.805 14.7354 268.977 14.6672 269.129 14.5309C269.284 14.3907 269.362 14.1919 269.362 13.9343C269.362 13.6691 269.284 13.4797 269.129 13.3661C268.977 13.2525 268.81 13.1956 268.629 13.1956H267.572V16.815H266.839ZM269.282 14.8661L270.327 16.815H269.509L268.492 14.8661H269.282ZM268.379 19.315C267.75 19.315 267.161 19.1975 266.612 18.9627C266.062 18.7278 265.579 18.4021 265.163 17.9854C264.746 17.5688 264.42 17.0858 264.185 16.5366C263.951 15.9873 263.833 15.3983 263.833 14.7695C263.833 14.1407 263.951 13.5517 264.185 13.0025C264.42 12.4532 264.746 11.9703 265.163 11.5536C265.579 11.1369 266.062 10.8112 266.612 10.5763C267.161 10.3415 267.75 10.2241 268.379 10.2241C269.007 10.2241 269.596 10.3415 270.146 10.5763C270.695 10.8112 271.178 11.1369 271.595 11.5536C272.011 11.9703 272.337 12.4532 272.572 13.0025C272.807 13.5517 272.924 14.1407 272.924 14.7695C272.924 15.3983 272.807 15.9873 272.572 16.5366C272.337 17.0858 272.011 17.5688 271.595 17.9854C271.178 18.4021 270.695 18.7278 270.146 18.9627C269.596 19.1975 269.007 19.315 268.379 19.315ZM268.379 18.4684C269.06 18.4684 269.68 18.3017 270.237 17.9684C270.797 17.635 271.244 17.19 271.577 16.6331C271.911 16.0725 272.077 15.4513 272.077 14.7695C272.077 14.0877 271.911 13.4684 271.577 12.9116C271.244 12.3509 270.797 11.904 270.237 11.5706C269.68 11.2373 269.06 11.0706 268.379 11.0706C267.697 11.0706 267.076 11.2373 266.515 11.5706C265.958 11.904 265.513 12.3509 265.18 12.9116C264.846 13.4684 264.68 14.0877 264.68 14.7695C264.68 15.4513 264.846 16.0725 265.18 16.6331C265.513 17.19 265.958 17.635 266.515 17.9684C267.076 18.3017 267.697 18.4684 268.379 18.4684Z" fill="#081b5f"/></svg></a>
       </div>
+
+      <!-- RIGHT: Nav links + CTA (desktop) -->
+      <div class="nav-right" role="menubar">
+
+        <!-- Shop -->
+        <a href="https://www.dataknox.io/shop" class="nav-link" role="menuitem">Shop</a>
+
+        <!-- Infrastructure -->
+        <div class="nav-dd">
+          <button class="nav-link" onclick="navToggle('infra')" aria-haspopup="true" aria-expanded="false" id="btn-infra">
+            Infrastructure <svg class="chev" id="chev-infra" viewBox="0 0 10 6" fill="none"><path d="M1 1L5 5L9 1" stroke="#081b5f" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </button>
+          <div class="nav-dd-menu" id="drop-infra" role="menu">
+            <span class="dd-label">Asset Services</span>
+            <a class="dd-item" href="https://www.dataknox.io/it-asset-disposition">IT Asset Disposition</a>
+            <a class="dd-item" href="https://www.dataknox.io/trade-in">Dataknox Trade-In Program</a>
+            <a class="dd-item" href="https://www.dataknox.io/data-destruction">Data Destruction Services</a>
+            <a class="dd-item" href="https://www.dataknox.io/custom-servers">Custom Servers</a>
+            <div class="dd-div"></div>
+            <span class="dd-label">Solutions</span>
+            <a class="dd-item" href="https://www.dataknox.io/third-party-maintenance">Third Party Maintenance</a>
+            <a class="dd-item" href="https://www.dataknox.io/oem-support">Support for OEMs</a>
+            <a class="dd-item" href="https://www.dataknox.io/basecamp">Base Camp Portal</a>
+            <a class="dd-item" href="https://www.dataknox.io/cybersecurity">Cybersecurity</a>
+          </div>
+        </div>
+
+        <!-- Cloud Services -->
+        <div class="nav-dd">
+          <button class="nav-link" onclick="navToggle('cloud')" aria-haspopup="true" id="btn-cloud">
+            Cloud Services <svg class="chev" id="chev-cloud" viewBox="0 0 10 6" fill="none"><path d="M1 1L5 5L9 1" stroke="#081b5f" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </button>
+          <div class="nav-dd-menu" id="drop-cloud" role="menu">
+            <a class="dd-item" href="https://www.dataknox.io/cloud-migration">Migration Cloud Services</a>
+            <a class="dd-item" href="https://www.dataknox.io/cloud-backup">Migration Cloud Backup</a>
+            <a class="dd-item" href="https://www.dataknox.io/duplocloud">Duplocloud</a>
+          </div>
+        </div>
+
+        <!-- Insights -->
+        <div class="nav-dd">
+          <button class="nav-link" onclick="navToggle('insights')" aria-haspopup="true" id="btn-insights">
+            Insights <svg class="chev" id="chev-insights" viewBox="0 0 10 6" fill="none"><path d="M1 1L5 5L9 1" stroke="#081b5f" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </button>
+          <div class="nav-dd-menu" id="drop-insights" role="menu">
+            <a class="dd-item" href="https://www.dataknox.io/server-management">Server Management</a>
+            <a class="dd-item" href="https://www.dataknox.io/blog">Tech Blogs</a>
+            <a class="dd-item" href="https://www.dataknox.io/press">Press</a>
+            <a class="dd-item" href="https://www.dataknox.io/foundation">Dataknox Foundation</a>
+            <a class="dd-item" href="https://www.dataknox.io/certifications">Certifications</a>
+            <a class="dd-item" href="https://www.dataknox.io/eol">EOL</a>
+            <a class="dd-item" href="https://www.dataknox.io/warranty-rma">Warranty &amp; RMA's</a>
+            <div class="dd-div"></div>
+            <a class="dd-item" href="https://www.dataknox.io/about">About Us</a>
+          </div>
+        </div>
+
+        <!-- AI -->
+        <div class="nav-dd">
+          <button class="nav-link" onclick="navToggle('ai')" aria-haspopup="true" id="btn-ai">
+            Artificial Intelligence <svg class="chev" id="chev-ai" viewBox="0 0 10 6" fill="none"><path d="M1 1L5 5L9 1" stroke="#081b5f" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </button>
+          <div class="nav-dd-menu mega" id="drop-ai" role="menu">
+            <div class="dd-col">
+              <span class="dd-label">Graphics Processing Units</span>
+              <a class="dd-item" href="https://www.dataknox.io/gpus">GPU's</a>
+              <a class="dd-item" href="https://www.dataknox.io/try-before-you-buy">Try It Before You Buy It</a>
+              <a class="dd-item" href="https://www.dataknox.io/nvidia-gb200">Nvidia GB200</a>
+              <a class="dd-item" href="https://www.dataknox.io/nvidia-l40">Nvidia L40</a>
+              <a class="dd-item" href="https://www.dataknox.io/nvidia-h100">Nvidia H100</a>
+              <a class="dd-item" href="https://www.dataknox.io/nvidia-h200">Nvidia H200</a>
+              <a class="dd-item" href="https://www.dataknox.io/intel-gaudi-2">Intel Gaudi 2</a>
+              <a class="dd-item" href="https://www.dataknox.io/intel-gaudi-3">Intel Gaudi 3</a>
+              <a class="dd-item" href="https://www.dataknox.io/amd-mi300">AMD Mi300</a>
+              <div class="dd-div"></div>
+              <a class="dd-item" href="https://www.dataknox.io/gpu-brands">Shop by GPU Brands</a>
+              <a class="dd-item" href="https://www.dataknox.io/gpu-instances">Sign Up for GPU Instances</a>
+              <a class="dd-item" href="https://www.dataknox.io/on-premise-rentals">On-Premise Rentals</a>
+            </div>
+            <div class="dd-col">
+              <span class="dd-label">AI Use Cases</span>
+              <a class="dd-item" href="https://www.dataknox.io/ai">AI</a>
+              <a class="dd-item" href="https://www.dataknox.io/impact-of-ai-servers">Impact of AI Servers</a>
+              <a class="dd-item" href="https://www.dataknox.io/computer-vision">Computer Vision</a>
+              <a class="dd-item" href="https://www.dataknox.io/nlp">NLP</a>
+              <a class="dd-item" href="https://www.dataknox.io/autonomous-driving">Autonomous Driving</a>
+              <a class="dd-item" href="https://www.dataknox.io/life-sciences">Life Sciences</a>
+              <a class="dd-item" href="https://www.dataknox.io/medical-image-processing">Medical Image Processing</a>
+            </div>
+            <div class="dd-col">
+              <span class="dd-label">Solutions</span>
+              <a class="dd-item" href="https://www.dataknox.io/ai-servers">AI Servers</a>
+              <a class="dd-item" href="https://www.dataknox.io/ai-fullstack">AI Full Stack Solutions</a>
+              <a class="dd-item" href="https://www.dataknox.io/ai-networking">AI Networking &amp; Optics</a>
+              <a class="dd-item" href="https://www.dataknox.io/pre-orders">Pre-Orders</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Contact Sales CTA -->
+        <a href="https://www.dataknox.io/contact" class="nav-cta-btn" role="menuitem">Contact Sales</a>
+      </div>
+
+      <!-- Hamburger (mobile) -->
+      <button class="hamburger" id="hamburger" onclick="toggleMobile()" aria-label="Toggle mobile menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </div>
+</div>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu" id="mobile-menu" role="dialog" aria-label="Mobile navigation">
+  <a class="mob-link" href="https://www.dataknox.io/shop">Shop</a>
+  <span class="mob-section">Infrastructure</span>
+  <a class="mob-link" href="https://www.dataknox.io/it-asset-disposition">IT Asset Disposition</a>
+  <a class="mob-link" href="https://www.dataknox.io/trade-in">Trade-In Program</a>
+  <a class="mob-link" href="https://www.dataknox.io/data-destruction">Data Destruction Services</a>
+  <a class="mob-link" href="https://www.dataknox.io/custom-servers">Custom Servers</a>
+  <a class="mob-link" href="https://www.dataknox.io/third-party-maintenance">Third Party Maintenance</a>
+  <a class="mob-link" href="https://www.dataknox.io/oem-support">Support for OEMs</a>
+  <a class="mob-link" href="https://www.dataknox.io/basecamp">Base Camp Portal</a>
+  <a class="mob-link" href="https://www.dataknox.io/cybersecurity">Cybersecurity</a>
+  <span class="mob-section">Cloud Services</span>
+  <a class="mob-link" href="https://www.dataknox.io/cloud-migration">Migration Cloud Services</a>
+  <a class="mob-link" href="https://www.dataknox.io/cloud-backup">Migration Cloud Backup</a>
+  <a class="mob-link" href="https://www.dataknox.io/duplocloud">Duplocloud</a>
+  <span class="mob-section">Insights</span>
+  <a class="mob-link" href="https://www.dataknox.io/server-management">Server Management</a>
+  <a class="mob-link" href="https://www.dataknox.io/blog">Tech Blogs</a>
+  <a class="mob-link" href="https://www.dataknox.io/press">Press</a>
+  <a class="mob-link" href="https://www.dataknox.io/foundation">Dataknox Foundation</a>
+  <a class="mob-link" href="https://www.dataknox.io/certifications">Certifications</a>
+  <a class="mob-link" href="https://www.dataknox.io/eol">EOL</a>
+  <a class="mob-link" href="https://www.dataknox.io/warranty-rma">Warranty &amp; RMA's</a>
+  <a class="mob-link" href="https://www.dataknox.io/about">About Us</a>
+  <span class="mob-section">Artificial Intelligence</span>
+  <a class="mob-link" href="https://www.dataknox.io/gpus">GPU's</a>
+  <a class="mob-link" href="https://www.dataknox.io/nvidia-gb200">Nvidia GB200</a>
+  <a class="mob-link" href="https://www.dataknox.io/nvidia-h100">Nvidia H100</a>
+  <a class="mob-link" href="https://www.dataknox.io/nvidia-h200">Nvidia H200</a>
+  <a class="mob-link" href="https://www.dataknox.io/intel-gaudi-2">Intel Gaudi 2</a>
+  <a class="mob-link" href="https://www.dataknox.io/intel-gaudi-3">Intel Gaudi 3</a>
+  <a class="mob-link" href="https://www.dataknox.io/amd-mi300">AMD Mi300</a>
+  <a class="mob-link" href="https://www.dataknox.io/ai-servers">AI Servers</a>
+  <a class="mob-link" href="https://www.dataknox.io/ai-fullstack">AI Full Stack Solutions</a>
+  <a class="mob-link" href="https://www.dataknox.io/pre-orders">Pre-Orders</a>
+  <a class="mob-cta" href="https://www.dataknox.io/contact">Contact Sales</a>
+</div>
+
+<script>
+function navToggle(id) {
+  var ids = ['infra','cloud','insights','ai'];
+  ids.forEach(function(k) {
+    var m = document.getElementById('drop-' + k);
+    var c = document.getElementById('chev-' + k);
+    var b = document.getElementById('btn-' + k);
+    if (k === id) {
+      var o = m.classList.contains('open');
+      m.classList.toggle('open', !o);
+      if(c) c.classList.toggle('open', !o);
+      if(b) b.setAttribute('aria-expanded', String(!o));
+    } else {
+      m.classList.remove('open');
+      if(c) c.classList.remove('open');
+      if(b) b.setAttribute('aria-expanded','false');
+    }
+  });
+}
+function toggleMobile() {
+  var mm = document.getElementById('mobile-menu');
+  var hb = document.getElementById('hamburger');
+  var o = mm.classList.contains('open');
+  mm.classList.toggle('open', !o);
+  hb.classList.toggle('active', !o);
+  hb.setAttribute('aria-expanded', String(!o));
+  document.body.style.overflow = o ? '' : 'hidden';
+}
+document.addEventListener('click', function(e) {
+  if (!e.target.closest('.nav-dd') && !e.target.closest('#hamburger')) {
+    ['infra','cloud','insights','ai'].forEach(function(k) {
+      var m = document.getElementById('drop-' + k);
+      var c = document.getElementById('chev-' + k);
+      var b = document.getElementById('btn-' + k);
+      if(m) m.classList.remove('open');
+      if(c) c.classList.remove('open');
+      if(b) b.setAttribute('aria-expanded','false');
+    });
+  }
+});
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') {
+    ['infra','cloud','insights','ai'].forEach(function(k) {
+      var m = document.getElementById('drop-' + k);
+      if(m) m.classList.remove('open');
+    });
+    var mm = document.getElementById('mobile-menu');
+    if(mm && mm.classList.contains('open')) toggleMobile();
+  }
+});
+</script>
 </nav>
 
 <style>
