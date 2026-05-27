@@ -84,7 +84,7 @@ p{color:#3a4a5c;margin-bottom:14px;font-size:13px;}
 .pf-text{color:rgba(255,255,255,0.3);font-size:10px;}
 .pf-url{color:var(--cyan);font-size:10px;font-weight:600;}
 .print-btn{position:fixed;top:20px;right:20px;background:var(--navy);color:var(--cyan);border:1px solid var(--cyan);padding:10px 20px;font-family:'Inter',sans-serif;font-size:12px;font-weight:600;cursor:pointer;border-radius:4px;text-transform:uppercase;z-index:999;}
-@media print{.print-btn{display:none;}.inner-page{page-break-before:always;}}
+@media print{.print-btn{display:none;}.inner-page{page-break-before:always;}.warning-box{break-inside:avoid;}.callout{break-inside:avoid;}.trend-row{break-inside:avoid;}.two-col{break-inside:avoid;}.strategy-card{break-inside:avoid;}.checklist li{break-inside:avoid;}.contact-row{break-inside:avoid;}}
 @media(max-width:860px){.page{width:100%;}.strategy-grid,.two-col,.trend-row,.cover-stats{grid-template-columns:1fr;}.cover-title{font-size:28px;}}
 </style>
 </head>
