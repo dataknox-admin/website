@@ -21,6 +21,14 @@ zone_name = "dataknox.io"
 pattern = "www.dataknox.io/buyers-guide/*"
 zone_name = "dataknox.io"
 
+[[routes]]
+pattern = "www.dataknox.io/data-center-decommissioning"
+zone_name = "dataknox.io"
+
+[[routes]]
+pattern = "www.dataknox.io/data-center-decommissioning/*"
+zone_name = "dataknox.io"
+
 [assets]
 directory = "."
 not_found_handling = "none"
