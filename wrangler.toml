@@ -6,6 +6,10 @@ compatibility_date = "2026-04-29"
 main = "_worker.js"
 
 [[routes]]
+pattern = "www.dataknox.io/third-party-maintenance"
+zone_name = "dataknox.io"
+
+[[routes]]
 pattern = "www.dataknox.io/third-party-maintenance/*"
 zone_name = "dataknox.io"
 
