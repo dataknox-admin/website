@@ -1,6 +1,6 @@
 # Root-level config — Cloudflare Workers Builds runs from repo root.
 # Assets are served from the repo root so all sub-directories are bundled.
-# Sub-routes: www.dataknox.io/third-party-maintenance/* and /buyers-guide/*
+# Sub-routes: www.dataknox.io/third-party-maintenance/*, /buyers-guide/*, /ai-gpu/*
 name = "website"
 compatibility_date = "2026-04-29"
 main = "_worker.js"
@@ -27,6 +27,14 @@ zone_name = "dataknox.io"
 
 [[routes]]
 pattern = "www.dataknox.io/data-center-decommissioning/*"
+zone_name = "dataknox.io"
+
+[[routes]]
+pattern = "www.dataknox.io/ai-gpu"
+zone_name = "dataknox.io"
+
+[[routes]]
+pattern = "www.dataknox.io/ai-gpu/*"
 zone_name = "dataknox.io"
 
 [assets]

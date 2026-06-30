@@ -20,6 +20,12 @@ export default {
       );
     }
 
+    if (url.pathname.startsWith('/ai-gpu')) {
+      return env.ASSETS.fetch(
+        new Request(url.origin + url.pathname + url.search, request)
+      );
+    }
+
     return env.ASSETS.fetch(request);
   },
 };
