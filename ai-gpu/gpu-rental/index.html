@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>GPU Rental — Hourly &amp; Daily AI GPU Instances | Dataknox</title>
+<meta name="description" content="Rent NVIDIA H100, H200, and A100 GPUs on demand with zero CapEx. Hourly, daily, and long-term GPU rental from Dataknox — enterprise AI compute that scales with your workload.">
+<meta property="og:title" content="GPU Rental — Hourly &amp; Daily AI GPU Instances | Dataknox">
+<meta property="og:description" content="Rent NVIDIA H100, H200, and A100 GPUs on demand with zero CapEx. Enterprise GPU rental with 6 GPU SKU families, flexible terms, and global delivery.">
+<meta property="og:url" content="https://www.dataknox.io/ai-gpu/gpu-rental/">
+<meta property="og:type" content="website">
+<link rel="canonical" href="https://www.dataknox.io/ai-gpu/gpu-rental/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Service",
+      "name": "GPU Rental",
+      "description": "On-demand GPU rental for enterprise AI workloads. Rent NVIDIA H100, H200, and A100 GPUs hourly, daily, or on long-term terms with zero CapEx.",
+      "provider": {
+        "@type": "Organization",
+        "name": "Dataknox Solutions, Inc.",
+        "url": "https://www.dataknox.io",
+        "telephone": "+18333282362",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "38505 Cherry St Unit A",
+          "addressLocality": "Newark",
+          "addressRegion": "CA",
+          "postalCode": "94560",
+          "addressCountry": "US"
+        }
+      },
+      "serviceType": "GPU Rental",
+      "areaServed": "US"
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What GPU models are available for rental?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Dataknox offers rental access to NVIDIA H100 SXM5, H200 SXM5, H100 PCIe, A100 SXM4, A100 PCIe, and L40S GPUs. Cluster configurations from single-node to 8-GPU and multi-node NVLink fabric are available."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the minimum rental term for GPU instances?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "GPU rental terms begin at hourly for on-demand workloads. Daily, weekly, and longer reserved-instance pricing are available. Contact our team for specific availability and custom configurations."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do GPU rentals require upfront capital expenditure?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. GPU rental from Dataknox carries zero upfront capital expenditure. You pay only for the compute time you use, shifting cost to an operational expense model."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How quickly can GPU rental instances be deployed?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Production-grade GPU compute can typically be deployed in hours rather than the quarters required for hardware procurement and data center buildout."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --dk-navy:#0B1A4A;--dk-navy-mid:#0D2167;--dk-navy-light:#162B7A;
+  --dk-cyan:#00D4C8;--dk-cyan-bright:#2DEDE6;
+  --dk-white:#FFFFFF;--dk-white-70:rgba(255,255,255,0.70);--dk-white-40:rgba(255,255,255,0.40);
+  --dk-teal:#007B7F;--dk-gray-cool:#8B9EC7;--dk-dot-pattern:rgba(0,212,200,0.12);
+  --dk-font-display:'Barlow Condensed','Impact',sans-serif;
+  --dk-font-body:'Barlow','DM Sans',sans-serif;
+  --lt-bg:#FFFFFF;--lt-bg-alt:#F4F6FB;--lt-text:#0B1A4A;
+  --lt-text-muted:#4A5A7A;--lt-border:rgba(11,26,74,0.10);--lt-cyan-accent:#007B7F;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--dk-font-body);background:var(--lt-bg);color:var(--lt-text);line-height:1.6;-webkit-font-smoothing:antialiased}
+.dk-nav{position:sticky;top:0;z-index:100;background:var(--dk-white);border-bottom:1px solid var(--lt-border);padding:0 2rem}
+.dk-nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px}
+.dk-nav-logo img{height:32px;width:auto}
+.dk-nav-links{display:flex;align-items:center;gap:0.25rem;list-style:none}
+.dk-nav-links a,.dk-nav-links button{font-family:'Poppins',sans-serif;font-size:0.85rem;font-weight:500;color:var(--lt-text);text-decoration:none;padding:0.5rem 0.75rem;border-radius:6px;border:none;background:none;cursor:pointer;transition:background 0.18s,color 0.18s;position:relative}
+.dk-nav-links a:hover,.dk-nav-links button:hover{background:var(--lt-bg-alt);color:var(--dk-navy)}
+.dk-dropdown-wrap{position:relative}
+.dk-dropdown{display:none;position:absolute;top:calc(100% + 4px);left:0;background:var(--dk-white);border:1px solid var(--lt-border);border-radius:10px;box-shadow:0 8px 32px rgba(11,26,74,0.12);padding:0.5rem;min-width:200px;z-index:200}
+.dk-dropdown-wrap:hover .dk-dropdown{display:flex;flex-direction:column}
+.dk-dropdown a{font-family:'Poppins',sans-serif;font-size:0.83rem;font-weight:500;color:var(--lt-text);text-decoration:none;padding:0.5rem 0.75rem;border-radius:6px;white-space:nowrap;transition:background 0.15s}
+.dk-dropdown a:hover{background:var(--lt-bg-alt)}
+.dk-nav-cta{font-family:'Poppins',sans-serif;font-size:0.85rem;font-weight:600;background:var(--dk-cyan);color:var(--dk-navy);padding:0.5rem 1.25rem;border-radius:6px;text-decoration:none;transition:background 0.18s}
+.dk-nav-cta:hover{background:var(--dk-cyan-bright)}
+.breadcrumb{background:var(--lt-bg-alt);padding:0.75rem 2rem;border-bottom:1px solid var(--lt-border)}
+.breadcrumb-inner{max-width:1200px;margin:0 auto;font-size:0.82rem;color:var(--lt-text-muted)}
+.breadcrumb a{color:var(--lt-text-muted);text-decoration:none}
+.breadcrumb a:hover{color:var(--lt-cyan-accent)}
+.breadcrumb span{margin:0 0.4rem;opacity:0.5}
+.hero{background:linear-gradient(135deg,var(--dk-navy) 0%,var(--dk-navy-mid) 55%,var(--dk-navy-light) 100%);padding:5rem 2rem 4rem;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle,var(--dk-dot-pattern) 1px,transparent 1px);background-size:28px 28px;opacity:0.6}
+.hero-inner{max-width:1200px;margin:0 auto;position:relative;z-index:1}
+.hero-eyebrow{display:inline-block;font-family:var(--dk-font-display);font-size:0.9rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--dk-cyan);background:rgba(0,212,200,0.12);border:1px solid rgba(0,212,200,0.3);border-radius:4px;padding:0.35rem 0.85rem;margin-bottom:1.5rem}
+.hero h1{font-family:var(--dk-font-display);font-size:clamp(2.4rem,5vw,3.8rem);font-weight:900;line-height:1.05;color:var(--dk-white);margin-bottom:1.25rem;max-width:780px;text-transform:uppercase;letter-spacing:0.01em}
+.hero h1 .accent{color:var(--dk-cyan)}
+.hero p{font-size:1.15rem;color:var(--dk-white-70);max-width:640px;margin-bottom:2.25rem;line-height:1.7}
+.hero-ctas{display:flex;flex-wrap:wrap;gap:1rem}
+.btn-primary{font-family:'Poppins',sans-serif;font-weight:600;font-size:1rem;background:var(--dk-cyan);color:var(--dk-navy);padding:0.85rem 2rem;border-radius:7px;text-decoration:none;transition:background 0.18s,transform 0.15s}
+.btn-primary:hover{background:var(--dk-cyan-bright);transform:translateY(-1px)}
+.btn-secondary{font-family:'Poppins',sans-serif;font-weight:600;font-size:1rem;background:transparent;color:var(--dk-white);padding:0.85rem 2rem;border-radius:7px;border:2px solid rgba(255,255,255,0.35);text-decoration:none;transition:border-color 0.18s,color 0.18s}
+.btn-secondary:hover{border-color:var(--dk-cyan);color:var(--dk-cyan)}
+.proof-bar{background:rgba(0,0,0,0.18);border-top:1px solid rgba(255,255,255,0.08);border-bottom:1px solid rgba(255,255,255,0.08);padding:1.5rem 2rem}
+.proof-bar-inner{max-width:1200px;margin:0 auto;display:flex;flex-wrap:wrap;justify-content:center;gap:2.5rem}
+.proof-stat{text-align:center}
+.proof-stat-num{font-family:var(--dk-font-display);font-size:1.7rem;font-weight:800;color:var(--dk-cyan);line-height:1;display:block}
+.proof-stat-label{font-size:0.78rem;color:var(--dk-white-70);letter-spacing:0.06em;text-transform:uppercase;margin-top:0.2rem}
+.section-white{padding:5rem 2rem;background:var(--lt-bg)}
+.section-alt{padding:5rem 2rem;background:var(--lt-bg-alt)}
+.section-dark{padding:5rem 2rem;background:var(--dk-navy)}
+.section-inner{max-width:1200px;margin:0 auto}
+.section-eyebrow{font-family:var(--dk-font-display);font-size:0.85rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--lt-cyan-accent);margin-bottom:0.75rem}
+.section-dark .section-eyebrow{color:var(--dk-cyan)}
+.section-title{font-family:var(--dk-font-display);font-size:clamp(1.9rem,3.5vw,2.75rem);font-weight:800;text-transform:uppercase;line-height:1.1;color:var(--lt-text);margin-bottom:1rem}
+.section-dark .section-title{color:var(--dk-white)}
+.section-subtitle{font-size:1.05rem;color:var(--lt-text-muted);max-width:640px;margin-bottom:3rem;line-height:1.7}
+.section-dark .section-subtitle{color:var(--dk-white-70)}
+.card-grid-3{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:1.5rem}
+.card{background:var(--lt-bg);border:1px solid var(--lt-border);border-radius:12px;padding:2rem;transition:box-shadow 0.2s,transform 0.2s}
+.card:hover{box-shadow:0 8px 28px rgba(11,26,74,0.10);transform:translateY(-2px)}
+.card-dark{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.10);border-radius:12px;padding:2rem;transition:box-shadow 0.2s,transform 0.2s}
+.card-dark:hover{background:rgba(255,255,255,0.09);transform:translateY(-2px)}
+.card-icon{width:48px;height:48px;background:rgba(0,212,200,0.12);border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:1.25rem;font-size:1.5rem}
+.card h3{font-family:var(--dk-font-display);font-size:1.25rem;font-weight:700;text-transform:uppercase;color:var(--lt-text);margin-bottom:0.6rem}
+.card-dark h3{color:var(--dk-white)}
+.card p{font-size:0.92rem;color:var(--lt-text-muted);line-height:1.65}
+.card-dark p{color:var(--dk-white-70)}
+.card-tag{display:inline-block;font-size:0.75rem;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;background:rgba(0,212,200,0.12);color:var(--lt-cyan-accent);border-radius:4px;padding:0.25rem 0.6rem;margin-bottom:0.75rem}
+.card-dark .card-tag{background:rgba(0,212,200,0.15);color:var(--dk-cyan)}
+.sku-table-wrap{overflow-x:auto;border-radius:12px;border:1px solid var(--lt-border)}
+.sku-table{width:100%;border-collapse:collapse;font-size:0.9rem}
+.sku-table thead tr{background:var(--dk-navy)}
+.sku-table thead th{font-family:var(--dk-font-display);font-size:0.8rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--dk-cyan);padding:1rem 1.25rem;text-align:left;border-bottom:2px solid rgba(0,212,200,0.3)}
+.sku-table tbody tr{border-bottom:1px solid var(--lt-border);transition:background 0.15s}
+.sku-table tbody tr:hover{background:var(--lt-bg-alt)}
+.sku-table tbody td{padding:0.95rem 1.25rem;color:var(--lt-text);vertical-align:middle}
+.sku-table tbody td:first-child{font-family:var(--dk-font-display);font-weight:700;font-size:1rem;color:var(--dk-navy)}
+.sku-badge{display:inline-block;font-size:0.72rem;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;border-radius:4px;padding:0.2rem 0.55rem}
+.badge-hopper{background:rgba(0,212,200,0.12);color:var(--lt-cyan-accent)}
+.badge-ampere{background:rgba(11,26,74,0.08);color:var(--dk-navy)}
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:2rem;counter-reset:step}
+.step{position:relative;padding-left:0}
+.step-num{font-family:var(--dk-font-display);font-size:3rem;font-weight:900;color:rgba(0,212,200,0.20);line-height:1;margin-bottom:0.5rem}
+.step h4{font-family:var(--dk-font-display);font-size:1.1rem;font-weight:700;text-transform:uppercase;color:var(--lt-text);margin-bottom:0.4rem}
+.step p{font-size:0.88rem;color:var(--lt-text-muted);line-height:1.6}
+.faq-list{display:flex;flex-direction:column;gap:1rem;max-width:820px}
+.faq-item{border:1px solid var(--lt-border);border-radius:10px;overflow:hidden}
+.faq-q{font-family:var(--dk-font-display);font-size:1.05rem;font-weight:700;text-transform:uppercase;padding:1.25rem 1.5rem;background:var(--lt-bg-alt);color:var(--lt-text)}
+.faq-a{padding:1.25rem 1.5rem;font-size:0.93rem;color:var(--lt-text-muted);line-height:1.7;background:var(--lt-bg)}
+.cta-band{background:linear-gradient(135deg,var(--dk-cyan) 0%,var(--dk-cyan-bright) 100%);padding:4rem 2rem;text-align:center}
+.cta-band-inner{max-width:720px;margin:0 auto}
+.cta-band h2{font-family:var(--dk-font-display);font-size:clamp(2rem,4vw,3rem);font-weight:900;text-transform:uppercase;color:var(--dk-navy);margin-bottom:1rem}
+.cta-band p{font-size:1.05rem;color:rgba(11,26,74,0.8);margin-bottom:2rem;line-height:1.6}
+.btn-dark{font-family:'Poppins',sans-serif;font-weight:700;font-size:1rem;background:var(--dk-navy);color:var(--dk-white);padding:0.9rem 2.25rem;border-radius:7px;text-decoration:none;transition:background 0.18s}
+.btn-dark:hover{background:var(--dk-navy-light)}
+.dk-footer{background:var(--dk-navy);padding:4rem 2rem 2rem;color:var(--dk-white-70)}
+.dk-footer-inner{max-width:1200px;margin:0 auto}
+.dk-footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;margin-bottom:3rem}
+.dk-footer-brand img{height:36px;width:auto;margin-bottom:1rem;filter:brightness(0) invert(1)}
+.dk-footer-brand p{font-size:0.88rem;line-height:1.6;max-width:280px;opacity:0.7}
+.dk-footer-col h4{font-family:var(--dk-font-display);font-size:0.85rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--dk-cyan);margin-bottom:1rem}
+.dk-footer-col ul{list-style:none}
+.dk-footer-col ul li{margin-bottom:0.5rem}
+.dk-footer-col ul li a{font-size:0.88rem;color:var(--dk-white-70);text-decoration:none;transition:color 0.15s}
+.dk-footer-col ul li a:hover{color:var(--dk-white)}
+.dk-footer-bottom{border-top:1px solid rgba(255,255,255,0.10);padding-top:1.5rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
+.dk-footer-bottom p{font-size:0.8rem;opacity:0.55}
+.cert-badges{display:flex;flex-wrap:wrap;gap:0.5rem}
+.cert-badge{font-size:0.7rem;font-weight:700;letter-spacing:0.05em;padding:0.25rem 0.6rem;border-radius:4px;background:rgba(255,255,255,0.08);color:var(--dk-white-70);text-transform:uppercase}
+@media(max-width:900px){.dk-footer-top{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){.dk-footer-top{grid-template-columns:1fr}.dk-nav-links{display:none}.hero h1{font-size:2.2rem}}
+</style>
+</head>
+<body>
+<nav class="dk-nav" aria-label="Main navigation">
+  <div class="dk-nav-inner">
+    <a href="/" class="dk-nav-logo" aria-label="Dataknox home">
+      <img src="https://cdn.prod.website-files.com/61486d79523e4f34418faac3/636bbbf913f59171dda12e5b_dataknox-blue.svg" alt="Dataknox Solutions" width="160" height="32">
+    </a>
+    <ul class="dk-nav-links">
+      <li class="dk-dropdown-wrap">
+        <button>AI</button>
+        <div class="dk-dropdown">
+          <a href="/ai-gpu/">AI GPU Solutions</a>
+          <a href="/ai-gpu/gpu-rental/">GPU Rental</a>
+          <a href="/ai-gpu/gpu-servers/">GPU Servers</a>
+          <a href="/graphics-processing-units">GPUs</a>
+          <a href="/ai-servers">AI Servers</a>
+        </div>
+      </li>
+      <li class="dk-dropdown-wrap">
+        <button>Infrastructure</button>
+        <div class="dk-dropdown">
+          <a href="/third-party-maintenance">Third-Party Maintenance</a>
+          <a href="/data-center-services">Data Center Services</a>
+          <a href="/hardware-support">Hardware Support</a>
+          <a href="/networking">Networking</a>
+        </div>
+      </li>
+      <li class="dk-dropdown-wrap">
+        <button>ITAD</button>
+        <div class="dk-dropdown">
+          <a href="/itad">ITAD Overview</a>
+          <a href="/data-destruction">Data Destruction</a>
+          <a href="/hardware-buyback">Hardware Buyback</a>
+        </div>
+      </li>
+      <li class="dk-dropdown-wrap">
+        <button>Cloud</button>
+        <div class="dk-dropdown">
+          <a href="/cloud-services">Cloud Services</a>
+          <a href="/data-center-buyout">Data Center Buyout</a>
+          <a href="/aws-cost-optimization">AWS Optimization</a>
+        </div>
+      </li>
+      <li><a href="/about">About</a></li>
+      <li><a href="/contact">Contact</a></li>
+    </ul>
+    <a href="/contact" class="dk-nav-cta">Get a Quote</a>
+  </div>
+</nav>
+<div class="breadcrumb" aria-label="Breadcrumb">
+  <div class="breadcrumb-inner">
+    <a href="/">Home</a><span>›</span>
+    <a href="/ai-gpu/">AI GPU Solutions</a><span>›</span>
+    GPU Rental
+  </div>
+</div>
+<section class="hero" aria-labelledby="hero-heading">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">GPU Rental</div>
+    <h1 id="hero-heading">GPU Rental — Enterprise AI Compute <span class="accent">Without CapEx</span></h1>
+    <p>Access NVIDIA H100, H200, and A100 GPUs on demand. Hourly, daily, and long-term GPU rental with zero upfront capital expenditure — production-grade compute deployed in hours, not quarters.</p>
+    <div class="hero-ctas">
+      <a href="/contact" class="btn-primary">Request GPU Rental Pricing</a>
+      <a href="#gpu-rental-skus" class="btn-secondary">View Available GPUs</a>
+    </div>
+  </div>
+  <div class="proof-bar" style="margin-top:3rem">
+    <div class="proof-bar-inner">
+      <div class="proof-stat"><span class="proof-stat-num">Zero</span><span class="proof-stat-label">CapEx Required</span></div>
+      <div class="proof-stat"><span class="proof-stat-num">6</span><span class="proof-stat-label">GPU SKU Families</span></div>
+      <div class="proof-stat"><span class="proof-stat-num">Hours</span><span class="proof-stat-label">Deployment Time</span></div>
+      <div class="proof-stat"><span class="proof-stat-num">10,527</span><span class="proof-stat-label">Field Engineers</span></div>
+      <div class="proof-stat"><span class="proof-stat-num">20+</span><span class="proof-stat-label">Years Experience</span></div>
+    </div>
+  </div>
+</section>
+<section class="section-white" aria-labelledby="models-heading">
+  <div class="section-inner">
+    <div class="section-eyebrow">Rental Options</div>
+    <h2 id="models-heading" class="section-title">Flexible GPU Rental Terms</h2>
+    <p class="section-subtitle">Whether you need burst compute for a single training run or sustained GPU capacity for a multi-month project, Dataknox has a rental structure that fits your workload and budget.</p>
+    <div class="card-grid-3">
+      <div class="card">
+        <div class="card-icon">⚡</div>
+        <div class="card-tag">On-Demand</div>
+        <h3>Hourly GPU Rental</h3>
+        <p>Short-term burst compute for single training runs, experiments, or inference tasks. Spin up H100 or A100 GPU instances by the hour — pay only for what you use with no minimum commitment.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">📅</div>
+        <div class="card-tag">Reserved</div>
+        <h3>Daily &amp; Weekly Rental</h3>
+        <p>Multi-day GPU reservations for data science sprints, model fine-tuning campaigns, or batch inference jobs. Daily and weekly terms offer better rate predictability without long-term lock-in.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🔄</div>
+        <div class="card-tag">Long-Term</div>
+        <h3>Monthly &amp; Extended Rental</h3>
+        <p>Sustained GPU capacity for production AI workloads, ongoing inference serving, or research programs. Monthly terms with flexible exit options — scale up, down, or out as your model matures.</p>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="section-dark" id="gpu-rental-skus" aria-labelledby="skus-heading">
+  <div class="section-inner">
+    <div class="section-eyebrow">Available GPUs</div>
+    <h2 id="skus-heading" class="section-title">GPU Models Available for Rental</h2>
+    <p class="section-subtitle">From proven Ampere workhorses to next-generation Hopper silicon — access the right GPU for your AI workload without hardware procurement cycles.</p>
+    <div class="sku-table-wrap">
+      <table class="sku-table" aria-label="GPU rental models and specifications">
+        <thead>
+          <tr>
+            <th>GPU Model</th>
+            <th>Architecture</th>
+            <th>Memory</th>
+            <th>Key Workloads</th>
+            <th>Form Factor</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><a href="/ai-gpu/gpu-rental/nvidia-h100-rental/" style="color:inherit;text-decoration:none">NVIDIA H100 SXM5</a></td>
+            <td><span class="sku-badge badge-hopper">Hopper</span></td>
+            <td>80GB HBM3</td>
+            <td>LLM Training, Inference, HPC</td>
+            <td>SXM5 / NVLink</td>
+          </tr>
+          <tr>
+            <td><a href="/ai-gpu/gpu-rental/nvidia-h200-rental/" style="color:inherit;text-decoration:none">NVIDIA H200 SXM5</a></td>
+            <td><span class="sku-badge badge-hopper">Hopper</span></td>
+            <td>141GB HBM3e</td>
+            <td>Large-Scale LLM, Multimodal AI</td>
+            <td>SXM5 / NVLink</td>
+          </tr>
+          <tr>
+            <td>NVIDIA H100 PCIe</td>
+            <td><span class="sku-badge badge-hopper">Hopper</span></td>
+            <td>80GB HBM3</td>
+            <td>Fine-Tuning, Inference Serving</td>
+            <td>PCIe Gen5</td>
+          </tr>
+          <tr>
+            <td><a href="/ai-gpu/gpu-rental/nvidia-a100-rental/" style="color:inherit;text-decoration:none">NVIDIA A100 SXM4</a></td>
+            <td><span class="sku-badge badge-ampere">Ampere</span></td>
+            <td>80GB HBM2e</td>
+            <td>Training, Scientific HPC</td>
+            <td>SXM4 / NVLink</td>
+          </tr>
+          <tr>
+            <td>NVIDIA A100 PCIe</td>
+            <td><span class="sku-badge badge-ampere">Ampere</span></td>
+            <td>80GB HBM2e</td>
+            <td>Inference, Multi-Tenant AI</td>
+            <td>PCIe Gen4</td>
+          </tr>
+          <tr>
+            <td>NVIDIA L40S</td>
+            <td><span class="sku-badge badge-ampere">Ada Lovelace</span></td>
+            <td>48GB GDDR6</td>
+            <td>Vision AI, 3D Rendering, Video</td>
+            <td>PCIe Gen4</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+<section class="section-alt" aria-labelledby="process-heading">
+  <div class="section-inner">
+    <div class="section-eyebrow">Process</div>
+    <h2 id="process-heading" class="section-title">How GPU Rental Works</h2>
+    <p class="section-subtitle">From first conversation to running compute in hours — not the months required to procure, install, and commission your own hardware.</p>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">01</div>
+        <h4>Describe Your Workload</h4>
+        <p>Tell us your training or inference requirements — model size, framework, batch size, and target throughput. We'll recommend the right GPU configuration.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <h4>Receive a Rental Quote</h4>
+        <p>Get a detailed GPU rental quote with pricing, term options, and available configurations. No commitment required at this stage.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <h4>Provision Your Compute</h4>
+        <p>Once terms are agreed, your GPU cluster is provisioned and access credentials are delivered. Production-grade compute available in hours.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">04</div>
+        <h4>Run Your AI Workloads</h4>
+        <p>Execute training runs, inference pipelines, or batch jobs on dedicated enterprise GPU hardware. Scale to multi-node NVLink clusters for large model work.</p>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="section-white" aria-labelledby="usecases-heading">
+  <div class="section-inner">
+    <div class="section-eyebrow">Use Cases</div>
+    <h2 id="usecases-heading" class="section-title">GPU Rental for Every AI Workload</h2>
+    <p class="section-subtitle">Enterprise teams across industries use Dataknox GPU rental to accelerate AI development without capital exposure.</p>
+    <div class="card-grid-3">
+      <div class="card">
+        <div class="card-tag">LLM Training</div>
+        <h3>Large Language Model Training</h3>
+        <p>Train transformer models from 7B to 70B+ parameters on H100 SXM5 clusters with NVSwitch fabric. No data center buildout required — just compute on demand.</p>
+      </div>
+      <div class="card">
+        <div class="card-tag">Inference</div>
+        <h3>Production Inference Serving</h3>
+        <p>Deploy LLM inference endpoints on H100 or A100 instances with low-latency access. Scale horizontally as traffic grows without hardware procurement delays.</p>
+      </div>
+      <div class="card">
+        <div class="card-tag">Fine-Tuning</div>
+        <h3>Model Fine-Tuning &amp; RLHF</h3>
+        <p>Fine-tune foundation models on proprietary datasets using H100 PCIe or A100 instances. Short-term rental aligns cost directly to the fine-tuning campaign.</p>
+      </div>
+      <div class="card">
+        <div class="card-tag">Computer Vision</div>
+        <h3>Vision AI &amp; Video Analytics</h3>
+        <p>Run image segmentation, object detection, and video inference pipelines on L40S or H100 GPUs. Burst capacity for peak processing without idle hardware costs.</p>
+      </div>
+      <div class="card">
+        <div class="card-tag">Life Sciences</div>
+        <h3>Drug Discovery &amp; Genomics</h3>
+        <p>Accelerate molecular dynamics simulations, protein structure prediction, and genomic analysis on high-memory H200 GPUs with 141GB HBM3e capacity.</p>
+      </div>
+      <div class="card">
+        <div class="card-tag">R&amp;D</div>
+        <h3>Research &amp; Experimentation</h3>
+        <p>Run model architecture experiments, hyperparameter sweeps, and ablation studies without tying up internal cluster resources or committing to owned hardware.</p>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="section-alt" aria-labelledby="faq-heading">
+  <div class="section-inner">
+    <div class="section-eyebrow">FAQ</div>
+    <h2 id="faq-heading" class="section-title">GPU Rental — Common Questions</h2>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-q">What GPU models are available for rental?</div>
+        <div class="faq-a">Dataknox offers rental access to NVIDIA H100 SXM5, H200 SXM5, H100 PCIe, A100 SXM4, A100 PCIe, and L40S GPUs. Cluster configurations from single-node to 8-GPU and multi-node NVLink fabric are available depending on your workload requirements.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">What is the minimum rental term for GPU instances?</div>
+        <div class="faq-a">GPU rental terms begin at hourly for on-demand workloads. Daily, weekly, and monthly reserved-instance pricing are available with better rates for longer commitments. Contact our team for current availability and custom cluster configurations.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Is there upfront capital expenditure required for GPU rental?</div>
+        <div class="faq-a">No. GPU rental from Dataknox carries zero upfront capital expenditure. You pay only for the compute time you use, shifting cost to an operational expense model. No hardware procurement, no data center buildout, no depreciation schedules.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">How quickly can GPU rental instances be deployed?</div>
+        <div class="faq-a">Production-grade GPU compute is typically deployed in hours rather than the quarters required for hardware procurement and data center buildout. Exact provisioning time depends on cluster size and current inventory availability.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Can I rent a multi-GPU cluster for large model training?</div>
+        <div class="faq-a">Yes. Dataknox supports multi-GPU node configurations and multi-node NVLink clusters for large-scale training workloads. Configurations up to 8 GPUs per node and beyond are available for LLM pre-training and fine-tuning campaigns that require distributed compute.</div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="cta-band" aria-labelledby="cta-heading">
+  <div class="cta-band-inner">
+    <h2 id="cta-heading">Rent Enterprise GPU Compute Today</h2>
+    <p>Zero CapEx. Production-grade NVIDIA GPUs. Deployed in hours — not quarters. Get a rental quote from our AI infrastructure team.</p>
+    <a href="/contact" class="btn-dark">Request GPU Rental Pricing</a>
+  </div>
+</section>
+<footer class="dk-footer" aria-label="Site footer">
+  <div class="dk-footer-inner">
+    <div class="dk-footer-top">
+      <div class="dk-footer-brand">
+        <img src="https://cdn.prod.website-files.com/61486d79523e4f34418faac3/636bbb07e3acea64df7d65f2_dataknox-logo.svg" alt="Dataknox Solutions" width="160" height="36">
+        <p style="margin-top:1rem">Full-spectrum IT infrastructure and data center lifecycle management. 20+ years. 1,500+ companies served. 140+ countries.</p>
+        <p style="margin-top:0.75rem;font-size:0.82rem;opacity:0.6">38505 Cherry St Unit A<br>Newark, CA 94560</p>
+      </div>
+      <div class="dk-footer-col">
+        <h4>AI GPU</h4>
+        <ul>
+          <li><a href="/ai-gpu/">AI GPU Solutions</a></li>
+          <li><a href="/ai-gpu/gpu-rental/">GPU Rental</a></li>
+          <li><a href="/ai-gpu/gpu-servers/">GPU Servers</a></li>
+          <li><a href="/ai-gpu/nvidia-gpu/">NVIDIA GPUs</a></li>
+          <li><a href="/graphics-processing-units">All GPUs</a></li>
+        </ul>
+      </div>
+      <div class="dk-footer-col">
+        <h4>Infrastructure</h4>
+        <ul>
+          <li><a href="/third-party-maintenance">Third-Party Maintenance</a></li>
+          <li><a href="/data-center-services">Data Center Services</a></li>
+          <li><a href="/itad">ITAD</a></li>
+          <li><a href="/cloud-services">Cloud Services</a></li>
+          <li><a href="/cybersecurity">Cybersecurity</a></li>
+        </ul>
+      </div>
+      <div class="dk-footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="tel:+18333282362">1-833-DATA-DOA</a></li>
+          <li><a href="mailto:sales@dataknox.io">sales@dataknox.io</a></li>
+          <li><a href="https://portal.dataknox.io">Customer Portal</a></li>
+          <li><a href="/contact">Get a Quote</a></li>
+          <li><a href="/about">About Dataknox</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="dk-footer-bottom">
+      <p>© 2025 Dataknox Solutions, Inc. All rights reserved.</p>
+      <div class="cert-badges">
+        <span class="cert-badge">R2v3</span>
+        <span class="cert-badge">NAID AAA</span>
+        <span class="cert-badge">ISO 9001</span>
+        <span class="cert-badge">ISO 14001</span>
+        <span class="cert-badge">NIST 800-88</span>
+      </div>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
