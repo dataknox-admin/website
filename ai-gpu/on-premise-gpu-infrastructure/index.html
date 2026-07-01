@@ -34,9 +34,14 @@
   .dk-nav-logo img{height:32px;width:auto;}
   .dk-nav-links{display:flex;gap:8px;list-style:none;align-items:center;}
   .dk-nav-links>li{position:relative;}
-  .dk-nav-links>li>a{color:rgba(255,255,255,0.80);font-family:'Poppins',sans-serif;font-size:13px;font-weight:500;text-decoration:none;text-transform:uppercase;letter-spacing:0.04em;padding:8px 14px;transition:color 0.2s;display:flex;align-items:center;}
-  .dk-nav-links>li>a:hover{color:#00D4C8;}
+  .dk-nav-links>li>a,.dk-nav-links>li>button{color:rgba(255,255,255,0.80);font-family:'Poppins',sans-serif;font-size:13px;font-weight:500;text-decoration:none;text-transform:uppercase;letter-spacing:0.04em;padding:8px 14px;background:none;border:none;cursor:pointer;transition:color 0.2s;display:flex;align-items:center;gap:4px;}
+  .dk-nav-links>li>a:hover,.dk-nav-links>li>button:hover{color:#00D4C8;}
   .dk-nav-links>li>a.active{color:#00D4C8;}
+  .dk-nav-links>li>button::after{content:'▾';font-size:10px;opacity:0.7;}
+  .dk-dropdown{display:none;position:absolute;top:100%;left:0;background:#0D2167;border:1px solid rgba(0,212,200,0.15);min-width:220px;padding:8px 0;z-index:300;}
+  .dk-nav-links>li:hover .dk-dropdown{display:block;}
+  .dk-dropdown a{display:block;color:rgba(255,255,255,0.75);font-family:'Poppins',sans-serif;font-size:13px;font-weight:400;text-decoration:none;padding:10px 20px;transition:color 0.2s,background 0.2s;}
+  .dk-dropdown a:hover{color:#00D4C8;background:rgba(0,212,200,0.06);}
   .dk-nav-cta{background:#00D4C8;color:#0B1A4A;font-family:'Poppins',sans-serif;font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;padding:10px 24px;text-decoration:none;transition:background 0.2s;white-space:nowrap;}
   .dk-nav-cta:hover{background:#2DEDE6;}
 
@@ -236,13 +241,40 @@
   ]
 }
 </script>
+<!-- JSON-LD: BreadcrumbList -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://www.dataknox.io/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "AI GPU Solutions",
+      "item": "https://www.dataknox.io/ai-gpu/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "On-Premise GPU Infrastructure",
+      "item": "https://www.dataknox.io/ai-gpu/on-premise-gpu-infrastructure/"
+    }
+  ]
+}
+</script>
 </head>
 <body>
 
 <!-- NAV -->
 <nav class="dk-nav">
   <div class="dk-nav-top">
-    <a href="tel:8333282362">833-328-2362</a>
+    <a href="tel:+18333282362">Call 1-833-DATA-DOA (833-328-2362)</a>
     <a href="https://portal.dataknox.io/" target="_blank" rel="noopener">Portal Login</a>
     <a href="mailto:sales@dataknox.io">sales@dataknox.io</a>
   </div>
@@ -251,13 +283,47 @@
       <img src="https://cdn.prod.website-files.com/61486d79523e4f34418faac3/636bbbf913f59171dda12e5b_dataknox-blue.svg" alt="Dataknox" />
     </a>
     <ul class="dk-nav-links">
-      <li><a href="/">Home</a></li>
-      <li><a href="/ai-gpu/">AI GPU Solutions</a></li>
-      <li><a href="/ai-gpu/gpu-rentals/">GPU Rentals</a></li>
-      <li><a href="/ai-gpu/on-premise-gpu-infrastructure/" class="active">On-Premise GPU</a></li>
-      <li><a href="/ai-gpu/ai-gpu-use-cases/">AI Use Cases</a></li>
+      <li>
+        <button>Infrastructure</button>
+        <div class="dk-dropdown">
+          <a href="/it-asset-services/third-party-maintenance">Third-Party Maintenance</a>
+          <a href="/it-asset-services/itad">ITAD</a>
+          <a href="/it-asset-services/decommissioning">Decommissioning</a>
+          <a href="/it-asset-services/it-asset-repurchase">Asset Recovery</a>
+          <a href="/data-destruction">Data Destruction</a>
+        </div>
+      </li>
+      <li>
+        <button>Cloud Services</button>
+        <div class="dk-dropdown">
+          <a href="/it-asset-services/migration">Migration Cloud Service</a>
+          <a href="/wasabi-cloud-backup-zero-egress">Managed Cloud Backup</a>
+          <a href="/cloud-managed-services-with-duplocloud">DuploCloud</a>
+        </div>
+      </li>
+      <li>
+        <button>AI GPU</button>
+        <div class="dk-dropdown">
+          <a href="/ai-gpu/">AI GPU Overview</a>
+          <a href="/ai-gpu/gpu-procurement/">GPU Procurement</a>
+          <a href="/ai-gpu/gpu-rental-leasing/">GPU Rental &amp; Leasing</a>
+          <a href="/ai-gpu/on-premise-gpu-infrastructure/" class="active">On-Premise GPU</a>
+          <a href="/ai-gpu/gpu-lifecycle-management/">GPU Lifecycle Management</a>
+          <a href="/ai-gpu/ai-infrastructure-itad/">AI Infrastructure ITAD</a>
+          <a href="/ai-gpu/ai-data-center-decommissioning/">AI Data Center Decommissioning</a>
+        </div>
+      </li>
+      <li>
+        <button>Insights</button>
+        <div class="dk-dropdown">
+          <a href="/resources">Tech Blogs</a>
+          <a href="/eol">EOL Database</a>
+          <a href="/about-us">About Us</a>
+          <a href="/compliance-standards-and-certifications">Certifications</a>
+        </div>
+      </li>
     </ul>
-    <a href="mailto:sales@dataknox.io" class="dk-nav-cta">Get a Quote</a>
+    <a href="/contact-us" class="dk-nav-cta">Contact Sales</a>
   </div>
 </nav>
 
@@ -276,7 +342,7 @@
     <p class="hero-sub">Dedicated GPU hardware in your data center or colocation facility. Full control over data, networking, and security with zero CapEx options — backed by 10,527 field engineers in 140+ countries.</p>
     <div class="hero-ctas">
       <a href="mailto:sales@dataknox.io" class="btn-primary">Get a Quote</a>
-      <a href="/ai-gpu/" class="btn-outline">All AI GPU Solutions</a>
+      <a href="tel:+18333282362" class="btn-outline">Call 1-833-DATA-DOA</a>
     </div>
   </div>
 </section>
@@ -491,20 +557,18 @@
   <div class="dk-footer-main">
     <div class="dk-footer-brand">
       <img src="https://cdn.prod.website-files.com/61486d79523e4f34418faac3/636bbb07e3acea64df7d65f2_dataknox-logo.svg" alt="Dataknox" />
-      <p>Dataknox Solutions, Inc. delivers on-premise GPU infrastructure, custom AI server builds, GPU cluster deployment, and enterprise field services across 140+ countries.</p>
+      <p>Dataknox Solutions, Inc. delivers on-premise GPU infrastructure, ITAD, data center decommissioning, third-party maintenance, and enterprise field services across 140+ countries.</p>
     </div>
     <div class="dk-footer-links">
       <div class="dk-footer-col">
-        <h4>On-Premise GPU</h4>
-        <a href="/ai-gpu/on-premise-gpu-infrastructure/">Overview</a>
-        <a href="/ai-gpu/on-premise-gpu-infrastructure/gpu-cluster-deployment/">GPU Cluster Deployment</a>
-        <a href="/ai-gpu/on-premise-gpu-infrastructure/custom-gpu-servers/">Custom GPU Servers</a>
-      </div>
-      <div class="dk-footer-col">
-        <h4>AI GPU Solutions</h4>
+        <h4>AI GPU Infrastructure</h4>
         <a href="/ai-gpu/">AI GPU Overview</a>
-        <a href="/ai-gpu/gpu-rentals/">GPU Rentals</a>
-        <a href="/ai-gpu/ai-gpu-use-cases/">AI Use Cases</a>
+        <a href="/ai-gpu/gpu-procurement/">GPU Procurement</a>
+        <a href="/ai-gpu/gpu-rental-leasing/">GPU Rental &amp; Leasing</a>
+        <a href="/ai-gpu/on-premise-gpu-infrastructure/">On-Premise GPU</a>
+        <a href="/ai-gpu/gpu-lifecycle-management/">GPU Lifecycle Management</a>
+        <a href="/ai-gpu/ai-infrastructure-itad/">AI Infrastructure ITAD</a>
+        <a href="/ai-gpu/ai-data-center-decommissioning/">AI Data Center Decommissioning</a>
       </div>
       <div class="dk-footer-col">
         <h4>Infrastructure</h4>
@@ -514,8 +578,15 @@
         <a href="/data-destruction">Data Destruction</a>
       </div>
       <div class="dk-footer-col">
+        <h4>Company</h4>
+        <a href="/about-us">About Us</a>
+        <a href="/compliance-standards-and-certifications">Certifications</a>
+        <a href="/resources">Tech Blogs</a>
+        <a href="/eol">EOL Database</a>
+      </div>
+      <div class="dk-footer-col">
         <h4>Contact</h4>
-        <a href="tel:8333282362">833-328-2362</a>
+        <a href="tel:+18333282362">1-833-DATA-DOA (833-328-2362)</a>
         <a href="mailto:sales@dataknox.io">sales@dataknox.io</a>
         <a href="https://portal.dataknox.io/" target="_blank" rel="noopener">Client Portal</a>
         <a href="/contact-us">Contact Sales</a>
@@ -523,21 +594,21 @@
     </div>
   </div>
   <div class="dk-footer-bottom">
-    <p>© 2026 Dataknox Solutions, Inc. — 38505 Cherry St Unit A, Newark, CA 94560</p>
+    <p>© 2025 Dataknox Solutions, Inc. — 38505 Cherry St Unit A, Newark, CA 94560</p>
     <div class="dk-footer-certs">
+      <span class="dk-cert-badge">NAID AAA</span>
+      <span class="dk-cert-badge">R2v3</span>
       <span class="dk-cert-badge">ISO 9001</span>
       <span class="dk-cert-badge">ISO 14001:2015</span>
       <span class="dk-cert-badge">ISO 45001:2018</span>
-      <span class="dk-cert-badge">NAID AAA</span>
-      <span class="dk-cert-badge">R2v3</span>
     </div>
   </div>
 </footer>
 
 <script>
-document.querySelectorAll('.faq-q').forEach(btn => {
-  btn.addEventListener('click', () => {
-    const item = btn.parentElement;
+document.querySelectorAll('.faq-q').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    const item=btn.parentElement;
     item.classList.toggle('open');
   });
 });
