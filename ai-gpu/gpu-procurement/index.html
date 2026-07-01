@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI GPU Procurement Services | NVIDIA, Intel Gaudi, AMD MI300X | Dataknox</title>
+<meta name="description" content="End-to-end AI GPU procurement for enterprise and hyperscale deployments. NVIDIA H100, H200, GB200, Intel Gaudi 2/3, AMD MI300X, and custom GPU servers. Dataknox delivers at scale.">
+<link rel="canonical" href="https://www.dataknox.io/ai-gpu/gpu-procurement/">
+<!-- Open Graph -->
+<meta property="og:title" content="AI GPU Procurement Services | Dataknox">
+<meta property="og:description" content="End-to-end AI GPU procurement for enterprise and hyperscale deployments. NVIDIA H100, H200, GB200, Intel Gaudi 2/3, AMD MI300X, and custom GPU servers. Dataknox delivers at scale.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.dataknox.io/ai-gpu/gpu-procurement/">
+
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --dk-navy:        #0B1A4A;
+    --dk-navy-mid:    #0D2167;
+    --dk-navy-light:  #162B7A;
+    --dk-cyan:        #00D4C8;
+    --dk-cyan-bright: #2DEDE6;
+    --dk-white:       #FFFFFF;
+    --dk-white-70:    rgba(255,255,255,0.70);
+    --dk-white-40:    rgba(255,255,255,0.40);
+    --dk-teal:        #007B7F;
+    --dk-gray-cool:   #8B9EC7;
+    --dk-dot-pattern: rgba(0,212,200,0.12);
+    --dk-font-display:'Barlow Condensed','Impact',sans-serif;
+    --dk-font-body:'Barlow','DM Sans',sans-serif;
+    --lt-bg:#FFFFFF; --lt-bg-alt:#F4F6FB; --lt-text:#0B1A4A;
+    --lt-text-muted:#4A5A7A; --lt-border:rgba(11,26,74,0.10); --lt-cyan-accent:#007B7F;
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:var(--dk-font-body);background:var(--lt-bg);color:var(--lt-text);line-height:1.6;font-size:16px;}
+  /* ── MAIN-SITE-MATCH NAV ────────────────────────────── */
+.dk-nav{background:#0B1A4A;border-bottom:1px solid rgba(0,212,200,0.15);position:sticky;top:0;z-index:200;font-family:'Poppins',sans-serif;}
+.dk-nav-top{background:#061030;padding:6px 48px;display:flex;justify-content:flex-end;gap:24px;}
+.dk-nav-top a{color:rgba(255,255,255,0.65);font-size:12px;font-weight:500;text-decoration:none;transition:color 0.2s;}
+.dk-nav-top a:hover{color:#00D4C8;}
+.dk-nav-main{padding:0 48px;height:64px;display:flex;align-items:center;justify-content:space-between;max-width:1400px;margin:0 auto;}
+.dk-nav-logo img{height:32px;width:auto;}
+.dk-nav-links{display:flex;gap:8px;list-style:none;align-items:center;}
+.dk-nav-links>li{position:relative;}
+.dk-nav-links>li>a,.dk-nav-links>li>button{color:rgba(255,255,255,0.80);font-family:'Poppins',sans-serif;font-size:13px;font-weight:500;text-decoration:none;text-transform:uppercase;letter-spacing:0.04em;padding:8px 14px;background:none;border:none;cursor:pointer;transition:color 0.2s;display:flex;align-items:center;gap:4px;}
+.dk-nav-links>li>a:hover,.dk-nav-links>li>button:hover{color:#00D4C8;}
+.dk-nav-links>li>button::after{content:'▾';font-size:10px;opacity:0.7;}
+.dk-dropdown{display:none;position:absolute;top:100%;left:0;background:#0D2167;border:1px solid rgba(0,212,200,0.15);min-width:220px;padding:8px 0;z-index:300;}
+.dk-nav-links>li:hover .dk-dropdown{display:block;}
+.dk-dropdown a{display:block;color:rgba(255,255,255,0.75);font-family:'Poppins',sans-serif;font-size:13px;font-weight:400;text-decoration:none;padding:10px 20px;transition:color 0.2s,background 0.2s;}
+.dk-dropdown a:hover{color:#00D4C8;background:rgba(0,212,200,0.06);}
+.dk-nav-cta{background:#00D4C8;color:#0B1A4A;font-family:'Poppins',sans-serif;font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;padding:10px 24px;text-decoration:none;transition:background 0.2s;white-space:nowrap;}
+.dk-nav-cta:hover{background:#2DEDE6;}
+
+  /* BREADCRUMB */
+  .breadcrumb{background:var(--dk-navy-mid);padding:12px 48px;border-bottom:1px solid rgba(0,212,200,0.08);}
+  .breadcrumb span,.breadcrumb a{font-size:14px;color:var(--dk-white-40);text-decoration:none;font-weight:600;}
+  .breadcrumb a:hover{color:var(--dk-cyan);}
+  .breadcrumb .sep{margin:0 8px;color:var(--dk-white-40);}
+  .breadcrumb .current{color:var(--dk-cyan);}
+
+  /* HERO */
+  .hero{background:var(--dk-navy);position:relative;overflow:hidden;padding:96px 48px 80px;}
+  .hero::before{content:'';position:absolute;top:-100px;right:-100px;width:600px;height:600px;border-radius:50%;border:1px solid rgba(0,212,200,0.08);pointer-events:none;}
+  .hero::after{content:'';position:absolute;top:-50px;right:-50px;width:400px;height:400px;border-radius:50%;border:1px solid rgba(0,212,200,0.06);pointer-events:none;}
+  .hero-inner{max-width:1200px;margin:0 auto;position:relative;z-index:1;}
+  .hero-tag{display:inline-block;background:rgba(255,255,255,0.08);color:var(--dk-white);font-family:var(--dk-font-display);font-size:14px;font-weight:700;letter-spacing:0.10em;text-transform:uppercase;padding:6px 16px;margin-bottom:24px;}
+  .hero h1{font-family:var(--dk-font-display);font-size:76px;font-weight:800;line-height:1.0;text-transform:uppercase;letter-spacing:-0.01em;margin-bottom:24px;color:var(--dk-white);}
+  .hero h1 .accent{color:var(--dk-cyan);}
+  .hero-sub{font-size:20px;color:var(--dk-white-70);max-width:640px;margin-bottom:40px;line-height:1.6;}
+  .hero-ctas{display:flex;gap:16px;flex-wrap:wrap;}
+  .btn-primary{background:var(--dk-cyan);color:var(--dk-navy);font-family:var(--dk-font-display);font-size:16px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;padding:18px 40px;text-decoration:none;transition:background 0.2s;display:inline-block;}
+  .btn-primary:hover{background:var(--dk-cyan-bright);}
+  .btn-outline{background:transparent;color:var(--dk-white);font-family:var(--dk-font-display);font-size:16px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;padding:16px 38px;text-decoration:none;border:2px solid rgba(255,255,255,0.30);transition:border-color 0.2s;display:inline-block;}
+  .btn-outline:hover{border-color:var(--dk-cyan);}
+
+  /* PROOF BAR */
+  .proof-bar{background:var(--dk-navy-mid);border-top:1px solid rgba(0,212,200,0.15);border-bottom:1px solid rgba(0,212,200,0.15);padding:28px 48px;display:flex;justify-content:center;gap:80px;flex-wrap:wrap;}
+  .proof-stat{text-align:center;}
+  .proof-stat .num{font-family:var(--dk-font-display);font-size:36px;font-weight:800;color:var(--dk-cyan);display:block;}
+  .proof-stat .lbl{font-family:var(--dk-font-display);font-size:14px;font-weight:700;color:var(--dk-white-70);text-transform:uppercase;letter-spacing:0.08em;}
+
+  /* LIGHT SECTIONS */
+  .section-white{background:var(--lt-bg);padding:80px 48px;}
+  .section-alt{background:var(--lt-bg-alt);padding:80px 48px;}
+  .section-dark{background:var(--dk-navy);padding:80px 48px;}
+  .section-inner{max-width:1200px;margin:0 auto;}
+  .section-label{font-family:var(--dk-font-display);font-size:14px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--lt-cyan-accent);margin-bottom:12px;}
+  .section-label-light{color:var(--dk-cyan);}
+  .section-title{font-family:var(--dk-font-display);font-size:48px;font-weight:800;text-transform:uppercase;color:var(--lt-text);line-height:1.1;margin-bottom:20px;}
+  .section-title-light{color:var(--dk-white);}
+  .section-body{font-size:18px;color:var(--lt-text-muted);max-width:720px;line-height:1.7;}
+  .section-body-light{color:var(--dk-white-70);}
+
+  /* OEM GRID */
+  .oem-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;margin-top:48px;}
+  .oem-card{background:var(--lt-bg);border:1px solid var(--lt-border);padding:36px 32px;text-decoration:none;color:inherit;transition:border-color 0.2s,box-shadow 0.2s;display:block;position:relative;}
+  .oem-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--dk-cyan);}
+  .oem-card:hover{border-color:var(--lt-cyan-accent);box-shadow:0 8px 32px rgba(11,26,74,0.10);}
+  .oem-card-icon{font-size:32px;margin-bottom:16px;display:block;}
+  .oem-card h3{font-family:var(--dk-font-display);font-size:24px;font-weight:700;text-transform:uppercase;color:var(--lt-text);margin-bottom:10px;}
+  .oem-card .oem-tag{display:inline-block;background:rgba(0,123,127,0.10);color:var(--lt-cyan-accent);font-family:var(--dk-font-display);font-size:14px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;padding:4px 12px;margin-bottom:14px;}
+  .oem-card p{font-size:15px;color:var(--lt-text-muted);line-height:1.6;margin-bottom:20px;}
+  .oem-card .card-link{font-family:var(--dk-font-display);font-size:14px;font-weight:700;color:var(--lt-cyan-accent);text-transform:uppercase;letter-spacing:0.06em;}
+
+  /* FEATURE GRID */
+  .feature-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:32px;margin-top:48px;}
+  .feature-item{padding:32px;}
+  .feature-item h3{font-family:var(--dk-font-display);font-size:22px;font-weight:700;text-transform:uppercase;color:var(--lt-text);margin-bottom:12px;}
+  .feature-item p{font-size:15px;color:var(--lt-text-muted);line-height:1.6;}
+
+  /* WHAT WE SUPPORT */
+  .support-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;margin-top:40px;}
+  .support-item{background:var(--dk-navy-mid);border:1px solid rgba(0,212,200,0.12);padding:28px 24px;position:relative;}
+  .support-item::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--dk-cyan);}
+  .support-item h4{font-family:var(--dk-font-display);font-size:18px;font-weight:700;text-transform:uppercase;color:var(--dk-white);margin-bottom:8px;}
+  .support-item p{font-size:14px;color:var(--dk-white-70);line-height:1.5;}
+
+  /* PROCESS STEPS */
+  .process-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:32px;margin-top:48px;}
+  .process-step{text-align:center;padding:32px 24px;}
+  .process-num{font-family:var(--dk-font-display);font-size:56px;font-weight:900;color:var(--dk-cyan);opacity:0.25;display:block;line-height:1;}
+  .process-step h3{font-family:var(--dk-font-display);font-size:20px;font-weight:700;text-transform:uppercase;color:var(--lt-text);margin:12px 0 10px;}
+  .process-step p{font-size:15px;color:var(--lt-text-muted);line-height:1.6;}
+
+  /* FAQ */
+  .faq-list{margin-top:40px;}
+  .faq-item{border-bottom:1px solid var(--lt-border);}
+  .faq-q{width:100%;background:none;border:none;text-align:left;padding:24px 0;font-family:var(--dk-font-display);font-size:20px;font-weight:700;color:var(--lt-text);text-transform:uppercase;cursor:pointer;display:flex;justify-content:space-between;align-items:center;}
+  .faq-q:hover{color:var(--lt-cyan-accent);}
+  .faq-icon{font-size:22px;color:var(--lt-cyan-accent);transition:transform 0.2s;flex-shrink:0;}
+  .faq-a{display:none;padding:0 0 24px;font-size:16px;color:var(--lt-text-muted);line-height:1.7;max-width:800px;}
+  .faq-item.open .faq-a{display:block;}
+  .faq-item.open .faq-icon{transform:rotate(45deg);}
+
+  /* CTA BAND */
+  .cta-band{background:var(--dk-cyan);padding:80px 48px;text-align:center;}
+  .cta-band h2{font-family:var(--dk-font-display);font-size:52px;font-weight:800;text-transform:uppercase;color:var(--dk-navy);margin-bottom:16px;}
+  .cta-band p{font-size:18px;color:rgba(11,26,74,0.75);margin-bottom:36px;}
+  .btn-dark{background:var(--dk-navy);color:var(--dk-white);font-family:var(--dk-font-display);font-size:16px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;padding:18px 44px;text-decoration:none;display:inline-block;transition:background 0.2s;}
+  .btn-dark:hover{background:var(--dk-navy-mid);}
+
+  /* FOOTER */
+  /* ── MAIN-SITE-MATCH FOOTER ─────────────────────────── */
+.dk-footer{background:#0B1A4A;border-top:1px solid rgba(0,212,200,0.12);font-family:'Poppins',sans-serif;}
+.dk-footer-main{max-width:1400px;margin:0 auto;padding:56px 48px 40px;display:grid;grid-template-columns:1fr 2fr;gap:64px;}
+.dk-footer-brand img{height:28px;width:auto;margin-bottom:16px;}
+.dk-footer-brand p{font-size:13px;color:rgba(255,255,255,0.55);line-height:1.7;max-width:280px;}
+.dk-footer-links{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:32px;}
+.dk-footer-col h4{font-family:'Poppins',sans-serif;font-size:11px;font-weight:700;color:#00D4C8;text-transform:uppercase;letter-spacing:0.10em;margin-bottom:14px;}
+.dk-footer-col a{display:block;color:rgba(255,255,255,0.60);font-size:13px;font-weight:400;text-decoration:none;margin-bottom:8px;transition:color 0.2s;}
+.dk-footer-col a:hover{color:#00D4C8;}
+.dk-footer-bottom{border-top:1px solid rgba(255,255,255,0.08);padding:20px 48px;max-width:1400px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;}
+.dk-footer-bottom p,.dk-footer-bottom a{font-size:12px;color:rgba(255,255,255,0.40);font-weight:400;text-decoration:none;}
+.dk-footer-bottom a:hover{color:#00D4C8;}
+.dk-footer-certs{display:flex;gap:10px;flex-wrap:wrap;}
+.dk-cert-badge{background:rgba(255,255,255,0.05);border:1px solid rgba(0,212,200,0.15);padding:4px 12px;font-family:'Poppins',sans-serif;font-size:11px;font-weight:600;color:rgba(255,255,255,0.55);letter-spacing:0.06em;}
+@media(max-width:768px){
+  .dk-nav-links{display:none;}
+  .dk-nav-main{padding:0 24px;}
+  .dk-nav-top{padding:6px 24px;}
+  .dk-footer-main{grid-template-columns:1fr;gap:32px;padding:40px 24px 24px;}
+  .dk-footer-bottom{padding:16px 24px;}
+}
+</style>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "AI GPU Procurement Services",
+  "description": "End-to-end AI GPU procurement services including NVIDIA H100, H200, GB200, B200, L40, Intel Gaudi 2 and Gaudi 3, and AMD MI300X accelerators for enterprise AI infrastructure.",
+  "provider": { "@type": "Organization", "name": "Dataknox Solutions, Inc.", "url": "https://www.dataknox.io" },
+  "url": "https://www.dataknox.io/ai-gpu/gpu-procurement/",
+  "areaServed": "Worldwide"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    { "@type": "Question", "name": "What NVIDIA GPUs does Dataknox procure?", "acceptedAnswer": { "@type": "Answer", "text": "Dataknox sources the full NVIDIA AI accelerator portfolio including GB200, H200, H100, L40, and B200 GPUs. Contact our team at sales@dataknox.io for current availability and pricing." } },
+    { "@type": "Question", "name": "Can I get GPU infrastructure with no upfront capital expense?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Dataknox offers on-demand GPU instances and rental programs that require zero upfront capital. Deploy production-grade NVIDIA, Intel Gaudi, or AMD compute in hours." } },
+    { "@type": "Question", "name": "Does Dataknox support Intel Gaudi and AMD MI300X, or only NVIDIA?", "acceptedAnswer": { "@type": "Answer", "text": "Dataknox supports all major AI accelerator platforms — NVIDIA (GB200, H200, H100, L40, B200), Intel (Gaudi 2, Gaudi 3), and AMD (MI300X). We provide unbiased recommendations based on your workload." } },
+    { "@type": "Question", "name": "How quickly can Dataknox fulfill a GPU procurement order?", "acceptedAnswer": { "@type": "Answer", "text": "Fulfillment timelines depend on GPU model and quantity. Contact sales@dataknox.io for current lead times. Our 700+ forward stocking locations enable faster fulfillment than standard OEM channels for many configurations." } }
+  ]
+}
+</script>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="dk-nav">
+  <div class="dk-nav-top">
+    <a href="tel:+18333282362">Call 1-833-DATA-DOA</a>
+    <a href="https://portal.dataknox.io/" target="_blank">Portal Login</a>
+    <a href="mailto:sales@dataknox.io">sales@dataknox.io</a>
+  </div>
+  <div class="dk-nav-main">
+    <a href="/" class="dk-nav-logo">
+      <img src="https://cdn.prod.website-files.com/61486d79523e4f34418faac3/636bbbf913f59171dda12e5b_dataknox-blue.svg" alt="Dataknox" />
+    </a>
+    <ul class="dk-nav-links">
+      <li>
+        <button>Infrastructure</button>
+        <div class="dk-dropdown">
+          <a href="/it-asset-services/third-party-maintenance">Third-Party Maintenance</a>
+          <a href="/it-asset-services/itad">ITAD</a>
+          <a href="/it-asset-services/decommissioning">Decommissioning</a>
+          <a href="/it-asset-services/it-asset-repurchase">Asset Recovery</a>
+          <a href="/data-destruction">Data Destruction</a>
+        </div>
+      </li>
+      <li>
+        <button>Cloud Services</button>
+        <div class="dk-dropdown">
+          <a href="/it-asset-services/migration">Migration Cloud Service</a>
+          <a href="/wasabi-cloud-backup-zero-egress">Managed Cloud Backup</a>
+          <a href="/cloud-managed-services-with-duplocloud">DuploCloud</a>
+        </div>
+      </li>
+      <li>
+        <button>AI</button>
+        <div class="dk-dropdown">
+          <a href="/graphics-processing-units">GPUs</a>
+          <a href="/ai-servers">AI Servers</a>
+          <a href="/artificial-intelligence">AI Solutions</a>
+        </div>
+      </li>
+      <li>
+        <button>Insights</button>
+        <div class="dk-dropdown">
+          <a href="/resources">Tech Blogs</a>
+          <a href="/eol">EOL Database</a>
+          <a href="/about-us">About Us</a>
+          <a href="/compliance-standards-and-certifications">Certifications</a>
+        </div>
+      </li>
+    </ul>
+    <a href="/contact-us" class="dk-nav-cta">Contact Sales</a>
+  </div>
+</nav>
+
+<!-- BREADCRUMB -->
+<div class="breadcrumb">
+  <a href="/">Home</a><span class="sep">›</span>
+  <a href="/ai-gpu">AI GPU</a><span class="sep">›</span>
+  <span class="current">GPU Procurement</span>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-tag">GPU Procurement</div>
+    <h1>AI GPU Procurement <span class="accent">Without Compromise</span></h1>
+    <p class="hero-sub">From NVIDIA GB200 and H100 to Intel Gaudi 3 and AMD MI300X — Dataknox sources, configures, and delivers AI GPU infrastructure for enterprise and hyperscale deployments. Zero upfront capital. Production-grade compute in hours.</p>
+    <div class="hero-ctas">
+      <a href="mailto:sales@dataknox.io" class="btn-primary">Request GPU Quote</a>
+      <a href="tel:8333282362" class="btn-outline">Call 833-328-2362</a>
+    </div>
+  </div>
+</section>
+
+<!-- PROOF BAR -->
+<div class="proof-bar">
+  <div class="proof-stat"><span class="num">NVIDIA | Intel | AMD</span><span class="lbl">GPU Specialists</span></div>
+  <div class="proof-stat"><span class="num">140+</span><span class="lbl">Countries Served</span></div>
+  <div class="proof-stat"><span class="num">Zero CapEx</span><span class="lbl">On-Demand Options</span></div>
+  <div class="proof-stat"><span class="num">10,527</span><span class="lbl">Field Engineers Globally</span></div>
+  <div class="proof-stat"><span class="num">4-Hour</span><span class="lbl">On-Site Response</span></div>
+</div>
+
+<!-- SECTION 1: GPU Procurement by Platform -->
+<section class="section-white">
+  <div class="section-inner">
+    <div class="section-label">GPU Platforms</div>
+    <h2 class="section-title">GPU Procurement by Platform</h2>
+    <div class="oem-grid">
+      <a href="/ai-gpu/gpu-procurement/nvidia-gpu-procurement/" class="oem-card">
+        <span class="oem-card-icon">⚡</span>
+        <div class="oem-tag">NVIDIA Partner</div>
+        <h3>NVIDIA GPU Procurement</h3>
+        <p>H100, H200, GB200, B200, L40 — the full NVIDIA AI accelerator portfolio sourced and delivered at enterprise scale.</p>
+        <span class="card-link">Explore NVIDIA GPUs →</span>
+      </a>
+      <a href="/ai-gpu/gpu-procurement/intel-gaudi-procurement/" class="oem-card">
+        <span class="oem-card-icon">⚡</span>
+        <div class="oem-tag">Intel Partner</div>
+        <h3>Intel Gaudi Procurement</h3>
+        <p>Gaudi 2 and Gaudi 3 AI accelerators — cost-competitive, high-performance alternatives for LLM training and inference.</p>
+        <span class="card-link">Explore Intel Gaudi →</span>
+      </a>
+      <a href="/ai-gpu/gpu-procurement/amd-mi300x-procurement/" class="oem-card">
+        <span class="oem-card-icon">⚡</span>
+        <div class="oem-tag">AMD Partner</div>
+        <h3>AMD MI300X Procurement</h3>
+        <p>MI300X APUs with 192GB HBM3 — competitive to H100 for inference workloads requiring massive memory bandwidth.</p>
+        <span class="card-link">Explore AMD MI300X →</span>
+      </a>
+      <a href="/ai-gpu/gpu-procurement/gpu-server-procurement/" class="oem-card">
+        <span class="oem-card-icon">🖥️</span>
+        <div class="oem-tag">Custom Builds</div>
+        <h3>GPU Server Procurement</h3>
+        <p>Supermicro, ASUS, Gigabyte, Aivres, and Jabil-built GPU servers configured to your exact cluster requirements.</p>
+        <span class="card-link">Explore GPU Servers →</span>
+      </a>
+      <a href="/ai-gpu/gpu-procurement/on-demand-gpu-instances/" class="oem-card">
+        <span class="oem-card-icon">🚀</span>
+        <div class="oem-tag">Zero CapEx</div>
+        <h3>On-Demand GPU Instances</h3>
+        <p>Deploy production-grade GPU compute in hours with no capital expense. Flexible scaling for training and inference.</p>
+        <span class="card-link">Explore On-Demand GPUs →</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 2: Why Dataknox -->
+<section class="section-alt">
+  <div class="section-inner">
+    <div class="section-label">Why Dataknox</div>
+    <h2 class="section-title">Why Source GPU Infrastructure Through Dataknox</h2>
+    <div class="feature-grid">
+      <div class="feature-item">
+        <h3>Global Supply Chain</h3>
+        <p>700+ forward stocking locations across 140+ countries. Sourcing the GPU you need, delivered on your timeline.</p>
+      </div>
+      <div class="feature-item">
+        <h3>Multi-Vendor Expertise</h3>
+        <p>NVIDIA, Intel, and AMD specialists in one provider. Unbiased recommendations based on workload requirements, not vendor relationships.</p>
+      </div>
+      <div class="feature-item">
+        <h3>Zero CapEx Options</h3>
+        <p>On-demand GPU instances and rental programs eliminate upfront capital requirements. Launch AI projects without waiting on procurement cycles.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 3: Certified Partners -->
+<section class="section-dark">
+  <div class="section-inner">
+    <div class="section-label section-label-light">Certified Partners</div>
+    <h2 class="section-title section-title-light">Certified AI Partners</h2>
+    <div class="support-grid">
+      <div class="support-item">
+        <h4>NVIDIA</h4>
+        <p>GB200, H200, H100, L40, B200 — full AI accelerator portfolio.</p>
+      </div>
+      <div class="support-item">
+        <h4>Intel</h4>
+        <p>Gaudi 2 and Gaudi 3 AI accelerators for training and inference workloads.</p>
+      </div>
+      <div class="support-item">
+        <h4>AMD</h4>
+        <p>MI300X APU with 192GB HBM3 for high-memory inference deployments.</p>
+      </div>
+      <div class="support-item">
+        <h4>Supermicro</h4>
+        <p>Enterprise GPU server platforms for hyperscale AI clusters.</p>
+      </div>
+      <div class="support-item">
+        <h4>ASUS / Gigabyte</h4>
+        <p>High-density GPU server builds for training infrastructure.</p>
+      </div>
+      <div class="support-item">
+        <h4>Aivres / Micas / QCT / Jabil</h4>
+        <p>Custom GPU server ODMs for bespoke cluster configurations.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 4: Procurement Process -->
+<section class="section-white">
+  <div class="section-inner">
+    <div class="section-label">How It Works</div>
+    <h2 class="section-title">Procurement Process</h2>
+    <div class="process-grid">
+      <div class="process-step">
+        <span class="process-num">01</span>
+        <h3>Submit Requirements</h3>
+        <p>Share your GPU model, quantity, timeline, and deployment specs.</p>
+      </div>
+      <div class="process-step">
+        <span class="process-num">02</span>
+        <h3>Configuration Recommendation</h3>
+        <p>Our 100+ cloud and hardware engineers recommend the optimal configuration.</p>
+      </div>
+      <div class="process-step">
+        <span class="process-num">03</span>
+        <h3>Fulfillment</h3>
+        <p>Sourced from our global supply chain and 700+ forward stocking locations.</p>
+      </div>
+      <div class="process-step">
+        <span class="process-num">04</span>
+        <h3>Deployment Support</h3>
+        <p>On-site configuration and testing by 10,527 field engineers worldwide.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section-alt">
+  <div class="section-inner">
+    <div class="section-label">FAQ</div>
+    <h2 class="section-title">Frequently Asked Questions on GPU Procurement</h2>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-q">What NVIDIA GPUs does Dataknox procure?<span class="faq-icon">+</span></button>
+        <div class="faq-a">Dataknox sources the full NVIDIA AI accelerator portfolio including GB200, H200, H100, L40, and B200 GPUs. Contact our team at sales@dataknox.io for current availability and pricing.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Can I get GPU infrastructure with no upfront capital expense?<span class="faq-icon">+</span></button>
+        <div class="faq-a">Yes. Dataknox offers on-demand GPU instances and rental programs that require zero upfront capital. Deploy production-grade NVIDIA, Intel Gaudi, or AMD compute in hours.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Does Dataknox support Intel Gaudi and AMD MI300X, or only NVIDIA?<span class="faq-icon">+</span></button>
+        <div class="faq-a">Dataknox supports all major AI accelerator platforms — NVIDIA (GB200, H200, H100, L40, B200), Intel (Gaudi 2, Gaudi 3), and AMD (MI300X). We provide unbiased recommendations based on your workload.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">How quickly can Dataknox fulfill a GPU procurement order?<span class="faq-icon">+</span></button>
+        <div class="faq-a">Fulfillment timelines depend on GPU model and quantity. Contact sales@dataknox.io for current lead times. Our 700+ forward stocking locations enable faster fulfillment than standard OEM channels for many configurations.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<section class="cta-band">
+  <h2>Ready to Procure AI GPU Infrastructure?</h2>
+  <p>Contact our GPU specialists for availability, pricing, and configuration recommendations.</p>
+  <a href="mailto:sales@dataknox.io" class="btn-dark">Get a Quote</a>
+</section>
+
+<!-- FOOTER -->
+<footer class="dk-footer">
+  <div class="dk-footer-main">
+    <div class="dk-footer-brand">
+      <img src="https://cdn.prod.website-files.com/61486d79523e4f34418faac3/636bbb07e3acea64df7d65f2_dataknox-logo.svg" alt="Dataknox" />
+      <p>Dataknox provides enterprise third-party maintenance, ITAD, data center decommissioning, and AI infrastructure services — helping organizations extract more value from their hardware investments.</p>
+    </div>
+    <div class="dk-footer-links">
+      <div class="dk-footer-col">
+        <h4>TPM Services</h4>
+        <a href="/it-asset-services/third-party-maintenance">All TPM Services</a>
+        <a href="/third-party-maintenance/server-maintenance">Server Maintenance</a>
+        <a href="/third-party-maintenance/storage-maintenance">Storage Maintenance</a>
+        <a href="/third-party-maintenance/network-maintenance">Network Maintenance</a>
+        <a href="/third-party-maintenance/end-of-life-hardware-support">EoL Support</a>
+      </div>
+      <div class="dk-footer-col">
+        <h4>Infrastructure</h4>
+        <a href="/it-asset-services/itad">ITAD</a>
+        <a href="/it-asset-services/decommissioning">Decommissioning</a>
+        <a href="/it-asset-services/it-asset-repurchase">Asset Recovery</a>
+        <a href="/data-destruction">Data Destruction</a>
+        <a href="/jabil-custom-servers">Custom Servers</a>
+      </div>
+      <div class="dk-footer-col">
+        <h4>Cloud &amp; AI</h4>
+        <a href="/it-asset-services/migration">Cloud Migration</a>
+        <a href="/cloud-managed-services-with-duplocloud">DuploCloud</a>
+        <a href="/graphics-processing-units">GPUs</a>
+        <a href="/ai-servers">AI Servers</a>
+      </div>
+      <div class="dk-footer-col">
+        <h4>Contact</h4>
+        <a href="tel:+18333282362">1-833-DATA-DOA</a>
+        <a href="mailto:sales@dataknox.io">sales@dataknox.io</a>
+        <a href="https://portal.dataknox.io/">Client Portal</a>
+        <a href="/contact-us">Contact Sales</a>
+      </div>
+    </div>
+  </div>
+  <div class="dk-footer-bottom">
+    <p>© 2025 Dataknox Solutions, Inc. — 38505 Cherry St Unit A, Newark, CA 94560</p>
+    <div class="dk-footer-certs">
+      <span class="dk-cert-badge">R2v3</span>
+      <span class="dk-cert-badge">NAID AAA</span>
+      <span class="dk-cert-badge">ISO 9001</span>
+      <span class="dk-cert-badge">ISO 14001</span>
+      <span class="dk-cert-badge">NIST 800-88</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+document.querySelectorAll('.faq-q').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    const item=btn.parentElement;
+    item.classList.toggle('open');
+  });
+});
+</script>
+</body>
+</html>
