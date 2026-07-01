@@ -1,0 +1,16 @@
+# Static HTML site — served at the edge via Cloudflare Workers static assets.
+# Deployed as a sub-route of the main domain: www.dataknox.io/ai-gpu/*
+name = "dataknox-ai-gpu"
+compatibility_date = "2026-04-23"
+main = "_worker.js"
+
+# Route this worker for the AI GPU sub-path on the main domain.
+# zone_name must match the Cloudflare zone for your domain.
+[[routes]]
+pattern = "www.dataknox.io/ai-gpu/*"
+zone_name = "dataknox.io"
+
+[assets]
+directory = "."
+not_found_handling = "none"
+binding = "ASSETS"
