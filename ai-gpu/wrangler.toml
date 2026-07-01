@@ -1,9 +1,0 @@
-name = "dataknox-ai-gpu"
-compatibility_date = "2024-01-01"
-main = "_worker.js"
-
-assets = { directory = "." }
-
-[[routes]]
-pattern = "www.dataknox.io/ai-gpu*"
-zone_name = "dataknox.io"
