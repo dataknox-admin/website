@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Infrastructure ITAD | GPU Asset Disposition &amp; Data Destruction | Dataknox</title>
+<meta name="description" content="NAID AAA certified ITAD for AI servers, GPU clusters, and data center infrastructure. Maximize hardware recovery value, guarantee data security, and maintain compliance. 140+ countries.">
+<meta property="og:title" content="AI Infrastructure ITAD | GPU Asset Disposition &amp; Data Destruction | Dataknox">
+<meta property="og:description" content="NAID AAA certified ITAD for AI servers, GPU clusters, and data center infrastructure. Maximize hardware recovery value, guarantee data security, and maintain compliance. 140+ countries.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.dataknox.io/ai-gpu/ai-infrastructure-itad/">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Barlow+Condensed:wght@600;700;800&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --dk-navy:#0B1A4A; --dk-navy-mid:#0D2167; --dk-navy-light:#162B7A;
+    --dk-cyan:#00D4C8; --dk-cyan-bright:#2DEDE6;
+    --dk-white:#FFFFFF; --dk-white-70:rgba(255,255,255,0.70); --dk-white-40:rgba(255,255,255,0.40);
+    --dk-teal:#007B7F; --dk-gray-cool:#8B9EC7; --dk-dot-pattern:rgba(0,212,200,0.12);
+    --dk-font-display:'Barlow Condensed','Impact',sans-serif;
+    --dk-font-body:'Barlow','DM Sans',sans-serif;
+    --lt-bg:#FFFFFF; --lt-bg-alt:#F4F6FB; --lt-text:#0B1A4A;
+    --lt-text-muted:#4A5A7A; --lt-border:rgba(11,26,74,0.10); --lt-cyan-accent:#007B7F;
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:var(--dk-font-body);background:var(--lt-bg);color:var(--lt-text);line-height:1.6;font-size:16px;}
+  /* ── MAIN-SITE-MATCH NAV ────────────────────────────── */
+.dk-nav{background:#0B1A4A;border-bottom:1px solid rgba(0,212,200,0.15);position:sticky;top:0;z-index:200;font-family:'Poppins',sans-serif;}
+.dk-nav-top{background:#061030;padding:6px 48px;display:flex;justify-content:flex-end;gap:24px;}
+.dk-nav-top a{color:rgba(255,255,255,0.65);font-size:12px;font-weight:500;text-decoration:none;transition:color 0.2s;}
+.dk-nav-top a:hover{color:#00D4C8;}
+.dk-nav-main{padding:0 48px;height:64px;display:flex;align-items:center;justify-content:space-between;max-width:1400px;margin:0 auto;}
+.dk-nav-logo img{height:32px;width:auto;}
+.dk-nav-links{display:flex;gap:8px;list-style:none;align-items:center;}
+.dk-nav-links>li{position:relative;}
+.dk-nav-links>li>a,.dk-nav-links>li>button{color:rgba(255,255,255,0.80);font-family:'Poppins',sans-serif;font-size:13px;font-weight:500;text-decoration:none;text-transform:uppercase;letter-spacing:0.04em;padding:8px 14px;background:none;border:none;cursor:pointer;transition:color 0.2s;display:flex;align-items:center;gap:4px;}
+.dk-nav-links>li>a:hover,.dk-nav-links>li>button:hover{color:#00D4C8;}
+.dk-nav-links>li>button::after{content:'▾';font-size:10px;opacity:0.7;}
+.dk-dropdown{display:none;position:absolute;top:100%;left:0;background:#0D2167;border:1px solid rgba(0,212,200,0.15);min-width:220px;padding:8px 0;z-index:300;}
+.dk-nav-links>li:hover .dk-dropdown{display:block;}
+.dk-dropdown a{display:block;color:rgba(255,255,255,0.75);font-family:'Poppins',sans-serif;font-size:13px;font-weight:400;text-decoration:none;padding:10px 20px;transition:color 0.2s,background 0.2s;}
+.dk-dropdown a:hover{color:#00D4C8;background:rgba(0,212,200,0.06);}
+.dk-nav-cta{background:#00D4C8;color:#0B1A4A;font-family:'Poppins',sans-serif;font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;padding:10px 24px;text-decoration:none;transition:background 0.2s;white-space:nowrap;}
+.dk-nav-cta:hover{background:#2DEDE6;}
+
+  /* BREADCRUMB */
+  .breadcrumb{background:var(--dk-navy-mid);padding:12px 48px;border-bottom:1px solid rgba(0,212,200,0.08);}
+  .breadcrumb span,.breadcrumb a{font-size:14px;color:var(--dk-white-40);text-decoration:none;font-weight:600;}
+  .breadcrumb a:hover{color:var(--dk-cyan);}
+  .breadcrumb .sep{margin:0 8px;color:var(--dk-white-40);}
+  .breadcrumb .current{color:var(--dk-cyan);}
+
+  /* HERO */
+  .hero{background:var(--dk-navy);position:relative;overflow:hidden;padding:96px 48px 80px;}
+  .hero::before{content:'';position:absolute;top:-100px;right:-100px;width:600px;height:600px;border-radius:50%;border:1px solid rgba(0,212,200,0.08);pointer-events:none;}
+  .hero::after{content:'';position:absolute;top:-50px;right:-50px;width:400px;height:400px;border-radius:50%;border:1px solid rgba(0,212,200,0.06);pointer-events:none;}
+  .hero-inner{max-width:1200px;margin:0 auto;position:relative;z-index:1;}
+  .hero-tag{display:inline-block;background:rgba(255,255,255,0.08);color:var(--dk-white);font-family:var(--dk-font-display);font-size:14px;font-weight:700;letter-spacing:0.10em;text-transform:uppercase;padding:6px 16px;margin-bottom:24px;}
+  .hero h1{font-family:var(--dk-font-display);font-size:76px;font-weight:800;line-height:1.0;text-transform:uppercase;letter-spacing:-0.01em;margin-bottom:24px;color:var(--dk-white);}
+  .hero h1 .accent{color:var(--dk-cyan);}
+  .hero-sub{font-size:20px;color:var(--dk-white-70);max-width:640px;margin-bottom:40px;line-height:1.6;}
+  .hero-ctas{display:flex;gap:16px;flex-wrap:wrap;}
+  .btn-primary{background:var(--dk-cyan);color:var(--dk-navy);font-family:var(--dk-font-display);font-size:16px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;padding:18px 40px;text-decoration:none;transition:background 0.2s;display:inline-block;}
+  .btn-primary:hover{background:var(--dk-cyan-bright);}
+  .btn-outline{background:transparent;color:var(--dk-white);font-family:var(--dk-font-display);font-size:16px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;padding:16px 38px;text-decoration:none;border:2px solid rgba(255,255,255,0.30);transition:border-color 0.2s;display:inline-block;}
+  .btn-outline:hover{border-color:var(--dk-cyan);}
+
+  /* PROOF BAR */
+  .proof-bar{background:var(--dk-navy-mid);border-top:1px solid rgba(0,212,200,0.15);border-bottom:1px solid rgba(0,212,200,0.15);padding:28px 48px;display:flex;justify-content:center;gap:80px;flex-wrap:wrap;}
+  .proof-stat{text-align:center;}
+  .proof-stat .num{font-family:var(--dk-font-display);font-size:36px;font-weight:800;color:var(--dk-cyan);display:block;}
+  .proof-stat .lbl{font-family:var(--dk-font-display);font-size:14px;font-weight:700;color:var(--dk-white-70);text-transform:uppercase;letter-spacing:0.08em;}
+
+  /* LIGHT SECTIONS */
+  .section-white{background:var(--lt-bg);padding:80px 48px;}
+  .section-alt{background:var(--lt-bg-alt);padding:80px 48px;}
+  .section-dark{background:var(--dk-navy);padding:80px 48px;}
+  .section-inner{max-width:1200px;margin:0 auto;}
+  .section-label{font-family:var(--dk-font-display);font-size:14px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--lt-cyan-accent);margin-bottom:12px;}
+  .section-label-light{color:var(--dk-cyan);}
+  .section-title{font-family:var(--dk-font-display);font-size:48px;font-weight:800;text-transform:uppercase;color:var(--lt-text);line-height:1.1;margin-bottom:20px;}
+  .section-title-light{color:var(--dk-white);}
+  .section-body{font-size:18px;color:var(--lt-text-muted);max-width:720px;line-height:1.7;}
+  .section-body-light{color:var(--dk-white-70);}
+
+  /* OEM GRID */
+  .oem-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;margin-top:48px;}
+  .oem-card{background:var(--lt-bg);border:1px solid var(--lt-border);padding:36px 32px;text-decoration:none;color:inherit;transition:border-color 0.2s,box-shadow 0.2s;display:block;position:relative;}
+  .oem-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--dk-cyan);}
+  .oem-card:hover{border-color:var(--lt-cyan-accent);box-shadow:0 8px 32px rgba(11,26,74,0.10);}
+  .oem-card-icon{font-size:32px;margin-bottom:16px;display:block;}
+  .oem-card h3{font-family:var(--dk-font-display);font-size:24px;font-weight:700;text-transform:uppercase;color:var(--lt-text);margin-bottom:10px;}
+  .oem-card .oem-tag{display:inline-block;background:rgba(0,123,127,0.10);color:var(--lt-cyan-accent);font-family:var(--dk-font-display);font-size:14px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;padding:4px 12px;margin-bottom:14px;}
+  .oem-card p{font-size:15px;color:var(--lt-text-muted);line-height:1.6;margin-bottom:20px;}
+  .oem-card .card-link{font-family:var(--dk-font-display);font-size:14px;font-weight:700;color:var(--lt-cyan-accent);text-transform:uppercase;letter-spacing:0.06em;}
+
+  /* PROCESS STEPS */
+  .process-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;margin-top:48px;}
+  .process-step{background:var(--lt-bg);border:1px solid var(--lt-border);padding:36px 32px;position:relative;}
+  .process-step-num{font-family:var(--dk-font-display);font-size:52px;font-weight:800;color:rgba(0,212,200,0.18);position:absolute;top:16px;right:24px;line-height:1;}
+  .process-step h4{font-family:var(--dk-font-display);font-size:20px;font-weight:700;text-transform:uppercase;color:var(--lt-text);margin-bottom:10px;}
+  .process-step p{font-size:15px;color:var(--lt-text-muted);line-height:1.6;}
+
+  /* RISK POINTS */
+  .risk-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px;margin-top:48px;}
+  .risk-item{background:var(--dk-navy-mid);border:1px solid rgba(0,212,200,0.12);padding:32px 28px;position:relative;}
+  .risk-item::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--dk-cyan);}
+  .risk-item h4{font-family:var(--dk-font-display);font-size:20px;font-weight:700;text-transform:uppercase;color:var(--dk-white);margin-bottom:10px;}
+  .risk-item p{font-size:15px;color:var(--dk-white-70);line-height:1.6;}
+
+  /* CERT GRID */
+  .cert-grid{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px;}
+  .cert-badge{background:var(--lt-bg-alt);border:1px solid var(--lt-border);padding:14px 24px;font-family:var(--dk-font-display);font-size:16px;font-weight:700;color:var(--lt-text);letter-spacing:0.04em;text-transform:uppercase;}
+  .standards-block{margin-top:40px;}
+  .standards-block h4{font-family:var(--dk-font-display);font-size:18px;font-weight:700;text-transform:uppercase;color:var(--lt-text);margin-bottom:16px;}
+  .standards-list{display:flex;flex-wrap:wrap;gap:10px;}
+  .standards-list span{background:rgba(0,123,127,0.08);border:1px solid rgba(0,123,127,0.20);color:var(--lt-cyan-accent);font-family:var(--dk-font-display);font-size:14px;font-weight:700;letter-spacing:0.06em;padding:6px 16px;text-transform:uppercase;}
+
+  /* FAQ */
+  .faq-list{margin-top:40px;}
+  .faq-item{border-bottom:1px solid var(--lt-border);}
+  .faq-q{width:100%;background:none;border:none;text-align:left;padding:24px 0;font-family:var(--dk-font-display);font-size:20px;font-weight:700;color:var(--lt-text);text-transform:uppercase;cursor:pointer;display:flex;justify-content:space-between;align-items:center;}
+  .faq-q:hover{color:var(--lt-cyan-accent);}
+  .faq-icon{font-size:22px;color:var(--lt-cyan-accent);transition:transform 0.2s;flex-shrink:0;}
+  .faq-a{display:none;padding:0 0 24px;font-size:16px;color:var(--lt-text-muted);line-height:1.7;max-width:800px;}
+  .faq-item.open .faq-a{display:block;}
+  .faq-item.open .faq-icon{transform:rotate(45deg);}
+
+  /* CTA BAND */
+  .cta-band{background:var(--dk-cyan);padding:80px 48px;text-align:center;}
+  .cta-band h2{font-family:var(--dk-font-display);font-size:52px;font-weight:800;text-transform:uppercase;color:var(--dk-navy);margin-bottom:16px;}
+  .cta-band p{font-size:18px;color:rgba(11,26,74,0.75);margin-bottom:36px;}
+  .btn-dark{background:var(--dk-navy);color:var(--dk-white);font-family:var(--dk-font-display);font-size:16px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;padding:18px 44px;text-decoration:none;display:inline-block;transition:background 0.2s;}
+  .btn-dark:hover{background:var(--dk-navy-mid);}
+
+  /* FOOTER */
+  /* ── MAIN-SITE-MATCH FOOTER ─────────────────────────── */
+.dk-footer{background:#0B1A4A;border-top:1px solid rgba(0,212,200,0.12);font-family:'Poppins',sans-serif;}
+.dk-footer-main{max-width:1400px;margin:0 auto;padding:56px 48px 40px;display:grid;grid-template-columns:1fr 2fr;gap:64px;}
+.dk-footer-brand img{height:28px;width:auto;margin-bottom:16px;}
+.dk-footer-brand p{font-size:13px;color:rgba(255,255,255,0.55);line-height:1.7;max-width:280px;}
+.dk-footer-links{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:32px;}
+.dk-footer-col h4{font-family:'Poppins',sans-serif;font-size:11px;font-weight:700;color:#00D4C8;text-transform:uppercase;letter-spacing:0.10em;margin-bottom:14px;}
+.dk-footer-col a{display:block;color:rgba(255,255,255,0.60);font-size:13px;font-weight:400;text-decoration:none;margin-bottom:8px;transition:color 0.2s;}
+.dk-footer-col a:hover{color:#00D4C8;}
+.dk-footer-bottom{border-top:1px solid rgba(255,255,255,0.08);padding:20px 48px;max-width:1400px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;}
+.dk-footer-bottom p,.dk-footer-bottom a{font-size:12px;color:rgba(255,255,255,0.40);font-weight:400;text-decoration:none;}
+.dk-footer-bottom a:hover{color:#00D4C8;}
+.dk-footer-certs{display:flex;gap:10px;flex-wrap:wrap;}
+.dk-cert-badge{background:rgba(255,255,255,0.05);border:1px solid rgba(0,212,200,0.15);padding:4px 12px;font-family:'Poppins',sans-serif;font-size:11px;font-weight:600;color:rgba(255,255,255,0.55);letter-spacing:0.06em;}
+@media(max-width:768px){
+  .dk-nav-links{display:none;}
+  .dk-nav-main{padding:0 24px;}
+  .dk-nav-top{padding:6px 24px;}
+  .dk-footer-main{grid-template-columns:1fr;gap:32px;padding:40px 24px 24px;}
+  .dk-footer-bottom{padding:16px 24px;}
+  .hero h1{font-size:48px;}
+  .proof-bar{gap:40px;}
+}
+</style>
+
+<!-- Schema Markup -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "AI Infrastructure ITAD Services",
+  "provider": { "@type": "Organization", "name": "Dataknox Solutions, Inc.", "url": "https://www.dataknox.io" },
+  "description": "NAID AAA certified ITAD for AI servers, GPU clusters, and data center infrastructure. Maximize hardware recovery value, guarantee data security, and maintain compliance. 140+ countries.",
+  "areaServed": "Worldwide",
+  "url": "https://www.dataknox.io/ai-gpu/ai-infrastructure-itad/"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What certifications cover Dataknox's AI ITAD process?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Dataknox holds NAID AAA certification for data destruction, R2v3 certification for responsible recycling, ISO 9001 for quality management, ISO 14001:2015 for environmental management, and ISO 45001:2018 for occupational health and safety. Data sanitization follows NIST SP 800-88 Rev. 1 and DoD 5220.22-M standards. All certifications are current and audited annually."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How does Dataknox handle data destruction for NVMe drives and flash storage in AI servers?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Dataknox performs NIST 800-88 Rev. 1 purge (single-pass, all 0s) on every NVMe and flash storage device. A validation pass is conducted post-purge to confirm sanitization. Any media that fails validation is immediately routed to physical shredding. SSD and flash storage is shredded to 10mm particles. A Certificate of Destruction is issued per serial number and accessible in real-time via the Base Camp portal at portal.dataknox.io."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the Trade-In Program® and how does it apply to AI hardware?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The Dataknox Trade-In Program® applies Fair Market Value credit from your retired AI servers and GPU clusters directly against new hardware purchases through Dataknox, or pays the credit out directly. This allows organizations to offset the cost of infrastructure refreshes using the residual value of their existing equipment. FMV assessments are delivered within 48 hours of asset inventory."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How quickly does Dataknox provide Fair Market Value assessments?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Dataknox delivers Fair Market Value assessments within 48 hours of completing the asset inventory. Quotes are valid for 90 days with no obligation. The FMV assessment covers AI servers, GPU clusters, networking, and storage infrastructure at the serial-number level."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can Dataknox handle ITAD for AI infrastructure in multiple countries?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Dataknox operates ITAD services in 140+ countries. Multi-country programs are coordinated from a single point of contact with unified documentation, consistent data destruction standards, and consolidated Certificate of Destruction reporting. Chain of custody is maintained throughout global logistics."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What documentation does Dataknox provide after AI hardware disposition?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Dataknox issues a Certificate of Destruction (COD) per serial number for all data-bearing media. Shredding is video recorded. Full asset disposition reporting is available in real-time via the Base Camp portal at portal.dataknox.io. Documentation supports GDPR, HIPAA, SOC 2, and other compliance audit requirements."
+      }
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.dataknox.io/" },
+    { "@type": "ListItem", "position": 2, "name": "AI GPU Infrastructure", "item": "https://www.dataknox.io/ai-gpu/" },
+    { "@type": "ListItem", "position": 3, "name": "AI Infrastructure ITAD", "item": "https://www.dataknox.io/ai-gpu/ai-infrastructure-itad/" }
+  ]
+}
+</script>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="dk-nav">
+  <div class="dk-nav-top">
+    <a href="tel:+18333282362">Call 1-833-DATA-DOA</a>
+    <a href="https://portal.dataknox.io/" target="_blank">Portal Login</a>
+    <a href="mailto:sales@dataknox.io">sales@dataknox.io</a>
+  </div>
+  <div class="dk-nav-main">
+    <a href="/" class="dk-nav-logo">
+      <img src="https://cdn.prod.website-files.com/61486d79523e4f34418faac3/636bbbf913f59171dda12e5b_dataknox-blue.svg" alt="Dataknox" />
+    </a>
+    <ul class="dk-nav-links">
+      <li>
+        <button>Infrastructure</button>
+        <div class="dk-dropdown">
+          <a href="/it-asset-services/third-party-maintenance">Third-Party Maintenance</a>
+          <a href="/it-asset-services/itad">ITAD</a>
+          <a href="/it-asset-services/decommissioning">Decommissioning</a>
+          <a href="/it-asset-services/it-asset-repurchase">Asset Recovery</a>
+          <a href="/data-destruction">Data Destruction</a>
+        </div>
+      </li>
+      <li>
+        <button>Cloud Services</button>
+        <div class="dk-dropdown">
+          <a href="/it-asset-services/migration">Migration Cloud Service</a>
+          <a href="/wasabi-cloud-backup-zero-egress">Managed Cloud Backup</a>
+          <a href="/cloud-managed-services-with-duplocloud">DuploCloud</a>
+        </div>
+      </li>
+      <li>
+        <button>AI</button>
+        <div class="dk-dropdown">
+          <a href="/graphics-processing-units">GPUs</a>
+          <a href="/ai-servers">AI Servers</a>
+          <a href="/artificial-intelligence">AI Solutions</a>
+        </div>
+      </li>
+      <li>
+        <button>Insights</button>
+        <div class="dk-dropdown">
+          <a href="/resources">Tech Blogs</a>
+          <a href="/eol">EOL Database</a>
+          <a href="/about-us">About Us</a>
+          <a href="/compliance-standards-and-certifications">Certifications</a>
+        </div>
+      </li>
+    </ul>
+    <a href="/contact-us" class="dk-nav-cta">Contact Sales</a>
+  </div>
+</nav>
+
+<!-- BREADCRUMB -->
+<div class="breadcrumb">
+  <a href="/">Home</a><span class="sep">›</span>
+  <a href="/ai-gpu/">AI GPU Infrastructure</a><span class="sep">›</span>
+  <span class="current">AI Infrastructure ITAD</span>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-tag">AI Infrastructure ITAD</div>
+    <h1>AI Infrastructure <span class="accent">ITAD</span> —<br>Certified Disposition for<br>High-Value Compute</h1>
+    <p class="hero-sub">AI servers and GPU clusters represent some of the highest-value — and highest-risk — assets at end of life. Dataknox provides NAID AAA certified ITAD that maximizes recovery value while guaranteeing complete data security across 140+ countries.</p>
+    <div class="hero-ctas">
+      <a href="mailto:sales@dataknox.io" class="btn-primary">Get an ITAD Assessment</a>
+      <a href="tel:+18333282362" class="btn-outline">Call 1-833-DATA-DOA</a>
+    </div>
+  </div>
+</section>
+
+<!-- PROOF BAR -->
+<div class="proof-bar">
+  <div class="proof-stat"><span class="num">NAID AAA</span><span class="lbl">Certified</span></div>
+  <div class="proof-stat"><span class="num">140+</span><span class="lbl">Countries</span></div>
+  <div class="proof-stat"><span class="num">55,000</span><span class="lbl">Assets/Month</span></div>
+  <div class="proof-stat"><span class="num">10,000</span><span class="lbl">HDDs Shredded/Month</span></div>
+  <div class="proof-stat"><span class="num">R2v3</span><span class="lbl">ISO 14001 Certified</span></div>
+</div>
+
+<!-- SECTION 1: AI ITAD SERVICES -->
+<section class="section-white">
+  <div class="section-inner">
+    <div class="section-label">AI ITAD Services</div>
+    <h2 class="section-title">ITAD Built for<br>AI Infrastructure</h2>
+    <p class="section-body">High-value AI hardware demands an ITAD partner with the certifications, logistics, and technical expertise to protect your data and recover maximum value from retired assets.</p>
+    <div class="oem-grid">
+      <a href="/ai-gpu/ai-infrastructure-itad/gpu-data-destruction/" class="oem-card">
+        <span class="oem-card-icon">🔒</span>
+        <div class="oem-tag">NAID AAA Certified</div>
+        <h3>GPU Data Destruction</h3>
+        <p>Certified data destruction for AI accelerators, NVMe drives, and flash storage using NIST 800-88 Rev. 1 purge and physical shredding. COD issued per serial number, shredding video recorded.</p>
+        <span class="card-link">Explore GPU Data Destruction →</span>
+      </a>
+      <a href="/ai-gpu/ai-infrastructure-itad/ai-server-asset-recovery/" class="oem-card">
+        <span class="oem-card-icon">💰</span>
+        <div class="oem-tag">Maximum Recovery</div>
+        <h3>AI Server Asset Recovery</h3>
+        <p>Fair Market Value assessment within 48 hours for retired AI servers, GPU clusters, and data center infrastructure. Trade-In Program® credit applied against new purchases or paid directly.</p>
+        <span class="card-link">Explore AI Server Asset Recovery →</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 2: ITAD PROCESS -->
+<section class="section-alt">
+  <div class="section-inner">
+    <div class="section-label">How It Works</div>
+    <h2 class="section-title">The ITAD Process for<br>AI Infrastructure</h2>
+    <div class="process-grid">
+      <div class="process-step">
+        <span class="process-step-num">01</span>
+        <h4>Asset Inventory</h4>
+        <p>Complete serial-number-level cataloging of all AI servers, GPUs, networking, and storage via Dataknox's automated audit process.</p>
+      </div>
+      <div class="process-step">
+        <span class="process-step-num">02</span>
+        <h4>Fair Market Valuation</h4>
+        <p>FMV assessment delivered within 48 hours. 90-day quote validity. No obligation.</p>
+      </div>
+      <div class="process-step">
+        <span class="process-step-num">03</span>
+        <h4>Secure Pickup</h4>
+        <p>Free pickup logistics. GPS-tracked transport with documented chain of custody from your facility to our secure processing center.</p>
+      </div>
+      <div class="process-step">
+        <span class="process-step-num">04</span>
+        <h4>Data Sanitization</h4>
+        <p>NIST 800-88 Rev. 1 purge (single-pass, all 0s) per drive. Validation conducted post-purge. Failed media goes straight to shredding.</p>
+      </div>
+      <div class="process-step">
+        <span class="process-step-num">05</span>
+        <h4>Physical Destruction (Where Specified)</h4>
+        <p>HDD shredded to 30mm particles. SSD/flash shredded to 10mm particles. Shredding is video recorded.</p>
+      </div>
+      <div class="process-step">
+        <span class="process-step-num">06</span>
+        <h4>Certificate of Destruction</h4>
+        <p>COD issued per serial number. Accessible in real-time via the Base Camp portal at portal.dataknox.io.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 3: WHY CERTIFIED ITAD MATTERS -->
+<section class="section-dark">
+  <div class="section-inner">
+    <div class="section-label section-label-light">Risk &amp; Compliance</div>
+    <h2 class="section-title section-title-light">Why Certified ITAD Matters<br>for AI Hardware</h2>
+    <p class="section-body section-body-light">The data security risk at AI infrastructure end-of-life is significant — NVMe drives, flash storage, and GPU memory can retain sensitive training data, model weights, and proprietary datasets. Uncertified disposal exposes organizations to GDPR, HIPAA, and SOC 2 audit failures.</p>
+    <div class="risk-grid">
+      <div class="risk-item">
+        <h4>Regulatory Exposure</h4>
+        <p>Without documented data destruction per NIST standards, organizations face material audit risk. A serial-number-level COD is your defensible evidence.</p>
+      </div>
+      <div class="risk-item">
+        <h4>Hidden Value in Retired AI Hardware</h4>
+        <p>A two-year-old H100 cluster still carries significant resale value. Dataknox FMV assessment captures that value before it's lost to landfill pricing.</p>
+      </div>
+      <div class="risk-item">
+        <h4>Counterfeit Supply Chain Risk</h4>
+        <p>Improperly disposed AI hardware re-enters the market through unvetted channels. R2v3 and NAID AAA certified disposition eliminates this risk.</p>
+      </div>
+      <div class="risk-item">
+        <h4>Environmental Compliance</h4>
+        <p>2M lbs of e-waste diverted annually. ISO 14001:2015 certified environmental management. Zero landfill policy.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 4: CERTIFICATIONS & STANDARDS -->
+<section class="section-white">
+  <div class="section-inner">
+    <div class="section-label">Certifications &amp; Standards</div>
+    <h2 class="section-title">Certifications &amp; Standards</h2>
+    <p class="section-body">Dataknox maintains an industry-leading certification stack to ensure every ITAD engagement meets the highest standards for data security, environmental responsibility, and quality management.</p>
+    <div class="cert-grid">
+      <div class="cert-badge">NAID AAA</div>
+      <div class="cert-badge">R2v3</div>
+      <div class="cert-badge">ISO 9001</div>
+      <div class="cert-badge">ISO 14001:2015</div>
+      <div class="cert-badge">ISO 45001:2018</div>
+      <div class="cert-badge">NIST 800-88</div>
+      <div class="cert-badge">DoD 5220.22-M</div>
+      <div class="cert-badge">NIST SP 800-171</div>
+    </div>
+    <div class="standards-block">
+      <h4>Data Destruction Standards Supported</h4>
+      <div class="standards-list">
+        <span>NIST SP 800-88 Rev. 1</span>
+        <span>DoD 5220.22-M(E)</span>
+        <span>HMG IA Std. 5(E)</span>
+        <span>CSEC ITSG-06</span>
+        <span>13 International Standards</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section-alt">
+  <div class="section-inner">
+    <div class="section-label">FAQ</div>
+    <h2 class="section-title">Frequently Asked Questions on AI Infrastructure ITAD</h2>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-q">What certifications cover Dataknox's AI ITAD process?<span class="faq-icon">+</span></button>
+        <div class="faq-a">Dataknox holds NAID AAA certification for data destruction, R2v3 certification for responsible recycling, ISO 9001 for quality management, ISO 14001:2015 for environmental management, and ISO 45001:2018 for occupational health and safety. Data sanitization follows NIST SP 800-88 Rev. 1 and DoD 5220.22-M standards. All certifications are current and audited annually.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">How does Dataknox handle data destruction for NVMe drives and flash storage in AI servers?<span class="faq-icon">+</span></button>
+        <div class="faq-a">Dataknox performs NIST 800-88 Rev. 1 purge (single-pass, all 0s) on every NVMe and flash storage device. A validation pass is conducted post-purge to confirm sanitization. Any media that fails validation is immediately routed to physical shredding. SSD and flash storage is shredded to 10mm particles. A Certificate of Destruction is issued per serial number and accessible in real-time via the Base Camp portal at portal.dataknox.io.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">What is the Trade-In Program® and how does it apply to AI hardware?<span class="faq-icon">+</span></button>
+        <div class="faq-a">The Dataknox Trade-In Program® applies Fair Market Value credit from your retired AI servers and GPU clusters directly against new hardware purchases through Dataknox, or pays the credit out directly. This allows organizations to offset the cost of infrastructure refreshes using the residual value of their existing equipment. FMV assessments are delivered within 48 hours of asset inventory.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">How quickly does Dataknox provide Fair Market Value assessments?<span class="faq-icon">+</span></button>
+        <div class="faq-a">Dataknox delivers Fair Market Value assessments within 48 hours of completing the asset inventory. Quotes are valid for 90 days with no obligation. The FMV assessment covers AI servers, GPU clusters, networking, and storage infrastructure at the serial-number level.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Can Dataknox handle ITAD for AI infrastructure in multiple countries?<span class="faq-icon">+</span></button>
+        <div class="faq-a">Yes. Dataknox operates ITAD services in 140+ countries. Multi-country programs are coordinated from a single point of contact with unified documentation, consistent data destruction standards, and consolidated Certificate of Destruction reporting. Chain of custody is maintained throughout global logistics.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">What documentation does Dataknox provide after AI hardware disposition?<span class="faq-icon">+</span></button>
+        <div class="faq-a">Dataknox issues a Certificate of Destruction (COD) per serial number for all data-bearing media. Shredding is video recorded. Full asset disposition reporting is available in real-time via the Base Camp portal at portal.dataknox.io. Documentation supports GDPR, HIPAA, SOC 2, and other compliance audit requirements.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<section class="cta-band">
+  <h2>Get Your AI ITAD Assessment</h2>
+  <p>Send us your asset list and we'll deliver a Fair Market Value assessment within 48 hours — no obligation.</p>
+  <a href="mailto:sales@dataknox.io" class="btn-dark">Get an ITAD Assessment</a>
+</section>
+
+<!-- FOOTER -->
+<footer class="dk-footer">
+  <div class="dk-footer-main">
+    <div class="dk-footer-brand">
+      <img src="https://cdn.prod.website-files.com/61486d79523e4f34418faac3/636bbb07e3acea64df7d65f2_dataknox-logo.svg" alt="Dataknox" />
+      <p>Dataknox provides enterprise third-party maintenance, ITAD, data center decommissioning, and AI infrastructure services — helping organizations extract more value from their hardware investments.</p>
+    </div>
+    <div class="dk-footer-links">
+      <div class="dk-footer-col">
+        <h4>AI ITAD</h4>
+        <a href="/ai-gpu/ai-infrastructure-itad/">AI Infrastructure ITAD</a>
+        <a href="/ai-gpu/ai-infrastructure-itad/gpu-data-destruction/">GPU Data Destruction</a>
+        <a href="/ai-gpu/ai-infrastructure-itad/ai-server-asset-recovery/">AI Server Asset Recovery</a>
+        <a href="/ai-gpu/">AI GPU Infrastructure</a>
+      </div>
+      <div class="dk-footer-col">
+        <h4>Infrastructure</h4>
+        <a href="/it-asset-services/itad">ITAD</a>
+        <a href="/it-asset-services/decommissioning">Decommissioning</a>
+        <a href="/it-asset-services/it-asset-repurchase">Asset Recovery</a>
+        <a href="/data-destruction">Data Destruction</a>
+        <a href="/it-asset-services/third-party-maintenance">TPM</a>
+      </div>
+      <div class="dk-footer-col">
+        <h4>Cloud &amp; AI</h4>
+        <a href="/it-asset-services/migration">Cloud Migration</a>
+        <a href="/cloud-managed-services-with-duplocloud">DuploCloud</a>
+        <a href="/graphics-processing-units">GPUs</a>
+        <a href="/ai-servers">AI Servers</a>
+      </div>
+      <div class="dk-footer-col">
+        <h4>Contact</h4>
+        <a href="tel:+18333282362">1-833-DATA-DOA</a>
+        <a href="mailto:sales@dataknox.io">sales@dataknox.io</a>
+        <a href="https://portal.dataknox.io/">Client Portal</a>
+        <a href="/contact-us">Contact Sales</a>
+      </div>
+    </div>
+  </div>
+  <div class="dk-footer-bottom">
+    <p>© 2025 Dataknox Solutions, Inc. — 38505 Cherry St. Unit A, Newark, CA 94560</p>
+    <div class="dk-footer-certs">
+      <span class="dk-cert-badge">NAID AAA</span>
+      <span class="dk-cert-badge">R2v3</span>
+      <span class="dk-cert-badge">ISO 9001</span>
+      <span class="dk-cert-badge">ISO 14001</span>
+      <span class="dk-cert-badge">NIST 800-88</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+document.querySelectorAll('.faq-q').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    const item=btn.parentElement;
+    item.classList.toggle('open');
+  });
+});
+</script>
+</body>
+</html>
