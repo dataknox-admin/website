@@ -1,0 +1,936 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI GPU Infrastructure Solutions | Enterprise GPU Procurement, Lifecycle & ITAD | Dataknox</title>
+<meta name="description" content="Dataknox delivers end-to-end AI GPU infrastructure services — enterprise GPU procurement, lifecycle management, certified ITAD, and data center decommissioning. 140+ countries. NAID AAA certified.">
+<meta name="keywords" content="AI GPU infrastructure, enterprise GPU procurement, GPU lifecycle management, GPU ITAD, AI server decommissioning, NVIDIA GPU support, GPU data destruction, AI infrastructure services">
+<!-- Open Graph -->
+<meta property="og:title" content="AI GPU Infrastructure Solutions | Dataknox">
+<meta property="og:description" content="Enterprise GPU procurement, lifecycle management, certified ITAD, and decommissioning. 140+ countries. 10,527 field engineers. NAID AAA certified.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.dataknox.io/ai-gpu">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Barlow+Condensed:wght@600;700;800&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --dk-navy:        #0B1A4A;
+    --dk-navy-mid:    #0D2167;
+    --dk-navy-light:  #162B7A;
+    --dk-cyan:        #00D4C8;
+    --dk-cyan-bright: #2DEDE6;
+    --dk-white:       #FFFFFF;
+    --dk-white-70:    rgba(255,255,255,0.70);
+    --dk-white-40:    rgba(255,255,255,0.40);
+    --dk-teal:        #007B7F;
+    --dk-gray-cool:   #8B9EC7;
+    --dk-dot-pattern: rgba(0,212,200,0.12);
+    --dk-font-display: 'Barlow Condensed', 'Impact', sans-serif;
+    --dk-font-body:    'Barlow', 'DM Sans', sans-serif;
+    /* Light content area tokens */
+    --lt-bg:          #FFFFFF;
+    --lt-bg-alt:      #F4F6FB;
+    --lt-text:        #0B1A4A;
+    --lt-text-muted:  #4A5A7A;
+    --lt-border:      rgba(11,26,74,0.10);
+    --lt-cyan-accent: #007B7F;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: var(--dk-font-body);
+    background: var(--lt-bg);
+    color: var(--lt-text);
+    line-height: 1.6;
+    font-size: 16px;
+  }
+
+  /* ── MAIN-SITE-MATCH NAV ────────────────────────────── */
+.dk-nav{background:#0B1A4A;border-bottom:1px solid rgba(0,212,200,0.15);position:sticky;top:0;z-index:200;font-family:'Poppins',sans-serif;}
+.dk-nav-top{background:#061030;padding:6px 48px;display:flex;justify-content:flex-end;gap:24px;}
+.dk-nav-top a{color:rgba(255,255,255,0.65);font-size:12px;font-weight:500;text-decoration:none;transition:color 0.2s;}
+.dk-nav-top a:hover{color:#00D4C8;}
+.dk-nav-main{padding:0 48px;height:64px;display:flex;align-items:center;justify-content:space-between;max-width:1400px;margin:0 auto;}
+.dk-nav-logo img{height:32px;width:auto;}
+.dk-nav-links{display:flex;gap:8px;list-style:none;align-items:center;}
+.dk-nav-links>li{position:relative;}
+.dk-nav-links>li>a,.dk-nav-links>li>button{color:rgba(255,255,255,0.80);font-family:'Poppins',sans-serif;font-size:13px;font-weight:500;text-decoration:none;text-transform:uppercase;letter-spacing:0.04em;padding:8px 14px;background:none;border:none;cursor:pointer;transition:color 0.2s;display:flex;align-items:center;gap:4px;}
+.dk-nav-links>li>a:hover,.dk-nav-links>li>button:hover{color:#00D4C8;}
+.dk-nav-links>li>button::after{content:'▾';font-size:10px;opacity:0.7;}
+.dk-dropdown{display:none;position:absolute;top:100%;left:0;background:#0D2167;border:1px solid rgba(0,212,200,0.15);min-width:220px;padding:8px 0;z-index:300;}
+.dk-nav-links>li:hover .dk-dropdown{display:block;}
+.dk-dropdown a{display:block;color:rgba(255,255,255,0.75);font-family:'Poppins',sans-serif;font-size:13px;font-weight:400;text-decoration:none;padding:10px 20px;transition:color 0.2s,background 0.2s;}
+.dk-dropdown a:hover{color:#00D4C8;background:rgba(0,212,200,0.06);}
+.dk-nav-cta{background:#00D4C8;color:#0B1A4A;font-family:'Poppins',sans-serif;font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;padding:10px 24px;text-decoration:none;transition:background 0.2s;white-space:nowrap;}
+.dk-nav-cta:hover{background:#2DEDE6;}
+
+
+  /* ── BREADCRUMB ── */
+  .breadcrumb {
+    background: var(--dk-navy-mid);
+    padding: 12px 48px;
+    border-bottom: 1px solid rgba(0,212,200,0.08);
+  }
+  .breadcrumb span, .breadcrumb a {
+    font-size: 14px;
+    color: var(--dk-white-40);
+    text-decoration: none;
+    font-weight: 600;
+  }
+  .breadcrumb a:hover { color: var(--dk-cyan); }
+  .breadcrumb .sep { margin: 0 8px; color: var(--dk-white-40); }
+  .breadcrumb .current { color: var(--dk-cyan); }
+
+  /* ── HERO ── */
+  .hero {
+    background: var(--dk-navy);
+    position: relative;
+    overflow: hidden;
+    padding: 96px 48px 80px;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -100px; right: -100px;
+    width: 600px; height: 600px;
+    border-radius: 50%;
+    border: 1px solid rgba(0,212,200,0.08);
+    pointer-events: none;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    top: -50px; right: -50px;
+    width: 400px; height: 400px;
+    border-radius: 50%;
+    border: 1px solid rgba(0,212,200,0.12);
+    pointer-events: none;
+  }
+  .dot-grid {
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(circle, rgba(0,212,200,0.10) 1px, transparent 1px);
+    background-size: 28px 28px;
+    pointer-events: none;
+  }
+  .hero-inner { position: relative; z-index: 2; max-width: 1200px; margin: 0 auto; }
+  .hero-tag {
+    display: inline-block;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.25);
+    color: var(--dk-white);
+    font-family: var(--dk-font-display);
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 6px 16px;
+    margin-bottom: 24px;
+  }
+  .hero h1 {
+    font-family: var(--dk-font-display);
+    font-size: clamp(56px, 7vw, 88px);
+    font-weight: 800;
+    line-height: 1.0;
+    text-transform: uppercase;
+    letter-spacing: -0.01em;
+    margin-bottom: 24px;
+    max-width: 900px;
+  }
+  .hero h1 { color: var(--dk-white); }
+  /* AI GPU override: accent renders cyan (not white) */
+  .hero h1 .accent { color: var(--dk-cyan); }
+  .hero-sub {
+    font-size: 20px;
+    font-weight: 400;
+    color: rgba(255,255,255,0.88);
+    max-width: 640px;
+    line-height: 1.6;
+    margin-bottom: 40px;
+  }
+  .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--dk-cyan);
+    color: var(--dk-navy);
+    font-family: var(--dk-font-display);
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 18px 40px;
+    text-decoration: none;
+    display: inline-block;
+    transition: background 0.2s;
+  }
+  .btn-primary:hover { background: var(--dk-cyan-bright); }
+  .btn-ghost {
+    background: transparent;
+    color: var(--dk-white);
+    font-family: var(--dk-font-display);
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 17px 40px;
+    text-decoration: none;
+    display: inline-block;
+    border: 1px solid rgba(255,255,255,0.25);
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .btn-ghost:hover { border-color: var(--dk-cyan); color: var(--dk-cyan); }
+
+  /* ── PROOF BAR ── */
+  .proof-bar {
+    background: var(--dk-navy-mid);
+    border-top: 1px solid rgba(0,212,200,0.15);
+    border-bottom: 1px solid rgba(0,212,200,0.15);
+    padding: 36px 48px;
+  }
+  .proof-bar-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+  .proof-stat { text-align: center; }
+  .proof-stat .num {
+    font-family: var(--dk-font-display);
+    font-size: 44px;
+    font-weight: 800;
+    color: var(--dk-cyan);
+    line-height: 1;
+    display: block;
+  }
+  .proof-stat .label {
+    font-family: var(--dk-font-display);
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--dk-white-70);
+    margin-top: 6px;
+    display: block;
+  }
+
+  /* ── SECTION WRAPPER ── */
+  .section { padding: 80px 48px; background: var(--lt-bg); }
+  .section-inner { max-width: 1200px; margin: 0 auto; }
+  .section-alt { background: var(--lt-bg-alt); }
+
+  .section-label {
+    font-family: var(--dk-font-display);
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--lt-cyan-accent);
+    margin-bottom: 12px;
+    display: block;
+  }
+  .section-title {
+    font-family: var(--dk-font-display);
+    font-size: clamp(36px, 4vw, 52px);
+    font-weight: 800;
+    text-transform: uppercase;
+    line-height: 1.05;
+    margin-bottom: 16px;
+    color: var(--lt-text);
+  }
+  .section-body {
+    font-size: 18px;
+    color: var(--lt-text-muted);
+    max-width: 680px;
+    line-height: 1.7;
+    margin-bottom: 48px;
+  }
+
+  /* ── SERVICE CARDS ── */
+  .service-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  .dk-card {
+    background: var(--lt-bg);
+    border: 1px solid var(--lt-border);
+    box-shadow: 0 2px 12px rgba(11,26,74,0.07);
+    padding: 32px 28px;
+    position: relative;
+    text-decoration: none;
+    display: block;
+    transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+  }
+  .dk-card:hover { border-color: var(--dk-cyan); transform: translateY(-2px); box-shadow: 0 6px 24px rgba(0,212,200,0.12); }
+  .dk-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--dk-cyan);
+  }
+  .card-icon {
+    width: 44px; height: 44px;
+    background: rgba(0,212,200,0.10);
+    border: 1px solid rgba(0,212,200,0.25);
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 20px;
+    font-size: 20px;
+  }
+  .card-title {
+    font-family: var(--dk-font-display);
+    font-size: 22px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    color: var(--lt-text);
+    margin-bottom: 10px;
+    line-height: 1.15;
+  }
+  .card-body {
+    font-size: 15px;
+    color: var(--lt-text-muted);
+    line-height: 1.65;
+    margin-bottom: 20px;
+  }
+  .card-link {
+    font-family: var(--dk-font-display);
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--lt-cyan-accent);
+  }
+
+  /* ── OEM CARD (2-col hub layout) ── */
+  .oem-card-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 28px;
+  }
+  .oem-card {
+    background: var(--lt-bg);
+    border: 1px solid var(--lt-border);
+    box-shadow: 0 2px 12px rgba(11,26,74,0.07);
+    padding: 32px 28px;
+    position: relative;
+    text-decoration: none;
+    display: block;
+    transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+  }
+  .oem-card:hover { border-color: var(--dk-cyan); transform: translateY(-2px); box-shadow: 0 6px 24px rgba(0,212,200,0.12); }
+  .oem-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--dk-cyan);
+  }
+
+  /* ── SECTION DARK (navy bg, white text) ── */
+  .section-dark {
+    background: var(--dk-navy);
+    padding: 80px 48px;
+  }
+  .section-dark .section-inner { max-width: 1200px; margin: 0 auto; }
+  .section-dark .section-label { color: var(--dk-cyan); }
+  .section-dark .section-title { color: var(--dk-white); }
+  .section-dark .section-body { color: var(--dk-white-70); }
+
+  /* ── WHY DATAKNOX GRID ── */
+  .why-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+    margin-top: 48px;
+  }
+  .why-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(0,212,200,0.15);
+    border-top: 3px solid var(--dk-cyan);
+    padding: 32px 28px;
+  }
+  .why-card-num {
+    font-family: var(--dk-font-display);
+    font-size: 48px;
+    font-weight: 800;
+    color: var(--dk-cyan);
+    line-height: 1;
+    margin-bottom: 16px;
+    display: block;
+  }
+  .why-card-title {
+    font-family: var(--dk-font-display);
+    font-size: 20px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    color: var(--dk-white);
+    margin-bottom: 12px;
+  }
+  .why-card p {
+    font-size: 15px;
+    color: var(--dk-white-70);
+    line-height: 1.7;
+  }
+
+  /* ── PARTNER BADGES ── */
+  .partner-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 16px;
+  }
+  .partner-tag {
+    background: #fff;
+    border: 1px solid var(--lt-border);
+    color: var(--lt-text-muted);
+    font-family: var(--dk-font-display);
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 8px 18px;
+  }
+  .partner-tag.highlight {
+    background: var(--dk-navy);
+    border-color: var(--dk-navy);
+    color: var(--dk-cyan);
+  }
+
+  /* ── FAQ ── */
+  .faq-section { padding: 80px 48px; background: var(--lt-bg); }
+  .faq-inner { max-width: 860px; margin: 0 auto; }
+  .faq-intro { font-size: 18px; color: var(--lt-text-muted); margin-bottom: 48px; line-height: 1.7; }
+  .faq-item {
+    border-bottom: 1px solid var(--lt-border);
+    padding: 28px 0;
+  }
+  .faq-item:first-of-type { border-top: 1px solid var(--lt-border); }
+  .faq-q {
+    font-family: var(--dk-font-display);
+    font-size: 20px; font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    color: var(--lt-text);
+    cursor: pointer;
+    display: flex; justify-content: space-between; align-items: center;
+    gap: 16px;
+    line-height: 1.3;
+  }
+  .faq-q .toggle {
+    color: var(--dk-cyan);
+    font-size: 22px;
+    flex-shrink: 0;
+    font-family: var(--dk-font-body);
+    font-weight: 300;
+  }
+  .faq-a {
+    margin-top: 16px;
+    font-size: 16px;
+    color: var(--lt-text-muted);
+    line-height: 1.8;
+    display: none;
+  }
+  .faq-a.open { display: block; }
+  .faq-a strong { color: var(--lt-text); }
+
+  /* ── CTA BAND ── */
+  .cta-band {
+    background: var(--dk-cyan);
+    padding: 72px 48px;
+    text-align: center;
+  }
+  .cta-band h2 {
+    font-family: var(--dk-font-display);
+    font-size: clamp(40px, 5vw, 56px);
+    font-weight: 800;
+    text-transform: uppercase;
+    color: var(--dk-navy);
+    margin-bottom: 12px;
+  }
+  .cta-band p {
+    font-size: 18px;
+    color: rgba(11,26,74,0.75);
+    margin-bottom: 36px;
+    max-width: 560px;
+    margin-left: auto; margin-right: auto;
+    line-height: 1.6;
+  }
+  .btn-dark {
+    background: var(--dk-navy);
+    color: var(--dk-white);
+    font-family: var(--dk-font-display);
+    font-size: 16px; font-weight: 700;
+    letter-spacing: 0.06em; text-transform: uppercase;
+    padding: 18px 40px; text-decoration: none;
+    display: inline-block; margin: 0 8px;
+    transition: background 0.2s;
+  }
+  .btn-dark:hover { background: var(--dk-navy-light); }
+
+  /* ── MAIN-SITE-MATCH FOOTER ─────────────────────────── */
+.dk-footer{background:#0B1A4A;border-top:1px solid rgba(0,212,200,0.12);font-family:'Poppins',sans-serif;}
+.dk-footer-main{max-width:1400px;margin:0 auto;padding:56px 48px 40px;display:grid;grid-template-columns:1fr 2fr;gap:64px;}
+.dk-footer-brand img{height:28px;width:auto;margin-bottom:16px;}
+.dk-footer-brand p{font-size:13px;color:rgba(255,255,255,0.55);line-height:1.7;max-width:280px;}
+.dk-footer-links{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:32px;}
+.dk-footer-col h4{font-family:'Poppins',sans-serif;font-size:11px;font-weight:700;color:#00D4C8;text-transform:uppercase;letter-spacing:0.10em;margin-bottom:14px;}
+.dk-footer-col a{display:block;color:rgba(255,255,255,0.60);font-size:13px;font-weight:400;text-decoration:none;margin-bottom:8px;transition:color 0.2s;}
+.dk-footer-col a:hover{color:#00D4C8;}
+.dk-footer-bottom{border-top:1px solid rgba(255,255,255,0.08);padding:20px 48px;max-width:1400px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;}
+.dk-footer-bottom p,.dk-footer-bottom a{font-size:12px;color:rgba(255,255,255,0.40);font-weight:400;text-decoration:none;}
+.dk-footer-bottom a:hover{color:#00D4C8;}
+.dk-footer-certs{display:flex;gap:10px;flex-wrap:wrap;}
+.dk-cert-badge{background:rgba(255,255,255,0.05);border:1px solid rgba(0,212,200,0.15);padding:4px 12px;font-family:'Poppins',sans-serif;font-size:11px;font-weight:600;color:rgba(255,255,255,0.55);letter-spacing:0.06em;}
+@media(max-width:768px){
+  .dk-nav-links{display:none;}
+  .dk-nav-main{padding:0 24px;}
+  .dk-nav-top{padding:6px 24px;}
+  .dk-footer-main{grid-template-columns:1fr;gap:32px;padding:40px 24px 24px;}
+  .dk-footer-bottom{padding:16px 24px;}
+}
+
+  /* ── SECTION ALT overrides (light gray bg — text stays dark) ── */
+  .section-alt .section-label { color: var(--lt-cyan-accent); }
+  .section-alt .section-title { color: var(--lt-text); }
+  .section-alt .section-body  { color: var(--lt-text-muted); }
+
+  /* FAQ section label/title on white */
+  .faq-section .section-label { color: var(--lt-cyan-accent); }
+  .faq-section .section-title { color: var(--lt-text); }
+
+  /* Schema / invisible */
+  .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0,0,0,0); }
+
+</style>
+
+<!-- Schema Markup: Service -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "AI GPU Infrastructure Solutions",
+  "serviceType": "AI GPU Infrastructure Services",
+  "provider": {
+    "@type": "Organization",
+    "name": "Dataknox Solutions, Inc.",
+    "url": "https://www.dataknox.io",
+    "telephone": "833-DATA-DOA",
+    "email": "sales@dataknox.io",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Newark",
+      "addressRegion": "CA",
+      "addressCountry": "US"
+    },
+    "foundingDate": "2003",
+    "hasCredential": ["ISO 9001", "ISO 14001", "ISO 45001", "R2v3", "NAID AAA"],
+    "areaServed": "Worldwide",
+    "numberOfEmployees": "50-200"
+  },
+  "description": "Dataknox provides end-to-end AI GPU infrastructure services including enterprise GPU procurement, GPU lifecycle management, certified ITAD and data destruction for GPU hardware, and full data center decommissioning services. Operating in 140+ countries with 10,527 field engineers.",
+  "url": "https://www.dataknox.io/ai-gpu",
+  "areaServed": "Worldwide",
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "AI GPU Infrastructure Services",
+    "itemListElement": [
+      { "@type": "Offer", "name": "GPU Procurement", "description": "Enterprise GPU hardware procurement and configuration for AI/ML workloads, HPC, and inference clusters." },
+      { "@type": "Offer", "name": "GPU Lifecycle Management", "description": "End-to-end GPU asset tracking, maintenance, refresh planning, and optimization throughout the hardware lifecycle." },
+      { "@type": "Offer", "name": "GPU ITAD & Data Destruction", "description": "NAID AAA certified IT asset disposition and certified data destruction for retired GPU hardware, ensuring compliance and maximum residual value recovery." },
+      { "@type": "Offer", "name": "AI Infrastructure Decommissioning", "description": "Full data center and AI cluster decommissioning services — hardware removal, logistics, certified disposal, and migration support." }
+    ]
+  }
+}
+</script>
+<!-- Schema Markup: FAQPage -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What types of GPU hardware does Dataknox procure and support?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Dataknox procures and supports enterprise-class GPU hardware for AI, machine learning, HPC, and inference workloads — including NVIDIA H100, A100, L40S, and H200 series, AMD Instinct accelerators, and GPU-dense server platforms from Dell, HPE, Supermicro, and Wiwynn. We source new, refurbished, and pre-owned GPU hardware with full configuration, burn-in testing, and warranty coverage."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How does Dataknox manage the full GPU hardware lifecycle?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Dataknox manages AI GPU infrastructure from procurement through final disposition. Our lifecycle services include hardware sourcing and procurement, asset tagging and inventory management, break-fix maintenance, refresh planning, and end-of-life planning. When GPU hardware reaches retirement, we transition seamlessly to certified ITAD and data destruction — one partner, one contract, zero lifecycle gaps."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does Dataknox provide certified data destruction for GPU hardware?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Dataknox is NAID AAA certified for data destruction, which is the highest industry standard for media sanitization and destruction. When retiring GPU hardware or AI servers, we provide NIST 800-88 compliant data destruction, full chain-of-custody documentation, and certificate of destruction for every asset. This is critical for organizations handling regulated data in healthcare, financial services, federal, and defense environments."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is included in Dataknox AI infrastructure decommissioning services?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Dataknox AI infrastructure decommissioning covers the full scope of retiring a GPU cluster or AI data center: physical deinstallation and logistics, certified data destruction for all storage and GPU memory, ITAD processing with maximum residual value recovery, environmental disposal in compliance with ISO 14001 standards, and complete chain-of-custody documentation. We operate across 140+ countries with 10,527 field engineers, making us the partner for multi-site global decommissioning programs."
+      }
+    }
+  ]
+}
+</script>
+<!-- Schema Markup: BreadcrumbList -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.dataknox.io" },
+    { "@type": "ListItem", "position": 2, "name": "AI GPU Infrastructure", "item": "https://www.dataknox.io/ai-gpu" }
+  ]
+}
+</script>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="dk-nav">
+  <div class="dk-nav-top">
+    <a href="tel:+18333282362">Call 1-833-DATA-DOA</a>
+    <a href="https://portal.dataknox.io/" target="_blank">Portal Login</a>
+    <a href="mailto:sales@dataknox.io">sales@dataknox.io</a>
+  </div>
+  <div class="dk-nav-main">
+    <a href="/" class="dk-nav-logo">
+      <img src="https://cdn.prod.website-files.com/61486d79523e4f34418faac3/636bbbf913f59171dda12e5b_dataknox-blue.svg" alt="Dataknox" />
+    </a>
+    <ul class="dk-nav-links">
+      <li>
+        <button>Infrastructure</button>
+        <div class="dk-dropdown">
+          <a href="/it-asset-services/third-party-maintenance">Third-Party Maintenance</a>
+          <a href="/it-asset-services/itad">ITAD</a>
+          <a href="/it-asset-services/decommissioning">Decommissioning</a>
+          <a href="/it-asset-services/it-asset-repurchase">Asset Recovery</a>
+          <a href="/data-destruction">Data Destruction</a>
+        </div>
+      </li>
+      <li>
+        <button>Cloud Services</button>
+        <div class="dk-dropdown">
+          <a href="/it-asset-services/migration">Migration Cloud Service</a>
+          <a href="/wasabi-cloud-backup-zero-egress">Managed Cloud Backup</a>
+          <a href="/cloud-managed-services-with-duplocloud">DuploCloud</a>
+        </div>
+      </li>
+      <li>
+        <button>AI</button>
+        <div class="dk-dropdown">
+          <a href="/graphics-processing-units">GPUs</a>
+          <a href="/ai-servers">AI Servers</a>
+          <a href="/artificial-intelligence">AI Solutions</a>
+        </div>
+      </li>
+      <li>
+        <button>Insights</button>
+        <div class="dk-dropdown">
+          <a href="/resources">Tech Blogs</a>
+          <a href="/eol">EOL Database</a>
+          <a href="/about-us">About Us</a>
+          <a href="/compliance-standards-and-certifications">Certifications</a>
+        </div>
+      </li>
+    </ul>
+    <a href="/contact-us" class="dk-nav-cta">Contact Sales</a>
+  </div>
+</nav>
+
+<!-- BREADCRUMB -->
+<nav aria-label="Breadcrumb">
+  <div class="breadcrumb">
+    <ol style="list-style:none;display:inline-flex;align-items:center;padding:0;margin:0;">
+      <li><a href="https://www.dataknox.io">Home</a></li>
+      <li><span class="sep">›</span></li>
+      <li><span class="current">AI GPU Infrastructure</span></li>
+    </ol>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" aria-label="Hero">
+  <div class="dot-grid"></div>
+  <div class="hero-inner">
+    <span class="hero-tag">AI GPU Infrastructure</span>
+    <h1>AI GPU Infrastructure<br><span class="accent">Without Gaps.</span></h1>
+    <p class="hero-sub">Enterprise GPU procurement, lifecycle management, certified ITAD, and full decommissioning services — from a single partner operating in 140+ countries with NAID AAA certification.</p>
+    <div class="hero-actions">
+      <a href="/contact-us" class="btn-primary">Talk to a GPU Specialist</a>
+      <a href="#services" class="btn-ghost">Explore Services</a>
+    </div>
+  </div>
+</section>
+
+<!-- PROOF BAR -->
+<div class="proof-bar" role="region" aria-label="Key metrics">
+  <div class="proof-bar-inner">
+    <div class="proof-stat"><span class="num">1,200+</span><span class="label">Data Center Projects</span></div>
+    <div class="proof-stat"><span class="num">140+</span><span class="label">Countries</span></div>
+    <div class="proof-stat"><span class="num">10,527</span><span class="label">Field Engineers</span></div>
+    <div class="proof-stat"><span class="num">NAID AAA</span><span class="label">Certified ITAD</span></div>
+    <div class="proof-stat"><span class="num">30–85%</span><span class="label">Savings vs OEM</span></div>
+  </div>
+</div>
+
+<!-- SERVICE CARDS (Tier 1 hub → 4 category hubs) -->
+<section class="section" id="services" aria-labelledby="services-heading">
+  <div class="section-inner">
+    <span class="section-label">AI GPU Services</span>
+    <h2 class="section-title" id="services-heading">The Full GPU Infrastructure Lifecycle</h2>
+    <p class="section-body">From sourcing to disposition, Dataknox covers every stage of your AI GPU infrastructure. Select a service category below to explore coverage, certifications, and transition guidance.</p>
+
+    <div class="oem-card-grid">
+
+      <a href="/ai-gpu/gpu-procurement" class="oem-card">
+        <div class="card-icon">⚡</div>
+        <div class="card-title">GPU Procurement</div>
+        <p class="card-body">Enterprise GPU hardware sourcing for AI training, inference, HPC, and rendering workloads. New, refurbished, and pre-owned inventory — NVIDIA, AMD, and platform-native configurations from Dell, HPE, and Supermicro.</p>
+        <div style="margin-top: 16px; display: flex; flex-wrap: wrap; gap: 6px;">
+          <span style="font-size:12px;font-weight:700;font-family:var(--dk-font-display);letter-spacing:0.06em;text-transform:uppercase;color:var(--lt-text-muted);background:var(--lt-bg-alt);border:1px solid var(--lt-border);padding:3px 10px;">NVIDIA</span>
+          <span style="font-size:12px;font-weight:700;font-family:var(--dk-font-display);letter-spacing:0.06em;text-transform:uppercase;color:var(--lt-text-muted);background:var(--lt-bg-alt);border:1px solid var(--lt-border);padding:3px 10px;">AMD</span>
+          <span style="font-size:12px;font-weight:700;font-family:var(--dk-font-display);letter-spacing:0.06em;text-transform:uppercase;color:var(--lt-text-muted);background:var(--lt-bg-alt);border:1px solid var(--lt-border);padding:3px 10px;">H100</span>
+          <span style="font-size:12px;font-weight:700;font-family:var(--dk-font-display);letter-spacing:0.06em;text-transform:uppercase;color:var(--lt-text-muted);background:var(--lt-bg-alt);border:1px solid var(--lt-border);padding:3px 10px;">A100</span>
+          <span style="font-size:12px;font-weight:700;font-family:var(--dk-font-display);letter-spacing:0.06em;text-transform:uppercase;color:var(--lt-text-muted);background:var(--lt-bg-alt);border:1px solid var(--lt-border);padding:3px 10px;">L40S</span>
+        </div>
+        <span class="card-link" style="display:block;margin-top:20px;">Explore GPU Procurement →</span>
+      </a>
+
+      <a href="/ai-gpu/gpu-lifecycle-management" class="oem-card">
+        <div class="card-icon">🔄</div>
+        <div class="card-title">GPU Lifecycle Management</div>
+        <p class="card-body">Asset tracking, break-fix maintenance, refresh planning, and optimization across the entire GPU hardware lifecycle — from initial deployment through end-of-life planning. One partner for the full asset journey.</p>
+        <div style="margin-top: 16px; display: flex; flex-wrap: wrap; gap: 6px;">
+          <span style="font-size:12px;font-weight:700;font-family:var(--dk-font-display);letter-spacing:0.06em;text-transform:uppercase;color:var(--lt-text-muted);background:var(--lt-bg-alt);border:1px solid var(--lt-border);padding:3px 10px;">Asset Tracking</span>
+          <span style="font-size:12px;font-weight:700;font-family:var(--dk-font-display);letter-spacing:0.06em;text-transform:uppercase;color:var(--lt-text-muted);background:var(--lt-bg-alt);border:1px solid var(--lt-border);padding:3px 10px;">Break-Fix</span>
+          <span style="font-size:12px;font-weight:700;font-family:var(--dk-font-display);letter-spacing:0.06em;text-transform:uppercase;color:var(--lt-text-muted);background:var(--lt-bg-alt);border:1px solid var(--lt-border);padding:3px 10px;">Refresh Planning</span>
+          <span style="font-size:12px;font-weight:700;font-family:var(--dk-font-display);letter-spacing:0.06em;text-transform:uppercase;color:var(--lt-text-muted);background:var(--lt-bg-alt);border:1px solid var(--lt-border);padding:3px 10px;">EoL Planning</span>
+        </div>
+        <span class="card-link" style="display:block;margin-top:20px;">Explore Lifecycle Management →</span>
+      </a>
+
+      <a href="/ai-gpu/gpu-itad-data-destruction" class="oem-card">
+        <div class="card-icon">🔒</div>
+        <div class="card-title">GPU ITAD &amp; Data Destruction</div>
+        <p class="card-body">NAID AAA certified ITAD and NIST 800-88 compliant data destruction for retired GPU hardware and AI servers. Full chain-of-custody documentation, certificate of destruction, and maximum residual value recovery.</p>
+        <div style="margin-top: 16px; display: flex; flex-wrap: wrap; gap: 6px;">
+          <span style="font-size:12px;font-weight:700;font-family:var(--dk-font-display);letter-spacing:0.06em;text-transform:uppercase;color:var(--lt-text-muted);background:var(--lt-bg-alt);border:1px solid var(--lt-border);padding:3px 10px;">NAID AAA</span>
+          <span style="font-size:12px;font-weight:700;font-family:var(--dk-font-display);letter-spacing:0.06em;text-transform:uppercase;color:var(--lt-text-muted);background:var(--lt-bg-alt);border:1px solid var(--lt-border);padding:3px 10px;">NIST 800-88</span>
+          <span style="font-size:12px;font-weight:700;font-family:var(--dk-font-display);letter-spacing:0.06em;text-transform:uppercase;color:var(--lt-text-muted);background:var(--lt-bg-alt);border:1px solid var(--lt-border);padding:3px 10px;">R2v3</span>
+          <span style="font-size:12px;font-weight:700;font-family:var(--dk-font-display);letter-spacing:0.06em;text-transform:uppercase;color:var(--lt-text-muted);background:var(--lt-bg-alt);border:1px solid var(--lt-border);padding:3px 10px;">Chain of Custody</span>
+        </div>
+        <span class="card-link" style="display:block;margin-top:20px;">Explore GPU ITAD →</span>
+      </a>
+
+      <a href="/ai-gpu/ai-infrastructure-decommissioning" class="oem-card">
+        <div class="card-icon">🏗</div>
+        <div class="card-title">AI Infrastructure Decommissioning</div>
+        <p class="card-body">Full-scope decommissioning for AI clusters and GPU data centers — physical deinstallation, logistics, certified data destruction, ITAD processing, environmental compliance, and migration support across 140+ countries.</p>
+        <div style="margin-top: 16px; display: flex; flex-wrap: wrap; gap: 6px;">
+          <span style="font-size:12px;font-weight:700;font-family:var(--dk-font-display);letter-spacing:0.06em;text-transform:uppercase;color:var(--lt-text-muted);background:var(--lt-bg-alt);border:1px solid var(--lt-border);padding:3px 10px;">Deinstallation</span>
+          <span style="font-size:12px;font-weight:700;font-family:var(--dk-font-display);letter-spacing:0.06em;text-transform:uppercase;color:var(--lt-text-muted);background:var(--lt-bg-alt);border:1px solid var(--lt-border);padding:3px 10px;">Global Logistics</span>
+          <span style="font-size:12px;font-weight:700;font-family:var(--dk-font-display);letter-spacing:0.06em;text-transform:uppercase;color:var(--lt-text-muted);background:var(--lt-bg-alt);border:1px solid var(--lt-border);padding:3px 10px;">ISO 14001</span>
+          <span style="font-size:12px;font-weight:700;font-family:var(--dk-font-display);letter-spacing:0.06em;text-transform:uppercase;color:var(--lt-text-muted);background:var(--lt-bg-alt);border:1px solid var(--lt-border);padding:3px 10px;">140+ Countries</span>
+        </div>
+        <span class="card-link" style="display:block;margin-top:20px;">Explore Decommissioning →</span>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- WHY DATAKNOX (navy/dark section) -->
+<section class="section-dark" aria-labelledby="why-heading">
+  <div class="section-inner">
+    <span class="section-label">Why Dataknox</span>
+    <h2 class="section-title" id="why-heading">The Only Partner That Covers Every Stage</h2>
+    <p class="section-body">Most GPU vendors sell hardware. Most ITAD firms handle disposal. Dataknox is the only partner that manages your AI GPU infrastructure end-to-end — from first procurement through certified final disposition — with a single contract and single point of accountability.</p>
+    <div class="why-grid">
+      <div class="why-card">
+        <span class="why-card-num">01</span>
+        <div class="why-card-title">Lifecycle Continuity</div>
+        <p>No vendor handoffs, no coverage gaps. Dataknox manages procurement, active lifecycle, and end-of-life disposition under one agreement. When GPU hardware retires, we transition seamlessly to certified ITAD — you never lose the thread.</p>
+      </div>
+      <div class="why-card">
+        <span class="why-card-num">02</span>
+        <div class="why-card-title">Certified at Every Stage</div>
+        <p>NAID AAA certified for data destruction. R2v3 certified for responsible recycling. ISO 9001, ISO 14001, and NIST 800-88 compliant throughout. Whether you're in healthcare, finance, federal, or enterprise tech, our certifications hold up to your audit requirements.</p>
+      </div>
+      <div class="why-card">
+        <span class="why-card-num">03</span>
+        <div class="why-card-title">Global Scale, Local Execution</div>
+        <p>140+ countries. 10,527 field engineers. 1,200+ completed data center projects. Whether you're decommissioning a single AI cluster or a multi-site global GPU estate, Dataknox has the engineers on the ground and the logistics infrastructure to execute on your timeline.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PARTNER ECOSYSTEM -->
+<section class="section section-alt" aria-labelledby="partners-heading">
+  <div class="section-inner">
+    <span class="section-label">Platform &amp; Partner Ecosystem</span>
+    <h2 class="section-title" id="partners-heading">GPU Hardware We Procure, Support &amp; Retire</h2>
+    <p class="section-body">Dataknox works across the full GPU hardware ecosystem — from silicon to server platform — covering every major vendor in AI infrastructure. Whatever your stack, we have the procurement relationships, technical expertise, and certified disposition pathways to manage it.</p>
+    <div class="partner-grid">
+      <span class="partner-tag highlight">NVIDIA</span>
+      <span class="partner-tag highlight">AMD</span>
+      <span class="partner-tag highlight">Dell</span>
+      <span class="partner-tag highlight">HPE</span>
+      <span class="partner-tag highlight">Supermicro</span>
+      <span class="partner-tag">Wiwynn</span>
+      <span class="partner-tag">Inspur</span>
+      <span class="partner-tag">Gigabyte</span>
+      <span class="partner-tag">Quanta</span>
+      <span class="partner-tag">Lenovo</span>
+      <span class="partner-tag">IBM</span>
+      <span class="partner-tag">Intel (Gaudi)</span>
+      <span class="partner-tag">Graphcore</span>
+      <span class="partner-tag">+ More</span>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ SECTION -->
+<section class="faq-section" aria-labelledby="faq-heading">
+  <div class="faq-inner">
+    <span class="section-label">Frequently Asked Questions</span>
+    <h2 class="section-title" id="faq-heading">AI GPU Infrastructure — Answered</h2>
+    <p class="faq-intro">What procurement teams, IT directors, and infrastructure leads ask most when evaluating an AI GPU infrastructure partner — from hardware sourcing through certified end-of-life disposition.</p>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)" role="button" tabindex="0" aria-expanded="false">
+        What types of GPU hardware does Dataknox procure and support?
+        <span class="toggle">+</span>
+      </div>
+      <div class="faq-a">
+        Dataknox procures and supports enterprise-class GPU hardware for AI, machine learning, HPC, and inference workloads — including <strong>NVIDIA H100, A100, L40S, and H200 series</strong>, AMD Instinct accelerators, and GPU-dense server platforms from Dell, HPE, Supermicro, and Wiwynn. We source new, refurbished, and pre-owned GPU hardware with full configuration, burn-in testing, and warranty coverage. Contact us for current inventory and lead times.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)" role="button" tabindex="0" aria-expanded="false">
+        How does Dataknox manage the full GPU hardware lifecycle?
+        <span class="toggle">+</span>
+      </div>
+      <div class="faq-a">
+        Dataknox manages AI GPU infrastructure from procurement through final disposition. Our lifecycle services include hardware sourcing and procurement, asset tagging and inventory management, break-fix maintenance, refresh planning, and end-of-life planning. When GPU hardware reaches retirement, we transition seamlessly to <strong>certified ITAD and data destruction</strong> — one partner, one contract, zero lifecycle gaps. No handoffs to third-party ITAD vendors.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)" role="button" tabindex="0" aria-expanded="false">
+        Does Dataknox provide certified data destruction for GPU hardware?
+        <span class="toggle">+</span>
+      </div>
+      <div class="faq-a">
+        Yes. Dataknox is <strong>NAID AAA certified</strong> for data destruction — the highest industry standard for media sanitization and destruction. When retiring GPU hardware or AI servers, we provide NIST 800-88 compliant data destruction, full chain-of-custody documentation, and a certificate of destruction for every asset. This is critical for organizations handling regulated data in healthcare, financial services, federal, and defense environments.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)" role="button" tabindex="0" aria-expanded="false">
+        What is included in Dataknox AI infrastructure decommissioning services?
+        <span class="toggle">+</span>
+      </div>
+      <div class="faq-a">
+        Dataknox AI infrastructure decommissioning covers the full scope of retiring a GPU cluster or AI data center: physical deinstallation and logistics, certified data destruction for all storage and GPU memory, ITAD processing with maximum residual value recovery, <strong>environmental disposal in compliance with ISO 14001</strong>, and complete chain-of-custody documentation. We operate across <strong>140+ countries with 10,527 field engineers</strong>, making us the partner for multi-site global decommissioning programs.
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<div class="cta-band" role="region" aria-label="Call to action">
+  <h2>Plan Your GPU Infrastructure.</h2>
+  <p>Whether you're procuring your first AI cluster or decommissioning a global GPU estate, Dataknox has the expertise, certifications, and global reach to manage it end-to-end.</p>
+  <a href="/contact-us" class="btn-dark">Talk to a GPU Specialist</a>
+  <a href="tel:8332823362" class="btn-dark">Call 833-DATA-DOA</a>
+</div>
+
+<!-- FOOTER -->
+<footer class="dk-footer">
+  <div class="dk-footer-main">
+    <div class="dk-footer-brand">
+      <img src="https://cdn.prod.website-files.com/61486d79523e4f34418faac3/636bbb07e3acea64df7d65f2_dataknox-logo.svg" alt="Dataknox" />
+      <p>Dataknox provides enterprise GPU procurement, AI infrastructure lifecycle management, NAID AAA certified ITAD, and global decommissioning services — operating in 140+ countries.</p>
+    </div>
+    <div class="dk-footer-links">
+      <div class="dk-footer-col">
+        <h4>AI GPU Services</h4>
+        <a href="/ai-gpu/gpu-procurement">GPU Procurement</a>
+        <a href="/ai-gpu/gpu-lifecycle-management">Lifecycle Management</a>
+        <a href="/ai-gpu/gpu-itad-data-destruction">GPU ITAD &amp; Data Destruction</a>
+        <a href="/ai-gpu/ai-infrastructure-decommissioning">AI Decommissioning</a>
+      </div>
+      <div class="dk-footer-col">
+        <h4>Infrastructure</h4>
+        <a href="/it-asset-services/itad">ITAD</a>
+        <a href="/it-asset-services/decommissioning">Decommissioning</a>
+        <a href="/it-asset-services/it-asset-repurchase">Asset Recovery</a>
+        <a href="/data-destruction">Data Destruction</a>
+        <a href="/it-asset-services/third-party-maintenance">Third-Party Maintenance</a>
+      </div>
+      <div class="dk-footer-col">
+        <h4>Cloud &amp; AI</h4>
+        <a href="/it-asset-services/migration">Cloud Migration</a>
+        <a href="/cloud-managed-services-with-duplocloud">DuploCloud</a>
+        <a href="/graphics-processing-units">GPUs</a>
+        <a href="/ai-servers">AI Servers</a>
+      </div>
+      <div class="dk-footer-col">
+        <h4>Contact</h4>
+        <a href="tel:+18333282362">1-833-DATA-DOA</a>
+        <a href="mailto:sales@dataknox.io">sales@dataknox.io</a>
+        <a href="https://portal.dataknox.io/">Client Portal</a>
+        <a href="/contact-us">Contact Sales</a>
+      </div>
+    </div>
+  </div>
+  <div class="dk-footer-bottom">
+    <p>© 2025 Dataknox Solutions, Inc. — 38505 Cherry St Unit A, Newark, CA 94560</p>
+    <div class="dk-footer-certs">
+      <span class="dk-cert-badge">R2v3</span>
+      <span class="dk-cert-badge">NAID AAA</span>
+      <span class="dk-cert-badge">ISO 9001</span>
+      <span class="dk-cert-badge">ISO 14001</span>
+      <span class="dk-cert-badge">NIST 800-88</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  function toggleFaq(el) {
+    const answer = el.nextElementSibling;
+    const toggle = el.querySelector('.toggle');
+    const isOpen = answer.classList.contains('open');
+    // Close all
+    document.querySelectorAll('.faq-a').forEach(a => a.classList.remove('open'));
+    document.querySelectorAll('.faq-q .toggle').forEach(t => t.textContent = '+');
+    document.querySelectorAll('.faq-q').forEach(q => q.setAttribute('aria-expanded', 'false'));
+    // Open clicked
+    if (!isOpen) {
+      answer.classList.add('open');
+      toggle.textContent = '−';
+      el.setAttribute('aria-expanded', 'true');
+    }
+  }
+</script>
+</body>
+</html>
