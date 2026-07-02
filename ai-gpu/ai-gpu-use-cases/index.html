@@ -23,7 +23,7 @@
   }
   *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
   body{font-family:var(--dk-font-body);background:var(--lt-bg);color:var(--lt-text);line-height:1.6;font-size:16px;}
-  /* ── MAIN-SITE-MATCH NAV ────────────────────────────── */
+  /* ── NAV ── */
 .dk-nav{background:#0B1A4A;border-bottom:1px solid rgba(0,212,200,0.15);position:sticky;top:0;z-index:200;font-family:'Poppins',sans-serif;}
 .dk-nav-top{background:#061030;padding:6px 48px;display:flex;justify-content:flex-end;gap:24px;}
 .dk-nav-top a{color:rgba(255,255,255,0.65);font-size:12px;font-weight:500;text-decoration:none;transition:color 0.2s;}
@@ -39,6 +39,7 @@
 .dk-nav-links>li:hover .dk-dropdown{display:block;}
 .dk-dropdown a{display:block;color:rgba(255,255,255,0.75);font-family:'Poppins',sans-serif;font-size:13px;font-weight:400;text-decoration:none;padding:10px 20px;transition:color 0.2s,background 0.2s;}
 .dk-dropdown a:hover{color:#00D4C8;background:rgba(0,212,200,0.06);}
+.dk-dropdown a.active{color:#00D4C8;}
 .dk-nav-cta{background:#00D4C8;color:#0B1A4A;font-family:'Poppins',sans-serif;font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;padding:10px 24px;text-decoration:none;transition:background 0.2s;white-space:nowrap;}
 .dk-nav-cta:hover{background:#2DEDE6;}
 
@@ -124,7 +125,6 @@
   .btn-dark:hover{background:var(--dk-navy-mid);}
 
   /* FOOTER */
-  /* ── MAIN-SITE-MATCH FOOTER ─────────────────────────── */
 .dk-footer{background:#0B1A4A;border-top:1px solid rgba(0,212,200,0.12);font-family:'Poppins',sans-serif;}
 .dk-footer-main{max-width:1400px;margin:0 auto;padding:56px 48px 40px;display:grid;grid-template-columns:1fr 2fr;gap:64px;}
 .dk-footer-brand img{height:28px;width:auto;margin-bottom:16px;}
@@ -220,13 +220,24 @@
   ]
 }
 </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.dataknox.io/"},
+    {"@type": "ListItem", "position": 2, "name": "AI GPU Solutions", "item": "https://www.dataknox.io/ai-gpu/"},
+    {"@type": "ListItem", "position": 3, "name": "AI GPU Use Cases", "item": "https://www.dataknox.io/ai-gpu/ai-gpu-use-cases/"}
+  ]
+}
+</script>
 </head>
 <body>
 
 <!-- NAV -->
 <nav class="dk-nav">
   <div class="dk-nav-top">
-    <a href="tel:8333282362">833-328-2362</a>
+    <a href="tel:+18333282362">Call 1-833-DATA-DOA (833-328-2362)</a>
     <a href="https://portal.dataknox.io/" target="_blank">Portal Login</a>
     <a href="mailto:sales@dataknox.io">sales@dataknox.io</a>
   </div>
@@ -237,16 +248,46 @@
     <ul class="dk-nav-links">
       <li><a href="/">Home</a></li>
       <li>
-        <button>AI GPU Solutions</button>
+        <button>Infrastructure</button>
         <div class="dk-dropdown">
-          <a href="/ai-gpu/">AI GPU Solutions</a>
-          <a href="/ai-gpu/gpu-rentals/">GPU Rentals</a>
+          <a href="/third-party-maintenance/">Third-Party Maintenance</a>
+          <a href="/third-party-maintenance/server-maintenance/">Server Maintenance</a>
+          <a href="/third-party-maintenance/network-maintenance/">Network Maintenance</a>
+          <a href="/third-party-maintenance/storage-maintenance/">Storage Maintenance</a>
+        </div>
+      </li>
+      <li>
+        <button>Cloud Services</button>
+        <div class="dk-dropdown">
+          <a href="/cloud-managed-services-with-duplocloud/">DuploCloud</a>
+          <a href="/it-asset-services/itad/">ITAD</a>
+          <a href="/it-asset-services/decommissioning/">Decommissioning</a>
+          <a href="/data-destruction/">Data Destruction</a>
+        </div>
+      </li>
+      <li>
+        <button>AI GPU</button>
+        <div class="dk-dropdown">
+          <a href="/ai-gpu/">AI GPU Overview</a>
+          <a href="/ai-gpu/gpu-procurement/">GPU Procurement</a>
+          <a href="/ai-gpu/gpu-rental-leasing/">GPU Rental &amp; Leasing</a>
           <a href="/ai-gpu/on-premise-gpu-infrastructure/">On-Premise GPU</a>
-          <a href="/ai-gpu/ai-gpu-use-cases/">AI Use Cases</a>
+          <a href="/ai-gpu/gpu-lifecycle-management/">GPU Lifecycle Management</a>
+          <a href="/ai-gpu/ai-infrastructure-itad/">AI Infrastructure ITAD</a>
+          <a href="/ai-gpu/ai-data-center-decommissioning/">AI Data Center Decommissioning</a>
+          <a href="/ai-gpu/ai-gpu-use-cases/" class="active">AI GPU Use Cases</a>
+        </div>
+      </li>
+      <li>
+        <button>Insights</button>
+        <div class="dk-dropdown">
+          <a href="/blog/">Blog</a>
+          <a href="/case-studies/">Case Studies</a>
+          <a href="/resources/">Resources</a>
         </div>
       </li>
     </ul>
-    <a href="mailto:sales@dataknox.io" class="dk-nav-cta">Get a Quote</a>
+    <a href="/contact-us" class="dk-nav-cta">Contact Sales</a>
   </div>
 </nav>
 
@@ -265,7 +306,7 @@
     <p class="hero-sub">Different AI workloads require different GPU infrastructure. Dataknox provides purpose-built GPU environments for computer vision, LLM training, autonomous driving simulation, and life sciences — on-demand or on-premise, globally supported by 10,527 field engineers.</p>
     <div class="hero-ctas">
       <a href="mailto:sales@dataknox.io" class="btn-primary">Get a Quote</a>
-      <a href="/ai-gpu/" class="btn-outline">All AI GPU Solutions</a>
+      <a href="tel:+18333282362" class="btn-outline">Call 1-833-DATA-DOA</a>
     </div>
   </div>
 </section>
@@ -273,10 +314,10 @@
 <!-- PROOF BAR -->
 <div class="proof-bar">
   <div class="proof-stat"><span class="num">10,527</span><span class="lbl">Field Engineers</span></div>
-  <div class="proof-stat"><span class="num">4</span><span class="lbl">Core AI Use Cases</span></div>
+  <div class="proof-stat"><span class="num">140+</span><span class="lbl">Countries</span></div>
   <div class="proof-stat"><span class="num">Zero CapEx</span><span class="lbl">Rental Option</span></div>
   <div class="proof-stat"><span class="num">NVIDIA · Intel · AMD</span><span class="lbl">GPU Architectures</span></div>
-  <div class="proof-stat"><span class="num">Global</span><span class="lbl">Logistics &amp; Deployment</span></div>
+  <div class="proof-stat"><span class="num">1,200+</span><span class="lbl">DC Projects</span></div>
 </div>
 
 <!-- INTRO -->
@@ -368,7 +409,7 @@
       </div>
       <div class="support-item">
         <h4>Global Logistics</h4>
-        <p>End-to-end supply chain management for GPU hardware — from procurement and freight to customs clearance and final-mile data center delivery.</p>
+        <p>End-to-end supply chain management for GPU hardware — from procurement and freight to customs clearance and final-mile data center delivery in 140+ countries.</p>
       </div>
       <div class="support-item">
         <h4>On-Demand &amp; On-Premise</h4>
@@ -435,47 +476,47 @@
     </div>
     <div class="dk-footer-links">
       <div class="dk-footer-col">
-        <h4>AI GPU Solutions</h4>
-        <a href="/ai-gpu/">AI GPU Solutions</a>
-        <a href="/ai-gpu/gpu-rentals/">GPU Rentals</a>
+        <h4>AI GPU Infrastructure</h4>
+        <a href="/ai-gpu/">AI GPU Overview</a>
+        <a href="/ai-gpu/gpu-procurement/">GPU Procurement</a>
+        <a href="/ai-gpu/gpu-rental-leasing/">GPU Rental &amp; Leasing</a>
         <a href="/ai-gpu/on-premise-gpu-infrastructure/">On-Premise GPU</a>
-        <a href="/ai-gpu/ai-gpu-use-cases/">AI Use Cases</a>
-        <a href="/ai-gpu/ai-gpu-use-cases/computer-vision/">Computer Vision</a>
-        <a href="/ai-gpu/ai-gpu-use-cases/llm-training/">LLM Training</a>
-        <a href="/ai-gpu/ai-gpu-use-cases/autonomous-driving/">Autonomous Driving</a>
-        <a href="/ai-gpu/ai-gpu-use-cases/life-sciences/">Life Sciences</a>
+        <a href="/ai-gpu/gpu-lifecycle-management/">GPU Lifecycle Management</a>
+        <a href="/ai-gpu/ai-infrastructure-itad/">AI Infrastructure ITAD</a>
+        <a href="/ai-gpu/ai-data-center-decommissioning/">AI Data Center Decommissioning</a>
+        <a href="/ai-gpu/ai-gpu-use-cases/">AI GPU Use Cases</a>
       </div>
       <div class="dk-footer-col">
         <h4>Infrastructure</h4>
-        <a href="/it-asset-services/third-party-maintenance">Third-Party Maintenance</a>
-        <a href="/it-asset-services/itad">ITAD</a>
-        <a href="/it-asset-services/decommissioning">Decommissioning</a>
-        <a href="/data-destruction">Data Destruction</a>
+        <a href="/third-party-maintenance/">Third-Party Maintenance</a>
+        <a href="/third-party-maintenance/server-maintenance/">Server Maintenance</a>
+        <a href="/third-party-maintenance/network-maintenance/">Network Maintenance</a>
+        <a href="/third-party-maintenance/storage-maintenance/">Storage Maintenance</a>
       </div>
       <div class="dk-footer-col">
-        <h4>Cloud &amp; More</h4>
-        <a href="/it-asset-services/migration">Cloud Migration</a>
-        <a href="/cloud-managed-services-with-duplocloud">DuploCloud</a>
-        <a href="/graphics-processing-units">GPUs</a>
-        <a href="/ai-servers">AI Servers</a>
+        <h4>Company</h4>
+        <a href="/about/">About Dataknox</a>
+        <a href="/contact-us/">Contact Us</a>
+        <a href="/blog/">Blog</a>
+        <a href="https://portal.dataknox.io/" target="_blank">Client Portal</a>
       </div>
       <div class="dk-footer-col">
         <h4>Contact</h4>
-        <a href="tel:8333282362">833-328-2362</a>
+        <a href="tel:+18333282362">1-833-DATA-DOA (833-328-2362)</a>
         <a href="mailto:sales@dataknox.io">sales@dataknox.io</a>
-        <a href="https://portal.dataknox.io/">Client Portal</a>
-        <a href="/contact-us">Contact Sales</a>
+        <a href="/contact-us/">Contact Sales</a>
+        <p style="font-size:12px;color:rgba(255,255,255,0.40);margin-top:8px;line-height:1.5;">38505 Cherry St. Unit A<br>Newark, CA 94560</p>
       </div>
     </div>
   </div>
   <div class="dk-footer-bottom">
-    <p>&copy; 2025 Dataknox Solutions, Inc. — 38505 Cherry St Unit A, Newark, CA 94560</p>
+    <p>&copy; 2025 Dataknox Solutions, Inc. &mdash; 38505 Cherry St. Unit A, Newark, CA 94560</p>
     <div class="dk-footer-certs">
+      <span class="dk-cert-badge">NAID AAA</span>
+      <span class="dk-cert-badge">R2v3</span>
       <span class="dk-cert-badge">ISO 9001</span>
       <span class="dk-cert-badge">ISO 14001:2015</span>
       <span class="dk-cert-badge">ISO 45001:2018</span>
-      <span class="dk-cert-badge">NAID AAA</span>
-      <span class="dk-cert-badge">R2v3</span>
     </div>
   </div>
 </footer>
