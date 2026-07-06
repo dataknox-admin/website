@@ -151,6 +151,99 @@
     margin-bottom: 40px;
   }
   .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; }
+
+  /* ── HERO LEAD FORM ── */
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 56px;
+    align-items: start;
+  }
+  .hero-form-panel {
+    position: relative;
+    background: var(--dk-navy-mid);
+    border: 1px solid rgba(0,212,200,0.20);
+    padding: 32px;
+  }
+  .hero-form-panel::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--dk-cyan);
+  }
+  .hero-form-title {
+    font-family: var(--dk-font-display);
+    color: var(--dk-white);
+    font-size: 24px;
+    font-weight: 800;
+    text-transform: uppercase;
+    line-height: 1.1;
+    margin-bottom: 8px;
+  }
+  .hero-form-sub {
+    color: rgba(255,255,255,0.70);
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.5;
+    margin-bottom: 24px;
+  }
+  .lead-form .form-group { margin-bottom: 16px; }
+  .lead-form label {
+    display: block;
+    color: rgba(255,255,255,0.88);
+    font-family: 'Barlow', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+  .lead-form input,
+  .lead-form textarea {
+    width: 100%;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.25);
+    color: var(--dk-white);
+    font-family: 'Barlow', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 12px 14px;
+    box-sizing: border-box;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .lead-form input::placeholder,
+  .lead-form textarea::placeholder { color: rgba(255,255,255,0.40); }
+  .lead-form input:focus,
+  .lead-form textarea:focus {
+    outline: none;
+    border-color: var(--dk-cyan);
+    background: rgba(255,255,255,0.09);
+  }
+  .lead-form textarea { resize: vertical; min-height: 70px; }
+  .form-submit-btn {
+    width: 100%;
+    background: var(--dk-cyan);
+    color: var(--dk-navy);
+    font-family: var(--dk-font-display);
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 16px 24px;
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  .form-submit-btn:hover { background: var(--dk-cyan-bright); }
+  .form-microcopy {
+    color: rgba(255,255,255,0.40);
+    font-size: 14px;
+    font-weight: 500;
+    margin-top: 12px;
+    text-align: center;
+  }
+  @media(max-width: 900px) {
+    .hero-grid { grid-template-columns: 1fr; gap: 40px; }
+  }
   .btn-primary {
     background: var(--dk-cyan);
     color: var(--dk-navy);
@@ -809,12 +902,45 @@
 <section class="hero" aria-label="Hero">
   <div class="dot-grid"></div>
   <div class="hero-inner">
-    <span class="hero-tag">Third-Party Maintenance (TPM)</span>
-    <h1>Stop <span class="accent">Overpaying</span><br>Your OEM.</h1>
-    <p class="hero-sub">Enterprise-grade post-warranty and end-of-life hardware support for servers, storage, and networking — from 30+ OEM brands — at 30–85% below OEM renewal pricing.</p>
-    <div class="hero-actions">
-      <a href="/cdn-cgi/l/email-protection#82f1e3eee7f1c2e6e3f6e3e9ecedfaacebed" class="btn-primary">See How Much You'll Save</a>
-      <a href="#what-is-tpm" class="btn-ghost">What Is TPM?</a>
+    <div class="hero-grid">
+      <div class="hero-text">
+        <span class="hero-tag">Third-Party Maintenance (TPM)</span>
+        <h1>Stop <span class="accent">Overpaying</span><br>Your OEM.</h1>
+        <p class="hero-sub">Enterprise-grade post-warranty and end-of-life hardware support for servers, storage, and networking — from 30+ OEM brands — at 30–85% below OEM renewal pricing.</p>
+        <div class="hero-actions">
+          <a href="/cdn-cgi/l/email-protection#82f1e3eee7f1c2e6e3f6e3e9ecedfaacebed" class="btn-primary">See How Much You'll Save</a>
+          <a href="#what-is-tpm" class="btn-ghost">What Is TPM?</a>
+        </div>
+      </div>
+      <div class="hero-form-panel">
+        <h3 class="hero-form-title">Get a Free TPM Quote</h3>
+        <p class="hero-form-sub">Tell us about your OEM contract — we'll show you what you can save.</p>
+        <form class="lead-form" action="https://formspree.io/f/xqevjaoq" method="POST">
+          <div class="form-group">
+            <label for="tpm-hero-name">Full Name</label>
+            <input type="text" id="tpm-hero-name" name="name" required>
+          </div>
+          <div class="form-group">
+            <label for="tpm-hero-email">Work Email</label>
+            <input type="email" id="tpm-hero-email" name="email" required>
+          </div>
+          <div class="form-group">
+            <label for="tpm-hero-company">Company</label>
+            <input type="text" id="tpm-hero-company" name="company" required>
+          </div>
+          <div class="form-group">
+            <label for="tpm-hero-phone">Phone</label>
+            <input type="tel" id="tpm-hero-phone" name="phone">
+          </div>
+          <div class="form-group">
+            <label for="tpm-hero-message">What OEM contract or equipment needs support?</label>
+            <textarea id="tpm-hero-message" name="message" rows="3"></textarea>
+          </div>
+          <input type="hidden" name="_subject" value="TPM Hub Lead — dataknox.io">
+          <button type="submit" class="form-submit-btn">Get My Free Quote</button>
+        </form>
+        <p class="form-microcopy">No obligation. We'll respond within one business day.</p>
+      </div>
     </div>
   </div>
 </section>
