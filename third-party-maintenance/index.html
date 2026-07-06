@@ -189,6 +189,11 @@
     margin-bottom: 24px;
   }
   .lead-form .form-group { margin-bottom: 16px; }
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
   .lead-form label {
     display: block;
     color: var(--lt-text);
@@ -243,6 +248,9 @@
   }
   @media(max-width: 900px) {
     .hero-grid { grid-template-columns: 1fr; gap: 40px; }
+  }
+  @media(max-width: 480px) {
+    .form-row { grid-template-columns: 1fr; gap: 0; }
   }
   .btn-primary {
     background: var(--dk-cyan);
@@ -916,9 +924,15 @@
         <h3 class="hero-form-title">Get a Free TPM Quote</h3>
         <p class="hero-form-sub">Tell us about your OEM contract — we'll show you what you can save.</p>
         <form class="lead-form" action="https://formspree.io/f/xqevjaoq" method="POST">
-          <div class="form-group">
-            <label for="tpm-hero-name">Full Name</label>
-            <input type="text" id="tpm-hero-name" name="name" required>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="tpm-hero-first-name">First Name</label>
+              <input type="text" id="tpm-hero-first-name" name="first_name" required>
+            </div>
+            <div class="form-group">
+              <label for="tpm-hero-last-name">Last Name</label>
+              <input type="text" id="tpm-hero-last-name" name="last_name" required>
+            </div>
           </div>
           <div class="form-group">
             <label for="tpm-hero-email">Work Email</label>
