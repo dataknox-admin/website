@@ -89,6 +89,25 @@
   .btn-ghost { background: transparent; color: var(--dk-white); font-family: var(--dk-font-display); font-size: 16px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; padding: 17px 40px; text-decoration: none; display: inline-block; border: 1px solid rgba(255,255,255,0.25); transition: border-color 0.2s,color 0.2s; }
   .btn-ghost:hover { border-color: var(--dk-cyan); color: var(--dk-cyan); }
 
+  /* ── HERO LEAD FORM ── */
+  .hero-grid { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 56px; align-items: start; }
+  .hero-form-panel { position: relative; background: var(--dk-white); border: 1px solid var(--lt-border); padding: 32px; }
+  .hero-form-panel::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--dk-cyan); }
+  .hero-form-title { font-family: var(--dk-font-display); color: var(--lt-text); font-size: 24px; font-weight: 800; text-transform: uppercase; line-height: 1.1; margin-bottom: 8px; }
+  .hero-form-sub { color: var(--lt-text-muted); font-size: 14px; font-weight: 500; line-height: 1.5; margin-bottom: 24px; }
+  .lead-form .form-group { margin-bottom: 16px; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .lead-form label { display: block; color: var(--lt-text); font-family: 'Barlow', sans-serif; font-size: 14px; font-weight: 600; margin-bottom: 6px; }
+  .lead-form input, .lead-form textarea { width: 100%; background: var(--lt-bg-alt); border: 1px solid var(--lt-border); color: var(--lt-text); font-family: 'Barlow', sans-serif; font-size: 14px; font-weight: 500; padding: 12px 14px; box-sizing: border-box; transition: border-color 0.2s, background 0.2s; }
+  .lead-form input::placeholder, .lead-form textarea::placeholder { color: var(--lt-text-muted); }
+  .lead-form input:focus, .lead-form textarea:focus { outline: none; border-color: var(--dk-cyan); background: var(--dk-white); }
+  .lead-form textarea { resize: vertical; min-height: 70px; }
+  .form-submit-btn { width: 100%; background: var(--dk-cyan); color: var(--dk-navy); font-family: var(--dk-font-display); font-size: 16px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; padding: 16px 24px; border: none; cursor: pointer; transition: background 0.2s; }
+  .form-submit-btn:hover { background: var(--dk-cyan-bright); }
+  .form-microcopy { color: var(--lt-text-muted); font-size: 14px; font-weight: 500; margin-top: 12px; text-align: center; }
+  @media(max-width: 900px) { .hero-grid { grid-template-columns: 1fr; gap: 40px; } }
+  @media(max-width: 480px) { .form-row { grid-template-columns: 1fr; gap: 0; } }
+
   /* ── PROOF BAR ── */
   .proof-bar { background: var(--dk-navy-mid); border-top: 1px solid rgba(0,212,200,0.15); border-bottom: 1px solid rgba(0,212,200,0.15); padding: 36px 48px; }
   .proof-bar-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
@@ -374,12 +393,51 @@
 <section class="hero" aria-label="Hero">
   <div class="dot-grid"></div>
   <div class="hero-inner">
-    <span class="hero-tag">AI GPU Infrastructure</span>
-    <h1>AI GPU Infrastructure <span class="accent">for the Modern Enterprise</span></h1>
-    <p class="hero-sub">From day-one GPU procurement to end-of-life disposition, Dataknox is your full-spectrum AI infrastructure partner. Zero CapEx options. Certified data security. 140+ countries.</p>
-    <div class="hero-actions">
-      <a href="mailto:sales@dataknox.io" class="btn-primary">Get a GPU Quote</a>
-      <a href="tel:+18333282362" class="btn-ghost">Call 1-833-DATA-DOA</a>
+    <div class="hero-grid">
+      <div class="hero-text">
+        <span class="hero-tag">AI GPU Infrastructure</span>
+        <h1>AI GPU Infrastructure <span class="accent">for the Modern Enterprise</span></h1>
+        <p class="hero-sub">From day-one GPU procurement to end-of-life disposition, Dataknox is your full-spectrum AI infrastructure partner. Zero CapEx options. Certified data security. 140+ countries.</p>
+        <div class="hero-actions">
+          <a href="mailto:sales@dataknox.io" class="btn-primary">Get a GPU Quote</a>
+          <a href="tel:+18333282362" class="btn-ghost">Call 1-833-DATA-DOA</a>
+        </div>
+      </div>
+      <div class="hero-form-panel">
+        <h3 class="hero-form-title">Get a Free GPU Quote</h3>
+        <p class="hero-form-sub">Tell us about your AI infrastructure needs — we'll show you your options.</p>
+        <form class="lead-form" action="https://formspree.io/f/xlgqgdbr" method="POST">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="aigpu-hero-first-name">First Name</label>
+              <input type="text" id="aigpu-hero-first-name" name="first_name" required>
+            </div>
+            <div class="form-group">
+              <label for="aigpu-hero-last-name">Last Name</label>
+              <input type="text" id="aigpu-hero-last-name" name="last_name" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="aigpu-hero-email">Work Email</label>
+            <input type="email" id="aigpu-hero-email" name="email" required>
+          </div>
+          <div class="form-group">
+            <label for="aigpu-hero-company">Company</label>
+            <input type="text" id="aigpu-hero-company" name="company" required>
+          </div>
+          <div class="form-group">
+            <label for="aigpu-hero-phone">Phone</label>
+            <input type="tel" id="aigpu-hero-phone" name="phone">
+          </div>
+          <div class="form-group">
+            <label for="aigpu-hero-message">Questions or Comments</label>
+            <textarea id="aigpu-hero-message" name="message" rows="3"></textarea>
+          </div>
+          <input type="hidden" name="_subject" value="AI GPU Hub Lead — dataknox.io">
+          <button type="submit" class="form-submit-btn">Get My Free Quote</button>
+        </form>
+        <p class="form-microcopy">No obligation. We'll respond within one business day.</p>
+      </div>
     </div>
   </div>
 </section>
