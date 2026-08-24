@@ -172,6 +172,23 @@
     .proof-bar{padding:24px;gap:32px;}
     .cta-band{padding:56px 24px;}
   }
+.hero-grid { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 56px; align-items: start; }
+.hero-form-panel { position: relative; background: var(--dk-white); border: 1px solid var(--lt-border); padding: 32px; }
+.hero-form-panel::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--dk-cyan); }
+.hero-form-title { font-family: var(--dk-font-display); color: var(--lt-text); font-size: 24px; font-weight: 800; text-transform: uppercase; line-height: 1.1; margin-bottom: 8px; }
+.hero-form-sub { color: var(--lt-text-muted); font-size: 14px; font-weight: 500; line-height: 1.5; margin-bottom: 24px; }
+.lead-form .form-group { margin-bottom: 16px; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.lead-form label { display: block; color: var(--lt-text); font-family: 'Barlow', sans-serif; font-size: 14px; font-weight: 600; margin-bottom: 6px; }
+.lead-form input, .lead-form textarea { width: 100%; background: var(--lt-bg-alt); border: 1px solid var(--lt-border); color: var(--lt-text); font-family: 'Barlow', sans-serif; font-size: 14px; font-weight: 500; padding: 12px 14px; box-sizing: border-box; transition: border-color 0.2s, background 0.2s; }
+.lead-form input::placeholder, .lead-form textarea::placeholder { color: var(--lt-text-muted); }
+.lead-form input:focus, .lead-form textarea:focus { outline: none; border-color: var(--dk-cyan); background: var(--dk-white); }
+.lead-form textarea { resize: vertical; min-height: 70px; }
+.form-submit-btn { width: 100%; background: var(--dk-cyan); color: var(--dk-navy); font-family: var(--dk-font-display); font-size: 16px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; padding: 16px 24px; border: none; cursor: pointer; transition: background 0.2s; }
+.form-submit-btn:hover { background: var(--dk-cyan-bright); }
+.form-microcopy { color: var(--lt-text-muted); font-size: 14px; font-weight: 500; margin-top: 12px; text-align: center; }
+@media(max-width: 900px) { .hero-grid { grid-template-columns: 1fr; gap: 40px; } }
+@media(max-width: 480px) { .form-row { grid-template-columns: 1fr; gap: 0; } }
 </style>
 
 <!-- JSON-LD: Service -->
@@ -304,12 +321,51 @@
 <!-- HERO -->
 <section class="hero">
   <div class="hero-inner">
-    <div class="hero-tag">Blackwell Architecture · NVL72 Rack-Scale</div>
-    <h1>Rent <span class="accent">NVIDIA GB200</span> Blackwell GPUs for AI at Scale</h1>
-    <p class="hero-sub">Access rack-scale GB200 NVL72 compute for frontier model training and large-scale inference — zero CapEx, deployed in hours, backed by 10,527 field engineers across 140+ countries.</p>
-    <div class="hero-ctas">
-      <a href="mailto:sales@dataknox.io" class="btn-primary">Get a Quote</a>
-      <a href="/ai-gpu/gpu-rentals/" class="btn-outline">All GPU Rentals</a>
+    <div class="hero-grid">
+      <div class="hero-text">
+        <div class="hero-tag">Blackwell Architecture · NVL72 Rack-Scale</div>
+        <h1>Rent <span class="accent">NVIDIA GB200</span> Blackwell GPUs for AI at Scale</h1>
+        <p class="hero-sub">Access rack-scale GB200 NVL72 compute for frontier model training and large-scale inference — zero CapEx, deployed in hours, backed by 10,527 field engineers across 140+ countries.</p>
+        <div class="hero-ctas">
+          <a href="mailto:sales@dataknox.io" class="btn-primary">Get a Quote</a>
+          <a href="/ai-gpu/gpu-rentals/" class="btn-outline">All GPU Rentals</a>
+        </div>
+      </div>
+      <div class="hero-form-panel">
+        <h3 class="hero-form-title">Get a Free GPU Quote</h3>
+        <p class="hero-form-sub">Tell us about your AI infrastructure needs — we'll show you your options.</p>
+        <form class="lead-form" action="https://formspree.io/f/xeajbqaj" method="POST">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="gb200-hero-first-name">First Name</label>
+              <input type="text" id="gb200-hero-first-name" name="first_name" required>
+            </div>
+            <div class="form-group">
+              <label for="gb200-hero-last-name">Last Name</label>
+              <input type="text" id="gb200-hero-last-name" name="last_name" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="gb200-hero-email">Work Email</label>
+            <input type="email" id="gb200-hero-email" name="email" required>
+          </div>
+          <div class="form-group">
+            <label for="gb200-hero-company">Company</label>
+            <input type="text" id="gb200-hero-company" name="company" required>
+          </div>
+          <div class="form-group">
+            <label for="gb200-hero-phone">Phone</label>
+            <input type="tel" id="gb200-hero-phone" name="phone">
+          </div>
+          <div class="form-group">
+            <label for="gb200-hero-message">Questions or Comments</label>
+            <textarea id="gb200-hero-message" name="message" rows="3"></textarea>
+          </div>
+          <input type="hidden" name="_subject" value="AI GPU Hub Lead — NVIDIA GB200 GPU Rental — dataknox.io">
+          <button type="submit" class="form-submit-btn">Get My Free Quote</button>
+        </form>
+        <p class="form-microcopy">No obligation. We'll respond within one business day.</p>
+      </div>
     </div>
   </div>
 </section>
