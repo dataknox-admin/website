@@ -6,7 +6,6 @@
 <meta name="robots" content="noindex, nofollow">
 <title>Third-Party Workstation Maintenance &amp; Support Services</title>
 <meta name="description" content="Cut workstation maintenance costs with reliable third-party support. Extend hardware life, reduce downtime, and keep your business running smoothly.">
-<!-- Open Graph -->
 <meta property="og:title" content="Third-Party Workstation Maintenance &amp; Support Services | Dataknox">
 <meta property="og:description" content="Cut workstation maintenance costs with reliable third-party support. Extend hardware life, reduce downtime, and keep your business running smoothly.">
 <meta property="og:type" content="website">
@@ -25,8 +24,6 @@
     --dk-white-70:    rgba(255,255,255,0.70);
     --dk-white-40:    rgba(255,255,255,0.40);
     --dk-teal:        #007B7F;
-    --dk-gray-cool:   #8B9EC7;
-    --dk-dot-pattern: rgba(0,212,200,0.12);
     --dk-font-display: 'Barlow Condensed', 'Impact', sans-serif;
     --dk-font-body:    'Barlow', 'DM Sans', sans-serif;
     --lt-bg:          #FFFFFF;
@@ -36,18 +33,10 @@
     --lt-border:      rgba(11,26,74,0.10);
     --lt-cyan-accent: #007B7F;
   }
-
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: var(--dk-font-body); background: var(--lt-bg); color: var(--lt-text); line-height: 1.6; font-size: 16px; }
 
-  body {
-    font-family: var(--dk-font-body);
-    background: var(--lt-bg);
-    color: var(--lt-text);
-    line-height: 1.6;
-    font-size: 16px;
-  }
-
-  /* ── NAV ── */
+  /* NAV */
   .dk-nav{background:#0B1A4A;border-bottom:1px solid rgba(0,212,200,0.15);position:sticky;top:0;z-index:200;font-family:'Poppins',sans-serif;}
   .dk-nav-top{background:#061030;padding:6px 48px;display:flex;justify-content:flex-end;gap:24px;}
   .dk-nav-top a{color:rgba(255,255,255,0.65);font-size:12px;font-weight:500;text-decoration:none;transition:color 0.2s;}
@@ -66,527 +55,127 @@
   .dk-nav-cta{background:#00D4C8;color:#0B1A4A;font-family:'Poppins',sans-serif;font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;padding:10px 24px;text-decoration:none;transition:background 0.2s;white-space:nowrap;}
   .dk-nav-cta:hover{background:#2DEDE6;}
 
-  /* ── BREADCRUMB ── */
-  .breadcrumb {
-    background: var(--dk-navy-mid);
-    padding: 12px 48px;
-    border-bottom: 1px solid rgba(0,212,200,0.08);
-  }
-  .breadcrumb span, .breadcrumb a {
-    font-size: 14px;
-    color: var(--dk-white-40);
-    text-decoration: none;
-    font-weight: 600;
-  }
-  .breadcrumb a:hover { color: var(--dk-cyan); }
-  .breadcrumb .sep { margin: 0 8px; color: var(--dk-white-40); }
-  .breadcrumb .current { color: var(--dk-cyan); }
+  /* BREADCRUMB */
+  .breadcrumb{background:var(--dk-navy-mid);padding:12px 48px;border-bottom:1px solid rgba(0,212,200,0.08);}
+  .breadcrumb span,.breadcrumb a{font-size:14px;color:var(--dk-white-40);text-decoration:none;font-weight:600;}
+  .breadcrumb a:hover{color:var(--dk-cyan);}
+  .breadcrumb .sep{margin:0 8px;color:var(--dk-white-40);}
+  .breadcrumb .current{color:var(--dk-cyan);}
 
-  /* ── HERO ── */
-  .hero {
-    background: var(--dk-navy);
-    position: relative;
-    overflow: hidden;
-    padding: 96px 48px 80px;
-  }
-  .hero::before {
-    content: '';
-    position: absolute;
-    top: -100px; right: -100px;
-    width: 600px; height: 600px;
-    border-radius: 50%;
-    border: 1px solid rgba(0,212,200,0.08);
-    pointer-events: none;
-  }
-  .hero::after {
-    content: '';
-    position: absolute;
-    top: -50px; right: -50px;
-    width: 400px; height: 400px;
-    border-radius: 50%;
-    border: 1px solid rgba(0,212,200,0.12);
-    pointer-events: none;
-  }
-  .dot-grid {
-    position: absolute;
-    inset: 0;
-    background-image: radial-gradient(circle, rgba(0,212,200,0.10) 1px, transparent 1px);
-    background-size: 28px 28px;
-    pointer-events: none;
-  }
-  .hero-inner { position: relative; z-index: 2; max-width: 1200px; margin: 0 auto; }
-  .hero-tag {
-    display: inline-block;
-    background: rgba(255,255,255,0.08);
-    border: 1px solid rgba(255,255,255,0.25);
-    color: var(--dk-white);
-    font-family: var(--dk-font-display);
-    font-size: 14px;
-    font-weight: 700;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    padding: 6px 16px;
-    margin-bottom: 24px;
-  }
-  .hero h1 {
-    font-family: var(--dk-font-display);
-    font-size: clamp(48px, 6vw, 80px);
-    font-weight: 800;
-    line-height: 1.0;
-    text-transform: uppercase;
-    letter-spacing: -0.01em;
-    margin-bottom: 24px;
-    max-width: 900px;
-    color: var(--dk-white);
-  }
-  .hero-sub {
-    font-size: 20px;
-    font-weight: 400;
-    color: rgba(255,255,255,0.88);
-    max-width: 640px;
-    line-height: 1.6;
-    margin-bottom: 40px;
-  }
-  .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; }
+  /* HERO */
+  .hero{background:var(--dk-navy);position:relative;overflow:hidden;padding:96px 48px 80px;}
+  .hero::before{content:'';position:absolute;top:-100px;right:-100px;width:600px;height:600px;border-radius:50%;border:1px solid rgba(0,212,200,0.08);pointer-events:none;}
+  .hero::after{content:'';position:absolute;top:-50px;right:-50px;width:400px;height:400px;border-radius:50%;border:1px solid rgba(0,212,200,0.12);pointer-events:none;}
+  .dot-grid{position:absolute;inset:0;background-image:radial-gradient(circle,rgba(0,212,200,0.10) 1px,transparent 1px);background-size:28px 28px;pointer-events:none;}
+  .hero-inner{position:relative;z-index:2;max-width:1200px;margin:0 auto;}
+  .hero-tag{display:inline-block;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.25);color:var(--dk-white);font-family:var(--dk-font-display);font-size:14px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;padding:6px 16px;margin-bottom:24px;}
+  .hero h1{font-family:var(--dk-font-display);font-size:clamp(48px,6vw,80px);font-weight:800;line-height:1.0;text-transform:uppercase;letter-spacing:-0.01em;margin-bottom:24px;max-width:900px;color:var(--dk-white);}
+  .hero-sub{font-size:20px;font-weight:400;color:rgba(255,255,255,0.88);max-width:640px;line-height:1.6;margin-bottom:40px;}
+  .hero-actions{display:flex;gap:16px;flex-wrap:wrap;}
+  .hero-grid{display:grid;grid-template-columns:1.15fr 0.85fr;gap:56px;align-items:start;}
+  .hero-form-panel{position:relative;background:var(--dk-white);border:1px solid var(--lt-border);padding:32px;}
+  .hero-form-panel::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--dk-cyan);}
+  .hero-form-title{font-family:var(--dk-font-display);color:var(--lt-text);font-size:24px;font-weight:800;text-transform:uppercase;line-height:1.1;margin-bottom:8px;}
+  .hero-form-sub{color:var(--lt-text-muted);font-size:14px;font-weight:500;line-height:1.5;margin-bottom:24px;}
+  .lead-form .form-group{margin-bottom:16px;}
+  .form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  .lead-form label{display:block;color:var(--lt-text);font-family:'Barlow',sans-serif;font-size:14px;font-weight:600;margin-bottom:6px;}
+  .lead-form input,.lead-form textarea{width:100%;background:var(--lt-bg-alt);border:1px solid var(--lt-border);color:var(--lt-text);font-family:'Barlow',sans-serif;font-size:14px;font-weight:500;padding:12px 14px;box-sizing:border-box;transition:border-color 0.2s,background 0.2s;}
+  .lead-form input::placeholder,.lead-form textarea::placeholder{color:var(--lt-text-muted);}
+  .lead-form input:focus,.lead-form textarea:focus{outline:none;border-color:var(--dk-cyan);background:var(--dk-white);}
+  .lead-form textarea{resize:vertical;min-height:70px;}
+  .form-submit-btn{width:100%;background:var(--dk-cyan);color:var(--dk-navy);font-family:var(--dk-font-display);font-size:16px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;padding:16px 24px;border:none;cursor:pointer;transition:background 0.2s;}
+  .form-submit-btn:hover{background:var(--dk-cyan-bright);}
+  .form-microcopy{color:var(--lt-text-muted);font-size:14px;font-weight:500;margin-top:12px;text-align:center;}
+  .btn-primary{background:var(--dk-cyan);color:var(--dk-navy);font-family:var(--dk-font-display);font-size:16px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;padding:18px 40px;text-decoration:none;display:inline-block;transition:background 0.2s;}
+  .btn-primary:hover{background:var(--dk-cyan-bright);}
+  .btn-ghost{background:transparent;color:var(--dk-white);font-family:var(--dk-font-display);font-size:16px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;padding:17px 40px;text-decoration:none;display:inline-block;border:1px solid rgba(255,255,255,0.25);transition:border-color 0.2s,color 0.2s;}
+  .btn-ghost:hover{border-color:var(--dk-cyan);color:var(--dk-cyan);}
 
-  /* ── HERO GRID ── */
-  .hero-grid {
-    display: grid;
-    grid-template-columns: 1.15fr 0.85fr;
-    gap: 56px;
-    align-items: start;
-  }
-  .hero-form-panel {
-    position: relative;
-    background: var(--dk-white);
-    border: 1px solid var(--lt-border);
-    padding: 32px;
-  }
-  .hero-form-panel::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 3px;
-    background: var(--dk-cyan);
-  }
-  .hero-form-title {
-    font-family: var(--dk-font-display);
-    color: var(--lt-text);
-    font-size: 24px;
-    font-weight: 800;
-    text-transform: uppercase;
-    line-height: 1.1;
-    margin-bottom: 8px;
-  }
-  .hero-form-sub {
-    color: var(--lt-text-muted);
-    font-size: 14px;
-    font-weight: 500;
-    line-height: 1.5;
-    margin-bottom: 24px;
-  }
-  .lead-form .form-group { margin-bottom: 16px; }
-  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-  .lead-form label {
-    display: block;
-    color: var(--lt-text);
-    font-family: 'Barlow', sans-serif;
-    font-size: 14px;
-    font-weight: 600;
-    margin-bottom: 6px;
-  }
-  .lead-form input, .lead-form textarea {
-    width: 100%;
-    background: var(--lt-bg-alt);
-    border: 1px solid var(--lt-border);
-    color: var(--lt-text);
-    font-family: 'Barlow', sans-serif;
-    font-size: 14px;
-    font-weight: 500;
-    padding: 12px 14px;
-    box-sizing: border-box;
-    transition: border-color 0.2s, background 0.2s;
-  }
-  .lead-form input::placeholder, .lead-form textarea::placeholder { color: var(--lt-text-muted); }
-  .lead-form input:focus, .lead-form textarea:focus {
-    outline: none;
-    border-color: var(--dk-cyan);
-    background: var(--dk-white);
-  }
-  .lead-form textarea { resize: vertical; min-height: 70px; }
-  .form-submit-btn {
-    width: 100%;
-    background: var(--dk-cyan);
-    color: var(--dk-navy);
-    font-family: var(--dk-font-display);
-    font-size: 16px;
-    font-weight: 700;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    padding: 16px 24px;
-    border: none;
-    cursor: pointer;
-    transition: background 0.2s;
-  }
-  .form-submit-btn:hover { background: var(--dk-cyan-bright); }
-  .form-microcopy {
-    color: var(--lt-text-muted);
-    font-size: 14px;
-    font-weight: 500;
-    margin-top: 12px;
-    text-align: center;
-  }
-  @media(max-width: 900px) { .hero-grid { grid-template-columns: 1fr; gap: 40px; } }
-  @media(max-width: 480px) { .form-row { grid-template-columns: 1fr; gap: 0; } }
+  /* PROOF BAR */
+  .proof-bar{background:var(--dk-navy-mid);border-top:1px solid rgba(0,212,200,0.15);border-bottom:1px solid rgba(0,212,200,0.15);padding:36px 48px;}
+  .proof-bar-inner{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;}
+  .proof-stat{text-align:center;}
+  .proof-stat .num{font-family:var(--dk-font-display);font-size:44px;font-weight:800;color:var(--dk-cyan);line-height:1;display:block;}
+  .proof-stat .label{font-family:var(--dk-font-display);font-size:14px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--dk-white-70);margin-top:6px;display:block;}
 
-  .btn-primary {
-    background: var(--dk-cyan);
-    color: var(--dk-navy);
-    font-family: var(--dk-font-display);
-    font-size: 16px;
-    font-weight: 700;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    padding: 18px 40px;
-    text-decoration: none;
-    display: inline-block;
-    transition: background 0.2s;
-  }
-  .btn-primary:hover { background: var(--dk-cyan-bright); }
-  .btn-ghost {
-    background: transparent;
-    color: var(--dk-white);
-    font-family: var(--dk-font-display);
-    font-size: 16px;
-    font-weight: 700;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    padding: 17px 40px;
-    text-decoration: none;
-    display: inline-block;
-    border: 1px solid rgba(255,255,255,0.25);
-    transition: border-color 0.2s, color 0.2s;
-  }
-  .btn-ghost:hover { border-color: var(--dk-cyan); color: var(--dk-cyan); }
+  /* SECTIONS */
+  .section{padding:80px 48px;background:var(--lt-bg);}
+  .section-inner{max-width:1200px;margin:0 auto;}
+  .section-alt{background:var(--lt-bg-alt);}
+  .section-label{font-family:var(--dk-font-display);font-size:14px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--lt-cyan-accent);margin-bottom:12px;display:block;}
+  .section-title{font-family:var(--dk-font-display);font-size:clamp(36px,4vw,52px);font-weight:800;text-transform:uppercase;line-height:1.05;margin-bottom:16px;color:var(--lt-text);}
+  .section-body{font-size:18px;color:var(--lt-text-muted);max-width:680px;line-height:1.7;margin-bottom:48px;}
 
-  /* ── PROOF BAR ── */
-  .proof-bar {
-    background: var(--dk-navy-mid);
-    border-top: 1px solid rgba(0,212,200,0.15);
-    border-bottom: 1px solid rgba(0,212,200,0.15);
-    padding: 36px 48px;
-  }
-  .proof-bar-inner {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    gap: 24px;
-    flex-wrap: wrap;
-  }
-  .proof-stat { text-align: center; }
-  .proof-stat .num {
-    font-family: var(--dk-font-display);
-    font-size: 44px;
-    font-weight: 800;
-    color: var(--dk-cyan);
-    line-height: 1;
-    display: block;
-  }
-  .proof-stat .label {
-    font-family: var(--dk-font-display);
-    font-size: 14px;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--dk-white-70);
-    margin-top: 6px;
-    display: block;
-  }
+  /* TWO COL */
+  .two-col{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start;}
+  .two-col p{font-size:17px;color:var(--lt-text-muted);line-height:1.8;margin-bottom:20px;}
+  .two-col p strong{color:var(--lt-text);}
 
-  /* ── SECTIONS ── */
-  .section { padding: 80px 48px; background: var(--lt-bg); }
-  .section-inner { max-width: 1200px; margin: 0 auto; }
-  .section-alt { background: var(--lt-bg-alt); }
+  /* COMPARE CARD */
+  .tpm-compare-card{background:var(--dk-navy);border:1px solid rgba(0,212,200,0.15);padding:32px;position:relative;}
+  .tpm-compare-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--dk-cyan);}
+  .compare-title{font-family:var(--dk-font-display);font-size:20px;font-weight:700;text-transform:uppercase;letter-spacing:0.04em;color:var(--dk-cyan);margin-bottom:24px;}
+  .compare-row{display:grid;grid-template-columns:1fr 1fr 1fr;align-items:center;padding:14px 0;border-bottom:1px solid rgba(255,255,255,0.06);font-size:15px;gap:8px;}
+  .compare-row:last-child{border-bottom:none;}
+  .compare-row .feature{color:var(--dk-white-70);font-weight:500;}
+  .compare-row .oem{color:rgba(255,120,100,0.90);font-weight:600;text-align:center;}
+  .compare-row .dk{color:var(--dk-cyan);font-weight:700;text-align:right;}
 
-  .section-label {
-    font-family: var(--dk-font-display);
-    font-size: 14px;
-    font-weight: 700;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--lt-cyan-accent);
-    margin-bottom: 12px;
-    display: block;
-  }
-  .section-title {
-    font-family: var(--dk-font-display);
-    font-size: clamp(36px, 4vw, 52px);
-    font-weight: 800;
-    text-transform: uppercase;
-    line-height: 1.05;
-    margin-bottom: 16px;
-    color: var(--lt-text);
-  }
-  .section-body {
-    font-size: 18px;
-    color: var(--lt-text-muted);
-    max-width: 680px;
-    line-height: 1.7;
-    margin-bottom: 48px;
-  }
+  /* CHECKLIST */
+  .tpm-checklist{list-style:none;margin-top:0;}
+  .tpm-checklist li{display:flex;align-items:flex-start;gap:12px;font-size:16px;color:var(--lt-text-muted);padding:10px 0;border-bottom:1px solid var(--lt-border);font-weight:500;}
+  .tpm-checklist li:last-child{border-bottom:none;}
+  .tpm-checklist li::before{content:'✓';color:var(--lt-cyan-accent);font-weight:800;font-size:16px;flex-shrink:0;margin-top:1px;}
+  .tpm-checklist li strong{color:var(--lt-text);}
 
-  /* ── EXPLAINER TWO-COL ── */
-  .tpm-explainer {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 64px;
-    align-items: start;
-  }
-  .tpm-explainer-text p {
-    font-size: 17px;
-    color: var(--lt-text-muted);
-    line-height: 1.8;
-    margin-bottom: 20px;
-  }
-  .tpm-explainer-text p strong { color: var(--lt-text); }
-  .tpm-checklist { list-style: none; margin-top: 28px; }
-  .tpm-checklist li {
-    display: flex;
-    align-items: flex-start;
-    gap: 12px;
-    font-size: 16px;
-    color: var(--lt-text-muted);
-    padding: 10px 0;
-    border-bottom: 1px solid var(--lt-border);
-    font-weight: 500;
-  }
-  .tpm-checklist li:last-child { border-bottom: none; }
-  .tpm-checklist li::before {
-    content: '✓';
-    color: var(--lt-cyan-accent);
-    font-weight: 800;
-    font-size: 16px;
-    flex-shrink: 0;
-    margin-top: 1px;
-  }
-  .tpm-compare-card {
-    background: var(--dk-navy);
-    border: 1px solid rgba(0,212,200,0.15);
-    padding: 32px;
-    position: relative;
-  }
-  .tpm-compare-card::before {
-    content: '';
-    position: absolute; top: 0; left: 0; right: 0;
-    height: 3px;
-    background: var(--dk-cyan);
-  }
-  .compare-title {
-    font-family: var(--dk-font-display);
-    font-size: 20px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.04em;
-    color: var(--dk-cyan);
-    margin-bottom: 24px;
-  }
-  .compare-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    align-items: center;
-    padding: 14px 0;
-    border-bottom: 1px solid rgba(255,255,255,0.06);
-    font-size: 15px;
-    gap: 8px;
-  }
-  .compare-row:last-child { border-bottom: none; }
-  .compare-row .feature { color: var(--dk-white-70); font-weight: 500; }
-  .compare-row .oem { color: rgba(255,120,100,0.90); font-weight: 600; text-align: center; }
-  .compare-row .dk { color: var(--dk-cyan); font-weight: 700; text-align: right; }
+  /* BRAND / SERVICE CARDS */
+  .card-grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+  .card-grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;}
+  .dk-card{background:var(--lt-bg);border:1px solid var(--lt-border);box-shadow:0 2px 12px rgba(11,26,74,0.07);padding:32px 28px;position:relative;}
+  .dk-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--dk-cyan);}
+  .card-title{font-family:var(--dk-font-display);font-size:22px;font-weight:700;text-transform:uppercase;letter-spacing:0.02em;color:var(--lt-text);margin-bottom:12px;line-height:1.15;}
+  .card-body{font-size:15px;color:var(--lt-text-muted);line-height:1.65;}
 
-  /* ── BRAND CARDS ── */
-  .brand-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
-    margin-top: 8px;
-  }
-  .brand-card {
-    background: var(--lt-bg);
-    border: 1px solid var(--lt-border);
-    border-top: 3px solid var(--dk-cyan);
-    padding: 28px;
-    box-shadow: 0 2px 12px rgba(11,26,74,0.07);
-  }
-  .brand-card-name {
-    font-family: var(--dk-font-display);
-    font-size: 20px;
-    font-weight: 700;
-    text-transform: uppercase;
-    color: var(--lt-text);
-    margin-bottom: 8px;
-  }
-  .brand-card-sub {
-    font-size: 13px;
-    font-weight: 700;
-    font-family: var(--dk-font-display);
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    color: var(--lt-cyan-accent);
-    margin-bottom: 12px;
-  }
-  .brand-card p {
-    font-size: 15px;
-    color: var(--lt-text-muted);
-    line-height: 1.65;
-  }
+  /* SLA TABLE */
+  .sla-table-wrap{overflow-x:auto;margin-top:32px;}
+  .sla-table{width:100%;border-collapse:collapse;font-size:15px;}
+  .sla-table th{background:var(--dk-navy);font-family:var(--dk-font-display);font-size:14px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--dk-cyan);padding:16px 20px;text-align:left;border-bottom:2px solid var(--dk-cyan);}
+  .sla-table th:first-child{color:var(--dk-white-70);}
+  .sla-table td{padding:14px 20px;border-bottom:1px solid var(--lt-border);color:var(--lt-text-muted);font-weight:500;background:#fff;}
+  .sla-table tr:last-child td{border-bottom:none;}
+  .sla-table tr:nth-child(even) td{background:var(--lt-bg-alt);}
+  .sla-table tr:hover td{background:rgba(0,212,200,0.06);}
+  .sla-check{color:var(--lt-cyan-accent);font-weight:800;}
 
-  /* ── SLA CARDS ── */
-  .sla-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 24px;
-    margin-top: 8px;
-  }
-  .sla-card {
-    background: var(--lt-bg);
-    border: 1px solid var(--lt-border);
-    box-shadow: 0 2px 12px rgba(11,26,74,0.07);
-    padding: 32px 28px;
-    position: relative;
-  }
-  .sla-card::before {
-    content: '';
-    position: absolute; top: 0; left: 0; right: 0;
-    height: 3px;
-    background: var(--dk-cyan);
-  }
-  .sla-card-title {
-    font-family: var(--dk-font-display);
-    font-size: 22px;
-    font-weight: 700;
-    text-transform: uppercase;
-    color: var(--lt-text);
-    margin-bottom: 12px;
-  }
-  .sla-card p {
-    font-size: 15px;
-    color: var(--lt-text-muted);
-    line-height: 1.65;
-  }
+  /* EEAT */
+  .eeat-section{background:var(--lt-bg-alt);border-top:1px solid var(--lt-border);border-bottom:1px solid var(--lt-border);padding:56px 48px;}
+  .eeat-inner{max-width:1200px;margin:0 auto;}
+  .eeat-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:32px;margin-top:40px;}
+  .eeat-card{background:var(--lt-bg);border:1px solid var(--lt-border);border-top:3px solid var(--dk-cyan);padding:28px;box-shadow:0 2px 8px rgba(11,26,74,0.06);}
+  .eeat-card-label{font-family:var(--dk-font-display);font-size:13px;font-weight:700;letter-spacing:0.10em;text-transform:uppercase;color:var(--lt-cyan-accent);margin-bottom:10px;}
+  .eeat-card-title{font-family:var(--dk-font-display);font-size:20px;font-weight:700;text-transform:uppercase;margin-bottom:10px;color:var(--lt-text);}
+  .eeat-card p{font-size:15px;color:var(--lt-text-muted);line-height:1.65;}
 
-  /* ── SLA TABLE ── */
-  .sla-table-wrap { overflow-x: auto; margin-top: 32px; }
-  .sla-table { width: 100%; border-collapse: collapse; font-size: 15px; }
-  .sla-table th {
-    background: var(--dk-navy);
-    font-family: var(--dk-font-display);
-    font-size: 14px;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--dk-cyan);
-    padding: 16px 20px;
-    text-align: left;
-    border-bottom: 2px solid var(--dk-cyan);
-  }
-  .sla-table th:first-child { color: var(--dk-white-70); }
-  .sla-table td {
-    padding: 14px 20px;
-    border-bottom: 1px solid var(--lt-border);
-    color: var(--lt-text-muted);
-    font-weight: 500;
-    background: #fff;
-  }
-  .sla-table tr:last-child td { border-bottom: none; }
-  .sla-table tr:nth-child(even) td { background: var(--lt-bg-alt); }
-  .sla-table tr:hover td { background: rgba(0,212,200,0.06); }
-  .sla-check { color: var(--lt-cyan-accent); font-weight: 800; }
+  /* FAQ */
+  .faq-section{padding:80px 48px;background:var(--lt-bg);}
+  .faq-inner{max-width:860px;margin:0 auto;}
+  .faq-intro{font-size:18px;color:var(--lt-text-muted);margin-bottom:48px;line-height:1.7;}
+  .faq-item{border-bottom:1px solid var(--lt-border);padding:28px 0;}
+  .faq-item:first-of-type{border-top:1px solid var(--lt-border);}
+  .faq-q{font-family:var(--dk-font-display);font-size:20px;font-weight:700;text-transform:uppercase;letter-spacing:0.02em;color:var(--lt-text);cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px;line-height:1.3;}
+  .faq-q .toggle{color:var(--dk-cyan);font-size:22px;flex-shrink:0;font-family:var(--dk-font-body);font-weight:300;}
+  .faq-a{margin-top:16px;font-size:16px;color:var(--lt-text-muted);line-height:1.8;display:none;}
+  .faq-a.open{display:block;}
 
-  /* ── EEAT ── */
-  .eeat-section {
-    background: var(--lt-bg-alt);
-    border-top: 1px solid var(--lt-border);
-    border-bottom: 1px solid var(--lt-border);
-    padding: 56px 48px;
-  }
-  .eeat-inner { max-width: 1200px; margin: 0 auto; }
-  .eeat-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 32px; margin-top: 40px; }
-  .eeat-card {
-    background: var(--lt-bg);
-    border: 1px solid var(--lt-border);
-    border-top: 3px solid var(--dk-cyan);
-    padding: 28px;
-    box-shadow: 0 2px 8px rgba(11,26,74,0.06);
-  }
-  .eeat-card-label {
-    font-family: var(--dk-font-display);
-    font-size: 13px; font-weight: 700;
-    letter-spacing: 0.10em; text-transform: uppercase;
-    color: var(--lt-cyan-accent); margin-bottom: 10px;
-  }
-  .eeat-card-title {
-    font-family: var(--dk-font-display);
-    font-size: 20px; font-weight: 700;
-    text-transform: uppercase; margin-bottom: 10px;
-    color: var(--lt-text);
-  }
-  .eeat-card p { font-size: 15px; color: var(--lt-text-muted); line-height: 1.65; }
+  /* CTA BAND */
+  .cta-band{background:var(--dk-cyan);padding:72px 48px;text-align:center;}
+  .cta-band h2{font-family:var(--dk-font-display);font-size:clamp(40px,5vw,56px);font-weight:800;text-transform:uppercase;color:var(--dk-navy);margin-bottom:12px;}
+  .cta-band p{font-size:18px;color:rgba(11,26,74,0.75);margin-bottom:36px;max-width:560px;margin-left:auto;margin-right:auto;line-height:1.6;}
+  .btn-dark{background:var(--dk-navy);color:var(--dk-white);font-family:var(--dk-font-display);font-size:16px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;padding:18px 40px;text-decoration:none;display:inline-block;margin:0 8px;transition:background 0.2s;}
+  .btn-dark:hover{background:var(--dk-navy-light);}
 
-  /* ── FAQ ── */
-  .faq-section { padding: 80px 48px; background: var(--lt-bg); }
-  .faq-inner { max-width: 860px; margin: 0 auto; }
-  .faq-intro { font-size: 18px; color: var(--lt-text-muted); margin-bottom: 48px; line-height: 1.7; }
-  .faq-item { border-bottom: 1px solid var(--lt-border); padding: 28px 0; }
-  .faq-item:first-of-type { border-top: 1px solid var(--lt-border); }
-  .faq-q {
-    font-family: var(--dk-font-display);
-    font-size: 20px; font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.02em;
-    color: var(--lt-text);
-    cursor: pointer;
-    display: flex; justify-content: space-between; align-items: center;
-    gap: 16px;
-    line-height: 1.3;
-  }
-  .faq-q .toggle { color: var(--dk-cyan); font-size: 22px; flex-shrink: 0; font-family: var(--dk-font-body); font-weight: 300; }
-  .faq-a { margin-top: 16px; font-size: 16px; color: var(--lt-text-muted); line-height: 1.8; display: none; }
-  .faq-a.open { display: block; }
-  .faq-a strong { color: var(--lt-text); }
-
-  /* ── CTA BAND ── */
-  .cta-band { background: var(--dk-cyan); padding: 72px 48px; text-align: center; }
-  .cta-band h2 {
-    font-family: var(--dk-font-display);
-    font-size: clamp(40px, 5vw, 56px);
-    font-weight: 800;
-    text-transform: uppercase;
-    color: var(--dk-navy);
-    margin-bottom: 12px;
-  }
-  .cta-band p {
-    font-size: 18px;
-    color: rgba(11,26,74,0.75);
-    margin-bottom: 36px;
-    max-width: 560px;
-    margin-left: auto; margin-right: auto;
-    line-height: 1.6;
-  }
-  .btn-dark {
-    background: var(--dk-navy);
-    color: var(--dk-white);
-    font-family: var(--dk-font-display);
-    font-size: 16px; font-weight: 700;
-    letter-spacing: 0.06em; text-transform: uppercase;
-    padding: 18px 40px; text-decoration: none;
-    display: inline-block; margin: 0 8px;
-    transition: background 0.2s;
-  }
-  .btn-dark:hover { background: var(--dk-navy-light); }
-
-  /* ── FOOTER ── */
+  /* FOOTER */
   .dk-footer{background:#0B1A4A;border-top:1px solid rgba(0,212,200,0.12);font-family:'Poppins',sans-serif;}
   .dk-footer-main{max-width:1400px;margin:0 auto;padding:56px 48px 40px;display:grid;grid-template-columns:1fr 2fr;gap:64px;}
   .dk-footer-brand img{height:28px;width:auto;margin-bottom:16px;}
@@ -601,45 +190,38 @@
   .dk-footer-certs{display:flex;gap:10px;flex-wrap:wrap;}
   .dk-cert-badge{background:rgba(255,255,255,0.05);border:1px solid rgba(0,212,200,0.15);padding:4px 12px;font-family:'Poppins',sans-serif;font-size:11px;font-weight:600;color:rgba(255,255,255,0.55);letter-spacing:0.06em;}
 
-  /* ── SECTION ALT overrides ── */
-  .section-alt .section-label { color: var(--lt-cyan-accent); }
-  .section-alt .section-title { color: var(--lt-text); }
-  .section-alt .section-body  { color: var(--lt-text-muted); }
-  .eeat-section .section-label { color: var(--lt-cyan-accent); }
-  .eeat-section .section-title { color: var(--lt-text); }
-  .faq-section .section-label { color: var(--lt-cyan-accent); }
-  .faq-section .section-title { color: var(--lt-text); }
-
-  .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0,0,0,0); }
+  .section-alt .section-label{color:var(--lt-cyan-accent);}
+  .section-alt .section-title{color:var(--lt-text);}
+  .section-alt .section-body{color:var(--lt-text-muted);}
+  .eeat-section .section-label{color:var(--lt-cyan-accent);}
+  .eeat-section .section-title{color:var(--lt-text);}
+  .faq-section .section-label{color:var(--lt-cyan-accent);}
+  .faq-section .section-title{color:var(--lt-text);}
 
   @media(max-width:768px){
     .dk-nav-links{display:none;}
-    .dk-nav-main{padding:0 24px;}
+    .dk-nav-main,.dk-nav-top{padding:0 24px;}
+    .dk-nav-main{height:56px;}
     .dk-nav-top{padding:6px 24px;}
+    .hero{padding:64px 24px 56px;}
+    .hero-grid{grid-template-columns:1fr;gap:40px;}
+    .breadcrumb,.proof-bar{padding:12px 24px;}
+    .proof-bar{padding:28px 24px;}
+    .section{padding:56px 24px;}
+    .two-col,.card-grid-3,.card-grid-2,.eeat-grid{grid-template-columns:1fr;}
+    .faq-section,.cta-band{padding:56px 24px;}
+    .eeat-section{padding:40px 24px;}
     .dk-footer-main{grid-template-columns:1fr;gap:32px;padding:40px 24px 24px;}
     .dk-footer-bottom{padding:16px 24px;}
-    .tpm-explainer{grid-template-columns:1fr;}
-    .brand-grid{grid-template-columns:1fr 1fr;}
-    .sla-grid{grid-template-columns:1fr;}
-    .eeat-grid{grid-template-columns:1fr;}
-    .hero{padding:64px 24px 56px;}
-    .section{padding:56px 24px;}
-    .breadcrumb{padding:12px 24px;}
-    .proof-bar{padding:28px 24px;}
-    .faq-section{padding:56px 24px;}
-    .cta-band{padding:56px 24px;}
-  }
-  @media(max-width:480px){
-    .brand-grid{grid-template-columns:1fr;}
+    .form-row{grid-template-columns:1fr;}
   }
 </style>
 
-<!-- Schema Markup -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "Service",
-  "name": "Third-Party Workstation Maintenance",
+  "name": "Third-Party Workstation Maintenance & Support Services",
   "serviceType": "IT Hardware Maintenance",
   "provider": {
     "@type": "Organization",
@@ -656,7 +238,7 @@
     "foundingDate": "2003",
     "hasCredential": ["ISO 9001", "ISO 14001", "ISO 45001", "R2v3", "NAID AAA"]
   },
-  "description": "Dataknox provides third-party workstation maintenance for Dell Precision, HP Z, Lenovo ThinkStation, Apple, Microsoft Surface, ASUS, and Gigabyte systems. Post-warranty support, on-site service, depot repair, and custom SLA options.",
+  "description": "Dataknox provides third-party maintenance for Dell, HP, Lenovo, Apple, Microsoft, ASUS, and Gigabyte workstation environments. Post-warranty support, replacement parts, on-site or depot service, and SLA options based on each system's needs.",
   "url": "https://www.dataknox.io/third-party-maintenance/workstation-maintenance"
 }
 </script>
@@ -668,50 +250,32 @@
     {
       "@type": "Question",
       "name": "What is third-party workstation maintenance?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Third-party workstation maintenance is hardware support from an independent provider instead of the original manufacturer. It can include troubleshooting, replacement parts, on-site repair, depot repair, and component replacement."
-      }
+      "acceptedAnswer": { "@type": "Answer", "text": "Third-party workstation maintenance is hardware support from an independent provider instead of the original manufacturer. It can include troubleshooting, replacement parts, on-site repair, depot repair, and component replacement." }
     },
     {
       "@type": "Question",
       "name": "Which workstation brands can Dataknox support?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Dataknox supports Dell Precision, HP Z, Lenovo ThinkStation, Apple Mac Pro and Mac Studio, Microsoft Surface, ASUS, and Gigabyte systems. Support for each model is confirmed during the asset review."
-      }
+      "acceptedAnswer": { "@type": "Answer", "text": "Dataknox supports Dell Precision, HP Z, Lenovo ThinkStation, Apple Mac Pro and Mac Studio, Microsoft Surface, ASUS, and Gigabyte systems. Support for each model is confirmed during the asset review." }
     },
     {
       "@type": "Question",
       "name": "Can Dataknox support GPU workstations?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes. Dataknox can support professional GPUs, power supplies, cooling systems, and other hardware used in GPU-based workstations. Coverage depends on the specific GPU and system configuration."
-      }
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes. Dataknox can support professional GPUs, power supplies, cooling systems, and other hardware used in GPU-based workstations. Coverage depends on the specific GPU and system configuration." }
     },
     {
       "@type": "Question",
       "name": "Can a workstation be supported after its OEM warranty expires?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes. Third-party maintenance can keep your workstation covered after its OEM warranty or standard support period ends. Coverage depends on parts availability and available engineering support."
-      }
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes. Third-party maintenance can keep your workstation covered after its OEM warranty or standard support period ends. Coverage depends on parts availability and available engineering support." }
     },
     {
       "@type": "Question",
       "name": "Can different workstation brands use the same support contract?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes. You can cover Dell, HP, Lenovo, Apple, Microsoft, ASUS, and Gigabyte systems under one Dataknox agreement. This gives you one service desk, escalation process, and renewal date."
-      }
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes. You can cover Dell, HP, Lenovo, Apple, Microsoft, ASUS, and Gigabyte systems under one Dataknox agreement. This gives you one service desk, escalation process, and renewal date." }
     },
     {
       "@type": "Question",
       "name": "What workstation SLA options are available?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Dataknox offers 4-hour on-site response, next-business-day support, depot repair, and custom fleet coverage. You can assign different SLA levels to individual systems under the same contract."
-      }
+      "acceptedAnswer": { "@type": "Answer", "text": "Dataknox offers 4-hour on-site response, next-business-day support, depot repair, and custom fleet coverage. You can assign different SLA levels to individual systems under the same contract." }
     }
   ]
 }
@@ -787,8 +351,8 @@
     <div class="hero-grid">
       <div class="hero-text">
         <span class="hero-tag">Third-Party Workstation Maintenance</span>
-        <h1>Stop Overpaying<br>For Workstation<br>Support.</h1>
-        <p class="hero-sub">Post-warranty and end-of-life workstation support for Dell, HP, Lenovo, Apple, Microsoft, ASUS, and Gigabyte — on-site, depot, or custom fleet SLA, at a fraction of OEM cost.</p>
+        <h1>Third-Party Workstation Maintenance &amp; Support Services</h1>
+        <p class="hero-sub">Workstations often keep running well long after their warranties expire, while OEM renewal costs can become hard to justify. Dataknox provides third-party maintenance for Dell, HP, Lenovo, Apple, Microsoft, ASUS, and Gigabyte workstation environments. You can get post-warranty support, replacement parts, on-site or depot service, and SLA options based on each system&#8217;s needs.</p>
         <div class="hero-actions">
           <a href="mailto:sales@dataknox.io" class="btn-primary">Get a Free Quote</a>
           <a href="#brands" class="btn-ghost">Brands We Support</a>
@@ -796,16 +360,16 @@
       </div>
       <div class="hero-form-panel">
         <h3 class="hero-form-title">Get a Free Workstation Quote</h3>
-        <p class="hero-form-sub">Tell us about your workstation fleet — we'll show you what you can save.</p>
+        <p class="hero-form-sub">Tell us about your OEM contract — we'll show you what you can save.</p>
         <form class="lead-form" action="https://formspree.io/f/xrpzwgzl" method="POST">
           <div class="form-row">
             <div class="form-group">
-              <label for="ws-first-name">First Name</label>
-              <input type="text" id="ws-first-name" name="first_name" required>
+              <label for="ws-first">First Name</label>
+              <input type="text" id="ws-first" name="first_name" required>
             </div>
             <div class="form-group">
-              <label for="ws-last-name">Last Name</label>
-              <input type="text" id="ws-last-name" name="last_name" required>
+              <label for="ws-last">Last Name</label>
+              <input type="text" id="ws-last" name="last_name" required>
             </div>
           </div>
           <div class="form-group">
@@ -845,167 +409,170 @@
   </div>
 </div>
 
-<!-- INTRO / WHAT IS -->
-<section class="section" id="what-is-tpm" aria-labelledby="intro-heading">
+<!-- BRANDS WE SUPPORT -->
+<section class="section" id="brands" aria-labelledby="brands-heading">
   <div class="section-inner">
-    <span class="section-label">Overview</span>
-    <h2 class="section-title" id="intro-heading">Third-Party Workstation Maintenance &amp; Support Services</h2>
-    <div class="tpm-explainer">
-      <div class="tpm-explainer-text">
-        <p>Workstations often keep running well long after their warranties expire, while OEM renewal costs can become hard to justify. Dataknox provides third-party maintenance for <strong>Dell, HP, Lenovo, Apple, Microsoft, ASUS, and Gigabyte</strong> workstation environments.</p>
-        <p>You can get post-warranty support, replacement parts, on-site or depot service, and SLA options based on each system's needs.</p>
-        <ul class="tpm-checklist">
-          <li>Post-warranty and EoL coverage across 7+ workstation brands</li>
-          <li>On-site, depot, and custom fleet SLA options</li>
-          <li>Multi-brand fleet under one contract and one renewal date</li>
-          <li>Domestic-based engineers — no offshore tier-1 triage</li>
-          <li>Tested replacement parts with 1-year warranty</li>
-          <li>GPU workstation support included</li>
-        </ul>
+    <span class="section-label">Workstation Brands</span>
+    <h2 class="section-title" id="brands-heading">Workstation Brands and Product Families We Support</h2>
+    <p class="section-body">Dataknox supports workstations from Dell Precision, HP Z, Lenovo ThinkStation, Apple, Microsoft Surface, ASUS, and Gigabyte. Coverage includes tower, rack, and mobile workstation systems.</p>
+    <div class="card-grid-3">
+      <div class="dk-card">
+        <div class="card-title">Dell Precision Workstations</div>
+        <p class="card-body">Dataknox supports Dell Precision towers, small form factor systems, mobile workstations, and rack-mounted units. Coverage can include both current systems and models that have moved beyond Dell&#8217;s standard support period.</p>
       </div>
-      <div>
-        <div class="tpm-compare-card">
-          <div class="compare-title">OEM vs. Dataknox TPM</div>
-          <div class="compare-row" style="border-bottom:1px solid rgba(0,212,200,0.25);padding-bottom:10px;margin-bottom:4px;">
-            <span class="feature" style="color:var(--dk-white-40);font-size:13px;letter-spacing:0.08em;text-transform:uppercase;">Area</span>
-            <span class="oem" style="color:var(--dk-white-40);font-size:13px;letter-spacing:0.08em;text-transform:uppercase;text-align:center;">OEM Support</span>
-            <span class="dk" style="color:var(--dk-white-40);font-size:13px;letter-spacing:0.08em;text-transform:uppercase;text-align:right;">Third-Party</span>
-          </div>
-          <div class="compare-row">
-            <span class="feature">Support Period</span>
-            <span class="oem">Tied to OEM lifecycle</span>
-            <span class="dk">Extends past EoL</span>
-          </div>
-          <div class="compare-row">
-            <span class="feature">Hardware Brands</span>
-            <span class="oem">One manufacturer</span>
-            <span class="dk">Multiple, one contract</span>
-          </div>
-          <div class="compare-row">
-            <span class="feature">Contract Flexibility</span>
-            <span class="oem">OEM-defined terms</span>
-            <span class="dk">Customizable to fleet</span>
-          </div>
-          <div class="compare-row">
-            <span class="feature">Parts Support</span>
-            <span class="oem">OEM parts network</span>
-            <span class="dk">Independent network</span>
-          </div>
-          <div class="compare-row">
-            <span class="feature">SLA Options</span>
-            <span class="oem">Manufacturer tiers</span>
-            <span class="dk">Assigned per asset</span>
-          </div>
-          <div class="compare-row">
-            <span class="feature">Hardware Lifecycle</span>
-            <span class="oem">Linked to refresh cycles</span>
-            <span class="dk">Customer controls timing</span>
-          </div>
-          <div class="compare-row">
-            <span class="feature">Cost</span>
-            <span class="oem">OEM list pricing</span>
-            <span class="dk">Typically lower</span>
-          </div>
-        </div>
+      <div class="dk-card">
+        <div class="card-title">HP Z Workstations</div>
+        <p class="card-body">Coverage includes HP Z2, Z4, Z6, and Z8 workstations used for professional and high-performance workloads. Dataknox also supports ZBook mobile workstations used by engineers, designers, and other professional teams.</p>
+      </div>
+      <div class="dk-card">
+        <div class="card-title">Lenovo ThinkStation Workstations</div>
+        <p class="card-body">Dataknox supports Lenovo ThinkStation towers used for CAD, simulation, engineering, and data-heavy workloads. Coverage can also include ThinkPad P Series mobile workstations within the same environment.</p>
+      </div>
+      <div class="dk-card">
+        <div class="card-title">Apple Professional Workstations</div>
+        <p class="card-body">Coverage includes supported Mac Pro and Mac Studio systems used in creative, design, and post-production environments. Support depends on the system configuration and parts availability, which Dataknox confirms during the coverage review.</p>
+      </div>
+      <div class="dk-card">
+        <div class="card-title">Microsoft Surface Business Devices</div>
+        <p class="card-body">Dataknox supports commercial Microsoft Surface devices managed as part of a business hardware fleet. This can include Surface Laptop and Surface Pro systems used alongside professional workstations.</p>
+      </div>
+      <div class="dk-card">
+        <div class="card-title">ASUS and Gigabyte Workstations</div>
+        <p class="card-body">Coverage includes professional and high-performance workstation systems from ASUS and Gigabyte. Dataknox can also support some custom or integrator-built systems that do not have full OEM enterprise support.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- BRANDS WE SUPPORT -->
-<section class="section section-alt" id="brands" aria-labelledby="brands-heading">
+<!-- WHAT HARDWARE WE SUPPORT -->
+<section class="section section-alt" aria-labelledby="hardware-heading">
   <div class="section-inner">
-    <span class="section-label">Workstation Brands</span>
-    <h2 class="section-title" id="brands-heading">Workstation Brands and Product Families We Support</h2>
-    <p class="section-body">Dataknox supports workstations from Dell Precision, HP Z, Lenovo ThinkStation, Apple, Microsoft Surface, ASUS, and Gigabyte. Coverage includes tower, rack, and mobile workstation systems.</p>
-    <div class="brand-grid">
+    <span class="section-label">Component Coverage</span>
+    <h2 class="section-title" id="hardware-heading">What Workstation Hardware Can Dataknox Support?</h2>
+    <p class="section-body">Dataknox supports key workstation components, including processors, professional GPUs, motherboards, memory, storage, power supplies, and cooling parts. Coverage also includes fans, network cards, PCIe expansion cards, and chassis components.</p>
+    <ul class="tpm-checklist" style="max-width:860px;">
+      <li><strong>Processors</strong> &#8212; Intel Xeon, Intel Core, AMD Ryzen, and AMD Threadripper class CPUs</li>
+      <li><strong>Professional GPUs</strong> &#8212; NVIDIA RTX Ada, NVIDIA Quadro, AMD Radeon Pro, and compute accelerators</li>
+      <li><strong>Motherboards</strong> &#8212; Workstation-class boards with multi-slot PCIe and registered memory support</li>
+      <li><strong>Memory modules</strong> &#8212; ECC and non-ECC DIMMs across DDR4 and DDR5 generations</li>
+      <li><strong>Storage devices</strong> &#8212; NVMe SSDs, SATA SSDs, enterprise HDDs, and RAID member drives</li>
+      <li><strong>Power supplies</strong> &#8212; High-wattage and redundant PSU assemblies</li>
+      <li><strong>Cooling systems</strong> &#8212; Air and liquid cooling assemblies, heatsinks, and thermal hardware</li>
+      <li><strong>Fans</strong> &#8212; Chassis, CPU, and GPU fan modules</li>
+      <li><strong>Network cards</strong> &#8212; 1GbE, 10GbE, and fibre network adapters</li>
+      <li><strong>PCIe expansion cards</strong> &#8212; Capture cards, HBAs, RAID controllers, and I/O expansion hardware</li>
+      <li><strong>Chassis components</strong> &#8212; Drive bays, backplanes, cable assemblies, and front panel hardware</li>
+    </ul>
+  </div>
+</section>
 
-      <div class="brand-card">
-        <div class="brand-card-name">Dell Precision</div>
-        <div class="brand-card-sub">Tower · Rack · Mobile</div>
-        <p>Dataknox supports the Dell Precision tower, rack, and mobile workstation lines. Coverage includes models used in CAD, media production, scientific computing, and engineering workflows.</p>
+<!-- MAINTENANCE SERVICES -->
+<section class="section" aria-labelledby="services-heading">
+  <div class="section-inner">
+    <span class="section-label">Service Coverage</span>
+    <h2 class="section-title" id="services-heading">Workstation Maintenance Services</h2>
+    <p class="section-body">Component coverage explains which parts Dataknox can replace, while service coverage explains the support you receive. This includes remote troubleshooting, on-site repair, replacement parts, depot repair, and hardware replacement.</p>
+    <div class="card-grid-3">
+      <div class="dk-card">
+        <div class="card-title">Remote Hardware Troubleshooting</div>
+        <p class="card-body">Diagnosis begins remotely. Engineers review error codes, diagnostic output, event logs, and failure symptoms to isolate the failed component before any part ships or any engineer travels. Remote diagnosis prevents incorrect parts dispatch and shortens total repair time.</p>
       </div>
-
-      <div class="brand-card">
-        <div class="brand-card-name">HP Z Series</div>
-        <div class="brand-card-sub">Tower · Rack · Mini · Mobile</div>
-        <p>Dataknox supports HP Z tower, rack, mini, and mobile workstations. Coverage spans systems used in architecture, simulation, data science, and high-performance computing environments.</p>
+      <div class="dk-card">
+        <div class="card-title">On-Site Workstation Repair</div>
+        <p class="card-body">Field engineers attend the site and complete the repair at the workstation&#8217;s physical location. Response timing follows the SLA attached to that specific asset, not a single blanket contract term.</p>
       </div>
-
-      <div class="brand-card">
-        <div class="brand-card-name">Lenovo ThinkStation</div>
-        <div class="brand-card-sub">Tower · Small Form Factor · Mobile</div>
-        <p>Dataknox supports the Lenovo ThinkStation P-series in tower, small form factor, and mobile configurations. Coverage includes systems deployed in enterprise engineering and design workflows.</p>
+      <div class="dk-card">
+        <div class="card-title">Replacement Parts</div>
+        <p class="card-body">Replacement hardware is sourced through the Dataknox parts network, which holds tested components for current and legacy workstation platforms. Independent sourcing keeps parts available for systems the manufacturer no longer stocks.</p>
       </div>
-
-      <div class="brand-card">
-        <div class="brand-card-name">Apple</div>
-        <div class="brand-card-sub">Mac Pro · Mac Studio</div>
-        <p>Dataknox supports Apple Mac Pro and Mac Studio systems used in professional environments. Coverage is confirmed per model and configuration during the asset review process.</p>
+      <div class="dk-card">
+        <div class="card-title">Depot Repair</div>
+        <p class="card-body">The workstation ships to a Dataknox repair facility for diagnosis and component-level repair, then returns to site. Depot service suits secondary systems, spare units, and workstations where a same-day engineer visit is unnecessary.</p>
       </div>
-
-      <div class="brand-card">
-        <div class="brand-card-name">Microsoft Surface</div>
-        <div class="brand-card-sub">Studio · Laptop Studio</div>
-        <p>Dataknox supports Microsoft Surface Studio and Surface Laptop Studio systems deployed in enterprise environments. Coverage is confirmed per model during the asset review.</p>
+      <div class="dk-card">
+        <div class="card-title">Hardware Replacement</div>
+        <p class="card-body">Failed components are replaced under the terms of the coverage agreement. Replacement scope, part class, and turnaround are defined in the contract at the point of signing.</p>
       </div>
-
-      <div class="brand-card">
-        <div class="brand-card-name">ASUS &amp; Gigabyte</div>
-        <div class="brand-card-sub">Professional Workstations</div>
-        <p>Dataknox supports ASUS ProArt and Gigabyte Aorus professional workstation lines. Coverage includes GPU-intensive systems used in rendering, simulation, and machine learning workflows.</p>
-      </div>
-
     </div>
   </div>
 </section>
 
 <!-- SLA OPTIONS -->
-<section class="section" aria-labelledby="sla-heading">
+<section class="section section-alt" aria-labelledby="sla-heading">
   <div class="section-inner">
     <span class="section-label">Service Levels</span>
-    <h2 class="section-title" id="sla-heading">Workstation Support SLA Options</h2>
-    <p class="section-body">Dataknox offers four service options for workstation environments. Each can be assigned individually across your fleet so you pay only for the coverage each system needs.</p>
-    <div class="sla-grid">
-
-      <div class="sla-card">
-        <div class="sla-card-title">4-Hour On-Site Response</div>
-        <p>An engineer arrives within four hours after the fault is confirmed. This option suits critical systems where downtime can delay projects, disrupt production, or affect revenue.</p>
+    <h2 class="section-title" id="sla-heading">Workstation Maintenance SLA Options</h2>
+    <p class="section-body">Dataknox offers 4-hour response, next-business-day support, depot service, and custom fleet coverage. You can assign different SLA levels to different workstations under one agreement.</p>
+    <div class="card-grid-2">
+      <div class="dk-card">
+        <div class="card-title">4-Hour On-Site Response</div>
+        <p class="card-body">An engineer arrives within four hours after the fault is confirmed. This option suits critical systems where downtime can delay projects, disrupt production, or affect revenue.</p>
       </div>
-
-      <div class="sla-card">
-        <div class="sla-card-title">Next-Business-Day Support</div>
-        <p>An engineer arrives on the next business day. This option works well for important systems that can handle a short outage without stopping operations.</p>
+      <div class="dk-card">
+        <div class="card-title">Next-Business-Day Support</div>
+        <p class="card-body">An engineer arrives on the next business day. This option works well for important systems that can handle a short outage without stopping operations.</p>
       </div>
-
-      <div class="sla-card">
-        <div class="sla-card-title">Depot Service</div>
-        <p>You send the workstation to a Dataknox facility for repair. This option suits non-critical systems, backup units, and shared hardware where another machine is available.</p>
+      <div class="dk-card">
+        <div class="card-title">Depot Service</div>
+        <p class="card-body">You send the workstation to a Dataknox facility for repair. This option suits non-critical systems, backup units, and shared hardware where another machine is available.</p>
       </div>
-
-      <div class="sla-card">
-        <div class="sla-card-title">Custom Fleet Coverage</div>
-        <p>You can mix SLA levels across the same workstation fleet. Critical systems can receive 4-hour support, while less important devices use next-business-day or depot service.</p>
+      <div class="dk-card">
+        <div class="card-title">Custom Fleet Coverage</div>
+        <p class="card-body">You can mix SLA levels across the same workstation fleet. Critical systems can receive 4-hour support, while less important devices use next-business-day or depot service.</p>
       </div>
-
     </div>
   </div>
 </section>
 
-<!-- EXTEND BEYOND EoL -->
-<section class="section section-alt" aria-labelledby="eol-heading">
+<!-- EXTEND BEYOND EOL -->
+<section class="section" aria-labelledby="eol-heading">
   <div class="section-inner">
     <span class="section-label">Hardware Lifecycle</span>
     <h2 class="section-title" id="eol-heading">Extend Workstation Life Beyond OEM Warranty and EoL</h2>
-    <p class="section-body">Third-party maintenance separates the hardware replacement date from the OEM support end date. A workstation that still meets its performance requirement stays in production under a TPM contract, regardless of where it sits in the manufacturer's lifecycle schedule.</p>
-    <ul class="tpm-checklist" style="max-width:720px;">
-      <li><strong>Expired warranty</strong> — The standard 3-year term has ended and the system remains in daily use</li>
-      <li><strong>Expensive renewal</strong> — The OEM extension quote exceeds the value of the remaining service life</li>
-      <li><strong>Adequate performance</strong> — The workstation still runs its certified applications at acceptable speed</li>
-      <li><strong>Unnecessary replacement</strong> — No workload change justifies new hardware</li>
-      <li><strong>Delayed refresh</strong> — Budget cycles, supply lead times, or project schedules have pushed the refresh date</li>
-      <li><strong>Legacy dependency</strong> — The system runs validated software, a licensed toolchain, or an instrument driver tied to that specific hardware</li>
-    </ul>
+    <div class="two-col">
+      <div>
+        <p>Third-party maintenance separates the hardware replacement date from the OEM support end date. A workstation that still meets its performance requirement stays in production under a TPM contract, regardless of where it sits in the manufacturer&#8217;s lifecycle schedule.</p>
+        <p>Six situations make extended coverage the correct decision:</p>
+      </div>
+      <div>
+        <ul class="tpm-checklist">
+          <li><strong>Expired warranty</strong>: The standard 3-year term has ended and the system remains in daily use</li>
+          <li><strong>Expensive renewal</strong>: The OEM extension quote exceeds the value of the remaining service life</li>
+          <li><strong>Adequate performance</strong>: The workstation still runs its certified applications at acceptable speed</li>
+          <li><strong>Unnecessary replacement</strong>: No workload change justifies new hardware</li>
+          <li><strong>Delayed refresh</strong>: Budget cycles, supply lead times, or project schedules have pushed the refresh date</li>
+          <li><strong>Legacy dependency</strong>: The system runs validated software, a licensed toolchain, or an instrument driver tied to that specific hardware</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OEM VS TPM TABLE -->
+<section class="section section-alt" aria-labelledby="compare-heading">
+  <div class="section-inner">
+    <span class="section-label">Comparison</span>
+    <h2 class="section-title" id="compare-heading">OEM Workstation Support vs Third-Party Maintenance</h2>
+    <div class="sla-table-wrap">
+      <table class="sla-table" aria-label="OEM vs Third-Party Maintenance Comparison">
+        <thead>
+          <tr>
+            <th>Area</th>
+            <th>OEM Support</th>
+            <th>Third-Party Maintenance</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Support period</td><td>Tied to the OEM product lifecycle</td><td class="sla-check">Extends beyond warranty expiry and EoL</td></tr>
+          <tr><td>Hardware brands</td><td>Usually one manufacturer</td><td class="sla-check">Multiple manufacturers under one contract</td></tr>
+          <tr><td>Contract flexibility</td><td>OEM-defined terms</td><td class="sla-check">Customizable to the fleet</td></tr>
+          <tr><td>Parts support</td><td>OEM parts network</td><td class="sla-check">Independent third-party parts network</td></tr>
+          <tr><td>SLA options</td><td>Manufacturer-specific tiers</td><td class="sla-check">Assigned per asset across the estate</td></tr>
+          <tr><td>Hardware lifecycle</td><td>Often linked to refresh cycles</td><td class="sla-check">Customer controls replacement timing</td></tr>
+          <tr><td>Cost</td><td>OEM list pricing</td><td class="sla-check">Typically lower for equivalent coverage</td></tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 </section>
 
@@ -1013,22 +580,22 @@
 <div class="eeat-section" role="region" aria-label="About Dataknox expertise">
   <div class="eeat-inner">
     <span class="section-label">Experience · Expertise · Authority · Trust</span>
-    <h2 class="section-title">Why Trust Dataknox For Workstation Support?</h2>
+    <h2 class="section-title">Why Trust Dataknox For TPM?</h2>
     <div class="eeat-grid">
       <div class="eeat-card">
         <div class="eeat-card-label">Experience</div>
-        <div class="eeat-card-title">20+ Years of IT Infrastructure Operations</div>
-        <p>Dataknox Solutions, Inc. was founded in Newark, California and has spent over two decades supporting enterprise hardware across financial services, healthcare, technology, and government sectors — including large-scale workstation fleets.</p>
+        <div class="eeat-card-title">20+ Years of Data Center Operations</div>
+        <p>Dataknox Solutions, Inc. was founded in Newark, California and has spent over two decades supporting enterprise data center infrastructure across financial services, healthcare, technology, and government sectors. Our engineers have maintained hardware from every major OEM across 1,200+ completed projects.</p>
       </div>
       <div class="eeat-card">
         <div class="eeat-card-label">Expertise</div>
         <div class="eeat-card-title">Certified Engineers. Tested Parts.</div>
-        <p>Our engineers are multi-vendor certified across Dell, HP, Lenovo, and Apple platforms. All replacement parts are fully tested and warranted for 1 year. We comply with SAE AS5553 counterfeit parts avoidance standards — the same standard used by the US Department of Defense.</p>
+        <p>Our internal and field engineers are multi-vendor certified across Cisco, Dell, HPE, NetApp, and IBM platforms. All replacement parts are fully tested, certified, and warranted for 1 year. We comply with SAE AS5553 counterfeit parts avoidance standards — the same standard used by the US Department of Defense.</p>
       </div>
       <div class="eeat-card">
         <div class="eeat-card-label">Authority &amp; Trust</div>
         <div class="eeat-card-title">Certified, Audited, Documented</div>
-        <p>Dataknox holds ISO 9001 (Quality), ISO 14001 (Environmental), and ISO 45001 (Safety) certifications. We are trusted by Fortune 500 enterprises, healthcare systems, financial institutions, and federal agencies. Every engagement includes documented chain of custody and client portal access.</p>
+        <p>Dataknox holds ISO 9001 (Quality), ISO 14001 (Environmental), and ISO 45001 (Safety) certifications. We are trusted by Fortune 500 enterprises, healthcare systems, financial institutions, and federal agencies. Every engagement includes documented chain of custody, SLA reporting, and client portal access for real-time visibility.</p>
       </div>
     </div>
   </div>
@@ -1038,17 +605,14 @@
 <section class="faq-section" aria-labelledby="faq-heading">
   <div class="faq-inner">
     <span class="section-label">Frequently Asked Questions</span>
-    <h2 class="section-title" id="faq-heading">Workstation Maintenance — Answered</h2>
-    <p class="faq-intro">Common questions from IT directors and procurement teams evaluating third-party workstation maintenance.</p>
+    <h2 class="section-title" id="faq-heading">Frequently Asked Questions</h2>
 
     <div class="faq-item">
       <div class="faq-q" onclick="toggleFaq(this)" role="button" tabindex="0" aria-expanded="false">
         What is third-party workstation maintenance?
         <span class="toggle">+</span>
       </div>
-      <div class="faq-a">
-        Third-party workstation maintenance is hardware support from an independent provider instead of the original manufacturer. It can include troubleshooting, replacement parts, on-site repair, depot repair, and component replacement.
-      </div>
+      <div class="faq-a">Third-party workstation maintenance is hardware support from an independent provider instead of the original manufacturer. It can include troubleshooting, replacement parts, on-site repair, depot repair, and component replacement.</div>
     </div>
 
     <div class="faq-item">
@@ -1056,9 +620,7 @@
         Which workstation brands can Dataknox support?
         <span class="toggle">+</span>
       </div>
-      <div class="faq-a">
-        Dataknox supports <strong>Dell Precision, HP Z, Lenovo ThinkStation, Apple Mac Pro and Mac Studio, Microsoft Surface, ASUS, and Gigabyte</strong> systems. Support for each model is confirmed during the asset review.
-      </div>
+      <div class="faq-a">Dataknox supports Dell Precision, HP Z, Lenovo ThinkStation, Apple Mac Pro and Mac Studio, Microsoft Surface, ASUS, and Gigabyte systems. Support for each model is confirmed during the asset review.</div>
     </div>
 
     <div class="faq-item">
@@ -1066,9 +628,7 @@
         Can Dataknox support GPU workstations?
         <span class="toggle">+</span>
       </div>
-      <div class="faq-a">
-        Yes. Dataknox can support professional GPUs, power supplies, cooling systems, and other hardware used in GPU-based workstations. Coverage depends on the specific GPU and system configuration.
-      </div>
+      <div class="faq-a">Yes. Dataknox can support professional GPUs, power supplies, cooling systems, and other hardware used in GPU-based workstations. Coverage depends on the specific GPU and system configuration.</div>
     </div>
 
     <div class="faq-item">
@@ -1076,9 +636,7 @@
         Can a workstation be supported after its OEM warranty expires?
         <span class="toggle">+</span>
       </div>
-      <div class="faq-a">
-        Yes. Third-party maintenance can keep your workstation covered after its OEM warranty or standard support period ends. Coverage depends on parts availability and available engineering support.
-      </div>
+      <div class="faq-a">Yes. Third-party maintenance can keep your workstation covered after its OEM warranty or standard support period ends. Coverage depends on parts availability and available engineering support.</div>
     </div>
 
     <div class="faq-item">
@@ -1086,9 +644,7 @@
         Can different workstation brands use the same support contract?
         <span class="toggle">+</span>
       </div>
-      <div class="faq-a">
-        Yes. You can cover <strong>Dell, HP, Lenovo, Apple, Microsoft, ASUS, and Gigabyte</strong> systems under one Dataknox agreement. This gives you one service desk, escalation process, and renewal date.
-      </div>
+      <div class="faq-a">Yes. You can cover Dell, HP, Lenovo, Apple, Microsoft, ASUS, and Gigabyte systems under one Dataknox agreement. This gives you one service desk, escalation process, and renewal date.</div>
     </div>
 
     <div class="faq-item">
@@ -1096,9 +652,7 @@
         What workstation SLA options are available?
         <span class="toggle">+</span>
       </div>
-      <div class="faq-a">
-        Dataknox offers <strong>4-hour on-site response, next-business-day support, depot repair, and custom fleet coverage</strong>. You can assign different SLA levels to individual systems under the same contract.
-      </div>
+      <div class="faq-a">Dataknox offers 4-hour on-site response, next-business-day support, depot repair, and custom fleet coverage. You can assign different SLA levels to individual systems under the same contract.</div>
     </div>
 
   </div>
@@ -1107,7 +661,7 @@
 <!-- CTA BAND -->
 <div class="cta-band" role="region" aria-label="Call to action">
   <h2>See How Much You'll Save.</h2>
-  <p>Send us your current OEM renewal quotes. We'll build a side-by-side comparison and show you exactly what Dataknox workstation support costs — before you commit to anything.</p>
+  <p>Send us your current OEM renewal quotes. We'll build a side-by-side comparison and show you exactly what Dataknox TPM costs — before you commit to anything.</p>
   <a href="mailto:sales@dataknox.io" class="btn-dark">Request a Cost Comparison</a>
   <a href="tel:8332823362" class="btn-dark">Call 833-DATA-DOA</a>
 </div>
