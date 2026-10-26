@@ -2,6 +2,12 @@ export default {
   async fetch(request, env) {
     const url = new URL(request.url);
 
+    if (url.pathname === '/tpm_sitemap.xml') {
+      return env.ASSETS.fetch(
+        new Request(url.origin + '/tpm_sitemap.xml' + url.search, request)
+      );
+    }
+
     if (url.pathname.startsWith('/buyers-guide')) {
       return env.ASSETS.fetch(
         new Request(url.origin + '/buyers-guide/index.html' + url.search, request)
